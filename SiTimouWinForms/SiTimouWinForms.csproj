@@ -284,6 +284,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestApi\AuthRest.cs" />
+    <Compile Include="RestApi\LaporanRest.cs" />
     <Compile Include="RestApi\LokasiRest.cs" />
     <Compile Include="RestApi\PegawaiRest.cs" />
     <Compile Include="Views\Admin\DataDesaKec.cs">

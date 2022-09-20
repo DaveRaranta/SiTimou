@@ -8,7 +8,7 @@ namespace gov.minahasa.sitimou.Helper
     {
         private const string SB_FCM_URL = "https://fcm.googleapis.com/fcm/send";
 
-        private const string SB_TITLE_NOTIF = "MITRa FR";
+        private const string SB_TITLE_NOTIF = "SI-TIMOU";
 
         #region === MessageBox Helper ===
 

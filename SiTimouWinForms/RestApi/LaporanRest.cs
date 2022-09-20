@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace gov.minahasa.sitimou.RestApi
 {
-    internal class LokasiRest
+    internal class LaporanRest
     {
         #region === Constructor ===
 
@@ -20,7 +20,7 @@ namespace gov.minahasa.sitimou.RestApi
         private readonly DatabaseHelper _db = new();
         private readonly NotifHelper _notifHelper = new();
 
-        public LokasiRest()
+        public LaporanRest()
         {
             var apiServer = _db.LoadApiInfo("SITIMOU")[0];
 
@@ -42,16 +42,18 @@ namespace gov.minahasa.sitimou.RestApi
 
         #region === Request ===
 
-        public async Task<bool> SimpanLokasiKhusus(string jenisLokasi, string namaLokasi, string alamat, int idDesa, int idKec, 
-            string noTelp, double gpsLat, double gpsLng, string ket, string fileName)
+        public async Task<bool> SimpanProsesLaporan(string jenisLaporan, int idLaporan, string judul,
+            string uraian, string status, string fileName, int idDisposisi)
         {
             try
             {
-                var url = $"{_mainUrl}/lokasi/simpan_lokasi";
+                var url = $"{_mainUrl}/lapor/proses_laporan/";
                 var client = new RestClient();
                 var request = new RestRequest(url, Method.Post);
 
                 client.Authenticator = new JwtAuthenticator(Globals.ApiToken);
+
+                Console.WriteLine(url);
 
                 request.RequestFormat = DataFormat.Json;
 
@@ -60,15 +62,14 @@ namespace gov.minahasa.sitimou.RestApi
                 request.AddHeader("cache-control", "no-cache");
 
                 // Payload
-                request.AddParameter("JenisLokasi", jenisLokasi);
-                request.AddParameter("NamaLokasi", namaLokasi);
-                request.AddParameter("Alamat", alamat);
-                request.AddParameter("IdDesa", idDesa);
-                request.AddParameter("IdKecamatan", idKec);
-                request.AddParameter("NoTelp", noTelp);
-                request.AddParameter("GpsLat", gpsLat);
-                request.AddParameter("GpsLng", gpsLng);
-                request.AddParameter("Keterangan", ket);
+                request.AddParameter("IdDisposisi", idDisposisi);
+                request.AddParameter("IdOpd", Globals.UserOpdId!.Value);
+                request.AddParameter("IdUser", Globals.UserId!.Value);
+                request.AddParameter("JenisLaporan", jenisLaporan);
+                request.AddParameter("IdLaporan", idLaporan);
+                request.AddParameter("Judul", judul);
+                request.AddParameter("Uraian", uraian);
+                request.AddParameter("Status", status);
                 request.AddFile("FileFoto", fileName, MimeTypeMap.GetMimeType(Path.GetExtension(fileName)));
 
                 // Execute
@@ -92,38 +93,7 @@ namespace gov.minahasa.sitimou.RestApi
                 return false;
             }
         }
-
-        public async Task<bool> HapusLokasiKhusus(int idLokasi)
-        {
-            try
-            {
-                var url = $"{_mainUrl}/lokasi/hapus_lokasi/{idLokasi}";
-                var client = new RestClient();
-                var request = new RestRequest(url, Method.Post);
-
-                Console.WriteLine(url);
-
-                client.Authenticator = new JwtAuthenticator(Globals.ApiToken);
-
-                var result = await client.ExecuteGetAsync(request);
-
-                if (result.StatusCode == HttpStatusCode.OK) return true;
-
-                var statusCode = result.StatusCode;
-                var numStatuscode = (int)statusCode;
-
-                if (result.Content!.Contains("FILE_NOT_EXSIST")) _notifHelper.MsgBoxWarning("File Surat Keluar tidak ada.");
-
-                throw new Exception($"HttpStatusCode: {numStatuscode}, Content: {result.Content}");
-
-
-            }
-            catch (Exception e)
-            {
-                DebugHelper.ShowError("LOKASI", @"LokasiRest", MethodBase.GetCurrentMethod()?.Name, e);
-                return false;
-            }
-        }
         #endregion
     }
+
 }

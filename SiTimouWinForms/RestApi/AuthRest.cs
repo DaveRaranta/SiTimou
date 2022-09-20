@@ -19,7 +19,7 @@ namespace gov.minahasa.sitimou.RestApi
 
         public AuthRest()
         {
-            var apiServer = _db.LoadApiInfo("MITRAFR")[0];
+            var apiServer = _db.LoadApiInfo("SITIMOU")[0];
 
             if (apiServer == null || apiServer.Length <= 0)
             {

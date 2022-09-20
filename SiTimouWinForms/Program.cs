@@ -9,7 +9,7 @@ namespace gov.minahasa.sitimou
     static class Program
     {
                                                                 
-        private static readonly Mutex mutex = new Mutex(true, "{d7f58ea2-e06e-4c73-a788-94d9f5127cca}");
+        private static readonly Mutex mutex = new Mutex(true, "{9f748845-4af9-471d-a6b8-63f2477eada7}");
 
         /// <summary>
         /// The main entry point for the application.
@@ -52,7 +52,7 @@ namespace gov.minahasa.sitimou
             }
             else
             {
-                MessageBox.Show(@"Aplikasi MITRa-FS sedang berjalan.", @"MITRa-FS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"Aplikasi SI-TIMOU sedang berjalan.", @"SI-TIMOU", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             
         }

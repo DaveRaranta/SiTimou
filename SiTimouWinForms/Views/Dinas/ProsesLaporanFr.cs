@@ -41,7 +41,23 @@ namespace gov.minahasa.sitimou.Views.Dinas
         #endregion
 
         #region === Methode ===
-        
+
+        private bool ValidasiInput()
+        {
+            try
+            {
+                if (TextJudul.Text.Length == 0) throw new Exception("Masukan perihal penanganan.");
+                if (TextUraian.Text.Length == 0) throw new Exception("Masukan uraian hasil penanganan.");
+                if (TextLampiran.Tag == null) throw new Exception("Pilih foto lampiran.");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                _notifHelper.MsgBoxWarning(e.Message);
+                return false;
+            }
+        }
 
         private async void InitData()
         {
@@ -64,7 +80,6 @@ namespace gov.minahasa.sitimou.Views.Dinas
 
                 // Laporan
                 LabelDurasi.Text = _controller.DurasiLaporan;
-                TextPerihal.Text = _controller.PerihalLaporan;
             }
         }
 
@@ -77,39 +92,52 @@ namespace gov.minahasa.sitimou.Views.Dinas
         }
 
         #endregion
-        
+
         #region === Button ===
 
-        private void ButtonBatal_Click(object sender, EventArgs e)
+        private void LabelInfo_Click(object sender, EventArgs e)
         {
-            if(_notifHelper.MsgBoxQuestion("Batal laporan ini?") != DialogResult.Yes) return;
+            _notifHelper.MsgBoxInfo(_controller.PerihalLaporan);
+        }
 
-            var result = _controller.BatalLaporan("3", IdLaporan, this);
-
-            if (!result)
+        private void ButtonOpen_Click(object sender, EventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog
             {
-                _notifHelper.MsgBoxWarning("Gagal batal laporan masuk. Hubungi admin untuk info selanjutnya.");
-                return;
-            }
+                Title = @"Pilih file foto",
+                Filter = @"JPG File|*.jpg;*.jpeg"
+            };
+
+            if (openFileDialog.ShowDialog() != DialogResult.OK) return;
+
+            TextLampiran.Text = openFileDialog.FileName;
+            TextLampiran.Tag = openFileDialog.FileName;
+        }
+
+        private async void ButtonBatal_Click(object sender, EventArgs e)
+        {
+            if (!ValidasiInput()) return;
+
+            var result = await _controller.SimpanProsesLaporan("1", IdLaporan,
+                TextJudul.Text.Trim(), TextUraian.Text.Trim(), "B",
+                TextLampiran.Tag.ToString(), IdDisposisi, this);
+
+            if (!result) return;
 
             IsDataSaved = true;
             Close();
 
         }
 
-        private void ButtonSimpan_Click(object sender, EventArgs e)
+        private async void ButtonSimpan_Click(object sender, EventArgs e)
         {
-            if (_notifHelper.MsgBoxQuestion("Terima dan proses laporan ini?") != DialogResult.Yes) return;
+            if (!ValidasiInput()) return;
 
-            var sql = $"UPDATE disposisi_er SET flg = 'P' WHERE disposisi_id = {IdDisposisi}";
+            var result = await _controller.SimpanProsesLaporan("1", IdLaporan,
+                TextJudul.Text.Trim(), TextUraian.Text.Trim(), "S",
+                TextLampiran.Tag.ToString(), IdDisposisi, this);
 
-            var result = _dbHelper.ExecuteSqlString(sql);
-
-            if (!result)
-            {
-                _notifHelper.MsgBoxError("Gagal proses terima laporan.");
-                return;
-            }
+            if (!result) return;
 
             IsDataSaved = true;
             Close();
@@ -121,10 +149,7 @@ namespace gov.minahasa.sitimou.Views.Dinas
 
         #endregion
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        #region === Textbox ===
 
         private void TextUraian_TextChanged(object sender, EventArgs e)
         {
@@ -133,9 +158,15 @@ namespace gov.minahasa.sitimou.Views.Dinas
                 LabelCount.Text = @"5000";
                 return;
             }
-                
+
 
             LabelCount.Text = (TextUraian.MaxLength - TextUraian.Text.Length).ToString();
         }
+
+        #endregion
+
+
+
+
     }
 }

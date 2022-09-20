@@ -4,9 +4,9 @@ using System.Drawing.Imaging;
 using Dapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MySqlConnector;
 using minahasa.sitimou.webapi.Helper;
 using minahasa.sitimou.webapi.Models;
-using MySqlConnector;
 
 namespace minahasa.sitimou.webapi.Controllers
 {
@@ -18,7 +18,8 @@ namespace minahasa.sitimou.webapi.Controllers
     {
         private readonly string _conDb;
         private readonly string _baseFolder;
-        
+        private readonly string _baseProsesFolder;
+
         private readonly DbHelper _dbHelper = new();
         private readonly ImageHelper _imageHelper = new();
 
@@ -26,6 +27,7 @@ namespace minahasa.sitimou.webapi.Controllers
         {
             _conDb = config.GetConnectionString("MainDatabase");
             _baseFolder = Path.Combine($"{AppDomain.CurrentDomain.BaseDirectory}files", "laporan");
+            _baseProsesFolder = Path.Combine($"{AppDomain.CurrentDomain.BaseDirectory}files", "proses");
 
             // Create Folder
             if (!Directory.Exists(_baseFolder)) Directory.CreateDirectory(_baseFolder);
@@ -268,6 +270,60 @@ namespace minahasa.sitimou.webapi.Controllers
             }
         }
         #endregion
+
+        #region === Proses Laporan ===
+
+        [HttpPost("proses_laporan")]
+        public async Task<IActionResult> SimpanProsesLaporan([FromForm] SimpanProsesLaporan payload)
+        {
+            var destFn = "";
+            
+            try            
+            {
+                // === Save data ke Db ===
+                await using var conn = new MySqlConnection(_conDb);
+                var parms = new DynamicParameters();
+                parms.Add("@p_disposisi_id", payload.IdDisposisi);
+                parms.Add("@p_opd_id", payload.IdOpd);
+                parms.Add("@p_user_id", payload.IdUser);
+                parms.Add("@p_jenis_laporan", payload.JenisLaporan);
+                parms.Add("@p_laporan_id", payload.IdLaporan);
+                parms.Add("@p_judul", payload.Judul);
+                parms.Add("@p_uraian", payload.Uraian);
+                parms.Add("@p_status", payload.Status);
+
+                await conn.OpenAsync();
+                var result = conn
+                    .ExecuteAsync("sp_save_proses_laporan", parms, commandType: CommandType.StoredProcedure)
+                    .Result;
+
+                if (result == 0) throw new Exception($"ERR_SAVE_PROSES [{result}]");
+                
+                // Simpan file dengan nama ambil dari "result"
+                var jenis = payload.JenisLaporan == "1" ? "laporan" : "panik";
+                var subFolder = Path.Combine(_baseProsesFolder, jenis);
+
+                if (!Directory.Exists(subFolder)) Directory.CreateDirectory(subFolder);
+
+                destFn = Path.Combine(subFolder, $"{payload.IdLaporan}.jpg");
+
+                await using (var stream = new FileStream(destFn, FileMode.Create, FileAccess.Write))
+                {
+                    await payload.FileFoto.CopyToAsync(stream);
+                }
+
+                return Ok();
+            }
+
+            catch (Exception e)
+            {
+                if(System.IO.File.Exists(destFn)) System.IO.File.Delete(destFn);
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        #endregion
+        
     }    
 }
 

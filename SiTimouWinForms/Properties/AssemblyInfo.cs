@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MITRa Fast Response")]
-[assembly: AssemblyDescription("MITRa Fast Response")]
+[assembly: AssemblyTitle("SI-TIMOU 119")]
+[assembly: AssemblyDescription("SI-TIMOU 119")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Pemkab Minahasa Tenggara")]
-[assembly: AssemblyProduct("MITRaFS")]
+[assembly: AssemblyCompany("Pemkab Minahasa")]
+[assembly: AssemblyProduct("SI-TIMOU")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("Kawanua Tech")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("11df9c64-2034-4f42-92ef-6e4124925335")]
+[assembly: Guid("9f748845-4af9-471d-a6b8-63f2477eada7")]
 
 // Version information for an assembly consists of the following four values:
 //

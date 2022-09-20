@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using gov.minahasa.sitimou.Helper;
 using gov.minahasa.sitimou.Helper.Interfaces;
+using gov.minahasa.sitimou.RestApi;
 using MySql.Data.MySqlClient;
 using Syncfusion.Windows.Forms.Grid.Grouping;
 
@@ -18,7 +19,7 @@ namespace gov.minahasa.sitimou.Controllers
         public BindingSource BindData = new();
 
         // Clases
-        private readonly DatabaseHelper _db = new();
+        private readonly LaporanRest _rest = new();
         private readonly NotifHelper _notifHelper = new();
 
         // Properties
@@ -436,6 +437,21 @@ namespace gov.minahasa.sitimou.Controllers
                 }
             }
             
+        }
+
+        public async Task<bool> SimpanProsesLaporan(string jenisLaporan, int idLaporan, string judul,
+            string uraian, string status, string fileName, int idDisposisi, Form form)
+        {
+            using (new WaitCursor(form))
+            {
+                var resultApi = await _rest.SimpanProsesLaporan( jenisLaporan, idLaporan, judul, 
+                    uraian, status, fileName, idDisposisi);
+
+                if (resultApi) return true;
+
+                _notifHelper.MsgBoxWarning(@"Gagal simpan Proses Laporan");
+                return false;
+            }
         }
 
         #endregion

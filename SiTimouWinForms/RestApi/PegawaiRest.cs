@@ -22,7 +22,7 @@ namespace gov.minahasa.sitimou.RestApi
 
         public PegawaiRest()
         {
-            var apiServer = _db.LoadApiInfo("MITRAFR")[0];
+            var apiServer = _db.LoadApiInfo("SITIMOU")[0];
 
             if (apiServer is not { Length: > 0 })
             {

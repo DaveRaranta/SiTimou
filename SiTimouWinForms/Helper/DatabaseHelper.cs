@@ -17,6 +17,8 @@ namespace gov.minahasa.sitimou.Helper
         {
             var sql = $"SELECT TBTXT1, TBNUM0 FROM mstbl WHERE TBCOD = 'APP' AND TBKEY = 'APIURL' AND TBTXT0 = '{urlType}'";
 
+            Console.WriteLine("SQL: " + sql);
+
             using var conn = GetDbConnection();
             using var cmd = new MySqlCommand(sql, conn) { CommandType = CommandType.Text };
             try
