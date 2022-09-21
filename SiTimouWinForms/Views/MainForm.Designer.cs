@@ -84,6 +84,7 @@
             this.labelHari = new System.Windows.Forms.Label();
             this.labelTanggal = new System.Windows.Forms.Label();
             this.labelJam = new System.Windows.Forms.Label();
+            this.SButtonDashboard = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.RibbonMain)).BeginInit();
             this.RibbonMain.SuspendLayout();
             this.RtsAdmin.Panel.SuspendLayout();
@@ -128,7 +129,7 @@
             this.RibbonMain.QuickPanelImageLayout = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.RibbonMain.RibbonHeaderImage = Syncfusion.Windows.Forms.Tools.RibbonHeaderImage.None;
             this.RibbonMain.RibbonStyle = Syncfusion.Windows.Forms.Tools.RibbonStyle.Office2010;
-            this.RibbonMain.SelectedTab = this.RtsDinas;
+            this.RibbonMain.SelectedTab = this.toolStripTabItem2;
             this.RibbonMain.ShowLauncher = false;
             this.RibbonMain.ShowMinimizeButton = false;
             this.RibbonMain.ShowQuickItemsDropDownButton = false;
@@ -535,7 +536,7 @@
             this.TsFrOpd.Name = "TsFrOpd";
             this.TsFrOpd.Office12Mode = false;
             this.TsFrOpd.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TsFrOpd.Size = new System.Drawing.Size(159, 116);
+            this.TsFrOpd.Size = new System.Drawing.Size(128, 116);
             this.TsFrOpd.TabIndex = 4;
             this.TsFrOpd.Text = "First Responder";
             // 
@@ -596,7 +597,7 @@
             this.SButtonAturan,
             this.toolStripSeparator7,
             this.SButtonOpdLokasi});
-            this.toolStripEx4.Location = new System.Drawing.Point(371, 1);
+            this.toolStripEx4.Location = new System.Drawing.Point(340, 1);
             this.toolStripEx4.Name = "toolStripEx4";
             this.toolStripEx4.Office12Mode = false;
             this.toolStripEx4.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -665,6 +666,7 @@
             this.toolStripEx2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStripEx2.Image = null;
             this.toolStripEx2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SButtonDashboard,
             this.toolStripButton4,
             this.toolStripSeparator5,
             this.toolStripButton6,
@@ -673,7 +675,7 @@
             this.toolStripEx2.Name = "toolStripEx2";
             this.toolStripEx2.Office12Mode = false;
             this.toolStripEx2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripEx2.Size = new System.Drawing.Size(175, 116);
+            this.toolStripEx2.Size = new System.Drawing.Size(278, 116);
             this.toolStripEx2.TabIndex = 4;
             this.toolStripEx2.Text = "Dispacher Dinas";
             // 
@@ -708,7 +710,7 @@
             this.SButtonLogout.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.SButtonLogout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SButtonLogout.Name = "SButtonLogout";
-            this.SButtonLogout.Size = new System.Drawing.Size(64, 113);
+            this.SButtonLogout.Size = new System.Drawing.Size(64, 100);
             this.SButtonLogout.Text = "Ganti\r\nPengguna";
             this.SButtonLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SButtonLogout.Click += new System.EventHandler(this.SButtonLogout_Click);
@@ -770,6 +772,17 @@
             this.labelJam.TabIndex = 1;
             this.labelJam.Text = "00:00";
             this.labelJam.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // SButtonDashboard
+            // 
+            this.SButtonDashboard.Image = ((System.Drawing.Image)(resources.GetObject("SButtonDashboard.Image")));
+            this.SButtonDashboard.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.SButtonDashboard.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SButtonDashboard.Name = "SButtonDashboard";
+            this.SButtonDashboard.Size = new System.Drawing.Size(68, 100);
+            this.SButtonDashboard.Text = "Dashboard";
+            this.SButtonDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SButtonDashboard.Click += new System.EventHandler(this.SButtonDashboard_Click);
             // 
             // MainForm
             // 
@@ -875,5 +888,6 @@
         private System.Windows.Forms.ToolStripButton SButtonOpdPegawai;
         private System.Windows.Forms.ToolStripButton SButtonAturan;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripButton SButtonDashboard;
     }
 }

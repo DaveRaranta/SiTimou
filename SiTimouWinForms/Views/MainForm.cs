@@ -265,8 +265,13 @@ namespace gov.minahasa.sitimou.Views
 
 
 
+
         #endregion
 
-        
+        private void SButtonDashboard_Click(object sender, EventArgs e)
+        {
+            var win = new Dashboard();
+            win.ShowDialog();
+        }
     }
 }
