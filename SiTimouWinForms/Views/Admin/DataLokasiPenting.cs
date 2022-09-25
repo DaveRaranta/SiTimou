@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using gov.minahasa.sitimou.Controllers;
 using gov.minahasa.sitimou.Helper;
-using Syncfusion.XlsIO.Implementation.PivotAnalysis;
+using gov.minahasa.sitimou.Views.Common;
 
 namespace gov.minahasa.sitimou.Views.Admin
 {
@@ -21,8 +20,8 @@ namespace gov.minahasa.sitimou.Views.Admin
 
         private int? _idData;
         private string _namaLokasi;
-        private double _gpsLat;
-        private double _gpsLng;
+        // private double _gpsLat;
+        // private double _gpsLng;
 
         public DataLokasiPenting()
         {
@@ -141,11 +140,23 @@ namespace gov.minahasa.sitimou.Views.Admin
         {
             _idData = DataGridHelper.GetCellValue<int>(DataGGC, "lokasi_id");
             _namaLokasi = DataGridHelper.GetCellValue<string>(DataGGC, "Nama Lokasi");
-            _gpsLat = DataGridHelper.GetCellValue<double>(DataGGC, "gps_lat");
-            _gpsLng = DataGridHelper.GetCellValue<double>(DataGGC, "gps_lng");
+            //_gpsLat = DataGridHelper.GetCellValue<double>(DataGGC, "gps_lat");
+            //_gpsLng = DataGridHelper.GetCellValue<double>(DataGGC, "gps_lng");
             //_namaDesakec = DataGridHelper.GetCellValue<string>(DataGGC, JenisData == "1" ? "Nama Kecamatan" : "Nama Desa");
         }
-        
+
+        private void DataGGC_TableControlCellDoubleClick(object sender, Syncfusion.Windows.Forms.Grid.Grouping.GridTableControlCellClickEventArgs e)
+        {
+            if (_idData == null) return;
+
+            var win = new InfoLokasi
+            {
+                IdData = _idData.Value,
+            };
+
+            win.ShowDialog();
+        }
+
         #endregion
 
         private void TextCari__TextChanged(object sender, EventArgs e)

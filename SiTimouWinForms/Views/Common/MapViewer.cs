@@ -68,8 +68,6 @@ namespace gov.minahasa.sitimou.Views.Common
             _toolTip.Draw += ToolTip_Draw;
             _toolTip.Popup += ToolTip_Popup;
 
-            this.Text = JudulForm;
-            LabelH1.Text = JudulForm;
         }
 
         #endregion
@@ -86,10 +84,15 @@ namespace gov.minahasa.sitimou.Views.Common
             }
             else
             {
-                _mapZoom = Convert.ToDouble(_registryCore.Read("GMapZoom"));
-                _mapProvider = SetMapProvider((int)_registryCore.Read("GMapProvider"));
+                var providerIndex = _registryCore.Read("GMapProvider") == null
+                    ? 4
+                    : (int)_registryCore.Read("GMapProvider");
 
-                GComboJenis.SelectedIndex = (int)_registryCore.Read("GMapProvider") - 1;
+
+                _mapZoom = Convert.ToDouble(_registryCore.Read("GMapZoom"));
+                _mapProvider = SetMapProvider(providerIndex);
+
+                GComboJenis.SelectedIndex = providerIndex - 1;
 
             }
         }
@@ -225,6 +228,10 @@ namespace gov.minahasa.sitimou.Views.Common
 
         private void MapViewer_Load(object sender, EventArgs e)
         {
+
+            this.Text = JudulForm;
+            LabelH1.Text = JudulForm;
+
             LoadMapSettings();
             LoadMap();
         }

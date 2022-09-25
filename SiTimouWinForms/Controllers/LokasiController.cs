@@ -21,10 +21,24 @@ namespace gov.minahasa.sitimou.Controllers
         public bool IsDataExist;
         public BindingSource BindData = new();
 
+        // property
+        public string NamaLokasi { get; private set; }
+        public string AlamatLokasi { get; private set; }
+        public string NamaDesa { get; private set; }
+        public string NamaKecamatan { get; private set; }
+        public string NoTelp { get; private set; }
+        public string JenisLokasi { get; private set; }
+        public string Keterangan { get; private set; }
+        public double GpsLat { get; private set; }
+        public double GpsLng { get; private set; }
+
+
         // Clases
         private readonly LokasiRest _rest = new();
         private readonly NotifHelper _notifHelper = new();
         private readonly DatabaseHelper _db = new();
+
+        
 
         #endregion
 
@@ -112,6 +126,57 @@ namespace gov.minahasa.sitimou.Controllers
 
             }
             
+        }
+
+        public async Task<bool> GetDetailLokasi(int idLokasi, Form form)
+        {
+            using (new WaitCursor(form))
+            {
+                using (var conn = GetDbConnection())
+                {
+                    using (var cmd = new MySqlCommand("sp_list_lokasi", conn) { CommandType = CommandType.StoredProcedure })
+                    {
+                        try
+                        {
+                            conn.Open();
+
+                            cmd.Parameters.AddWithValue("@p_lokasi_id", idLokasi);
+
+                            using (var reader = await cmd.ExecuteReaderAsync())
+                            {
+                                if (!reader.HasRows)
+                                {
+                                    _notifHelper.MsgBoxWarning(@"Data Lokasi tidak ditemukan.");
+                                    return false;
+                                }
+
+                                await reader.ReadAsync();
+
+                                // Assign value
+
+                                NamaLokasi = reader.GetString(0);
+                                AlamatLokasi = reader.GetString(1);
+                                NamaDesa = reader.GetString(2);
+                                NamaKecamatan = reader.GetString(3);
+                                NoTelp = reader.GetString(4);
+                                JenisLokasi = reader.GetString(5);
+                                Keterangan = reader.GetString(6);
+                                GpsLat = reader.GetDouble(9);
+                                GpsLng = reader.GetDouble(10);
+
+                                return true;
+                            }
+
+                        }
+                        catch (Exception e)
+                        {
+                            _notifHelper.MsgBoxWarning(@"Gagal load data Lokasi.");
+                            DebugHelper.ShowError(@"INFO", @"InfoController", MethodBase.GetCurrentMethod()?.Name, e, null, true);
+                            return false;
+                        }
+                    }
+                }
+            }
         }
 
         #endregion

@@ -39,6 +39,7 @@ namespace gov.minahasa.sitimou.Views.Common
             this.LabelLaporanMasuk = new System.Windows.Forms.Label();
             this.LabelTitle = new System.Windows.Forms.Label();
             this.PanelPanik = new Syncfusion.Windows.Forms.Tools.GradientPanelExt();
+            this.LabelWarningPanik = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.LabelPanikMasukHari = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -52,21 +53,21 @@ namespace gov.minahasa.sitimou.Views.Common
             this.LabelTotalMasuk = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.gradientPanelExt5 = new Syncfusion.Windows.Forms.Tools.GradientPanelExt();
+            this.MapLaporan = new GMap.NET.WindowsForms.GMapControl();
             this.label1 = new System.Windows.Forms.Label();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.CartesianChartMinggu = new LiveCharts.Wpf.CartesianChart();
             this.label10 = new System.Windows.Forms.Label();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.CartesianChartLapor = new LiveCharts.Wpf.CartesianChart();
             this.gradientPanelExt6 = new Syncfusion.Windows.Forms.Tools.GradientPanelExt();
-            this.elementHost2 = new System.Windows.Forms.Integration.ElementHost();
-            this.CartesianChartTahun = new LiveCharts.Wpf.CartesianChart();
+            this.MapPanik = new GMap.NET.WindowsForms.GMapControl();
             this.label6 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.elementHost2 = new System.Windows.Forms.Integration.ElementHost();
+            this.CartesianChartPanik = new LiveCharts.Wpf.CartesianChart();
             this.gradientPanelExt3 = new Syncfusion.Windows.Forms.Tools.GradientPanelExt();
-            this.MapLaporan = new GMap.NET.WindowsForms.GMapControl();
             this.label22 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.gradientPanelExt7 = new Syncfusion.Windows.Forms.Tools.GradientPanelExt();
-            this.MapPanik = new GMap.NET.WindowsForms.GMapControl();
             this.label23 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.gradientPanelExt8 = new Syncfusion.Windows.Forms.Tools.GradientPanelExt();
@@ -79,7 +80,6 @@ namespace gov.minahasa.sitimou.Views.Common
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.LabelWarningPanik = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PanelLaporan)).BeginInit();
             this.PanelLaporan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PanelPanik)).BeginInit();
@@ -226,6 +226,18 @@ namespace gov.minahasa.sitimou.Views.Common
             this.PanelPanik.Name = "PanelPanik";
             this.PanelPanik.Size = new System.Drawing.Size(200, 200);
             this.PanelPanik.TabIndex = 11;
+            // 
+            // LabelWarningPanik
+            // 
+            this.LabelWarningPanik.Font = new System.Drawing.Font("Wingdings", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.LabelWarningPanik.ForeColor = System.Drawing.Color.Lime;
+            this.LabelWarningPanik.Location = new System.Drawing.Point(141, 9);
+            this.LabelWarningPanik.Name = "LabelWarningPanik";
+            this.LabelWarningPanik.Size = new System.Drawing.Size(48, 46);
+            this.LabelWarningPanik.TabIndex = 12;
+            this.LabelWarningPanik.Text = "l";
+            this.LabelWarningPanik.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LabelWarningPanik.Visible = false;
             // 
             // label12
             // 
@@ -378,8 +390,8 @@ namespace gov.minahasa.sitimou.Views.Common
             this.gradientPanelExt5.BorderColor = System.Drawing.Color.Maroon;
             this.gradientPanelExt5.BorderGap = 2;
             this.gradientPanelExt5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gradientPanelExt5.Controls.Add(this.MapLaporan);
             this.gradientPanelExt5.Controls.Add(this.label1);
-            this.gradientPanelExt5.Controls.Add(this.elementHost1);
             this.gradientPanelExt5.Controls.Add(this.label10);
             this.gradientPanelExt5.CornerRadius = 12;
             this.gradientPanelExt5.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74)))));
@@ -388,111 +400,6 @@ namespace gov.minahasa.sitimou.Views.Common
             this.gradientPanelExt5.Name = "gradientPanelExt5";
             this.gradientPanelExt5.Size = new System.Drawing.Size(740, 513);
             this.gradientPanelExt5.TabIndex = 14;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(16, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(293, 30);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "LAPORAN (7 HARI TERAKHIR)";
-            // 
-            // elementHost1
-            // 
-            this.elementHost1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74)))));
-            this.elementHost1.Location = new System.Drawing.Point(22, 62);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(697, 431);
-            this.elementHost1.TabIndex = 1;
-            this.elementHost1.Text = "ElementHostMinggu";
-            this.elementHost1.Visible = false;
-            this.elementHost1.Child = this.CartesianChartMinggu;
-            // 
-            // label10
-            // 
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.SlateGray;
-            this.label10.Location = new System.Drawing.Point(7, 225);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(727, 63);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "TIDAK ADA LAPORAN MASUK";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // gradientPanelExt6
-            // 
-            this.gradientPanelExt6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.gradientPanelExt6.BackColor = System.Drawing.Color.Transparent;
-            this.gradientPanelExt6.BackgroundColor = new Syncfusion.Drawing.BrushInfo(System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74))))));
-            this.gradientPanelExt6.Border = new System.Windows.Forms.Padding(2);
-            this.gradientPanelExt6.BorderColor = System.Drawing.Color.Maroon;
-            this.gradientPanelExt6.BorderGap = 2;
-            this.gradientPanelExt6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gradientPanelExt6.Controls.Add(this.elementHost2);
-            this.gradientPanelExt6.Controls.Add(this.label6);
-            this.gradientPanelExt6.Controls.Add(this.label13);
-            this.gradientPanelExt6.CornerRadius = 12;
-            this.gradientPanelExt6.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74)))));
-            this.gradientPanelExt6.InnerBorderThickness = 0F;
-            this.gradientPanelExt6.Location = new System.Drawing.Point(811, 543);
-            this.gradientPanelExt6.Name = "gradientPanelExt6";
-            this.gradientPanelExt6.Size = new System.Drawing.Size(740, 513);
-            this.gradientPanelExt6.TabIndex = 15;
-            // 
-            // elementHost2
-            // 
-            this.elementHost2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74)))));
-            this.elementHost2.Location = new System.Drawing.Point(22, 62);
-            this.elementHost2.Name = "elementHost2";
-            this.elementHost2.Size = new System.Drawing.Size(697, 431);
-            this.elementHost2.TabIndex = 2;
-            this.elementHost2.Text = "ElementHostTahun";
-            this.elementHost2.Visible = false;
-            this.elementHost2.Child = this.CartesianChartTahun;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(16, 20);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(256, 30);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "PANIK (7 HARI TERAKHIR)";
-            // 
-            // label13
-            // 
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.SlateGray;
-            this.label13.Location = new System.Drawing.Point(7, 225);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(727, 63);
-            this.label13.TabIndex = 3;
-            this.label13.Text = "TIDAK ADA LAPORAN MASUK";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // gradientPanelExt3
-            // 
-            this.gradientPanelExt3.BackColor = System.Drawing.Color.Transparent;
-            this.gradientPanelExt3.BackgroundColor = new Syncfusion.Drawing.BrushInfo(System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74))))));
-            this.gradientPanelExt3.Border = new System.Windows.Forms.Padding(2);
-            this.gradientPanelExt3.BorderColor = System.Drawing.Color.Maroon;
-            this.gradientPanelExt3.BorderGap = 2;
-            this.gradientPanelExt3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gradientPanelExt3.Controls.Add(this.MapLaporan);
-            this.gradientPanelExt3.Controls.Add(this.label22);
-            this.gradientPanelExt3.Controls.Add(this.label7);
-            this.gradientPanelExt3.CornerRadius = 12;
-            this.gradientPanelExt3.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74)))));
-            this.gradientPanelExt3.InnerBorderThickness = 0F;
-            this.gradientPanelExt3.Location = new System.Drawing.Point(491, 99);
-            this.gradientPanelExt3.Name = "gradientPanelExt3";
-            this.gradientPanelExt3.Size = new System.Drawing.Size(680, 422);
-            this.gradientPanelExt3.TabIndex = 16;
             // 
             // MapLaporan
             // 
@@ -503,7 +410,7 @@ namespace gov.minahasa.sitimou.Views.Common
             this.MapLaporan.GrayScaleMode = false;
             this.MapLaporan.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.MapLaporan.LevelsKeepInMemory = 5;
-            this.MapLaporan.Location = new System.Drawing.Point(19, 53);
+            this.MapLaporan.Location = new System.Drawing.Point(20, 53);
             this.MapLaporan.MarkersEnabled = true;
             this.MapLaporan.MaxZoom = 25;
             this.MapLaporan.MinZoom = 2;
@@ -517,50 +424,62 @@ namespace gov.minahasa.sitimou.Views.Common
             this.MapLaporan.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.MapLaporan.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.MapLaporan.ShowTileGridLines = false;
-            this.MapLaporan.Size = new System.Drawing.Size(640, 351);
+            this.MapLaporan.Size = new System.Drawing.Size(700, 440);
             this.MapLaporan.TabIndex = 20;
+            this.MapLaporan.Visible = false;
             this.MapLaporan.Zoom = 0D;
             // 
-            // label22
+            // label1
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(16, 20);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(183, 30);
-            this.label22.TabIndex = 0;
-            this.label22.Text = "LOKASI LAPORAN";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(16, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(284, 30);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "LOKASI LAPORAN TERAKHIR";
             // 
-            // label7
+            // label10
             // 
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.SlateGray;
-            this.label7.Location = new System.Drawing.Point(7, 180);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(667, 63);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "TIDAK ADA LAPORAN MASUK";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.SlateGray;
+            this.label10.Location = new System.Drawing.Point(7, 225);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(727, 63);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "TIDAK ADA LAPORAN MASUK";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // gradientPanelExt7
+            // elementHost1
             // 
-            this.gradientPanelExt7.BackColor = System.Drawing.Color.Transparent;
-            this.gradientPanelExt7.BackgroundColor = new Syncfusion.Drawing.BrushInfo(System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74))))));
-            this.gradientPanelExt7.Border = new System.Windows.Forms.Padding(2);
-            this.gradientPanelExt7.BorderColor = System.Drawing.Color.Maroon;
-            this.gradientPanelExt7.BorderGap = 2;
-            this.gradientPanelExt7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gradientPanelExt7.Controls.Add(this.MapPanik);
-            this.gradientPanelExt7.Controls.Add(this.label23);
-            this.gradientPanelExt7.Controls.Add(this.label4);
-            this.gradientPanelExt7.CornerRadius = 12;
-            this.gradientPanelExt7.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74)))));
-            this.gradientPanelExt7.InnerBorderThickness = 0F;
-            this.gradientPanelExt7.Location = new System.Drawing.Point(1194, 99);
-            this.gradientPanelExt7.Name = "gradientPanelExt7";
-            this.gradientPanelExt7.Size = new System.Drawing.Size(680, 422);
-            this.gradientPanelExt7.TabIndex = 17;
+            this.elementHost1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74)))));
+            this.elementHost1.Location = new System.Drawing.Point(21, 53);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(638, 350);
+            this.elementHost1.TabIndex = 1;
+            this.elementHost1.Text = "ElementHostMinggu";
+            this.elementHost1.Visible = false;
+            this.elementHost1.Child = this.CartesianChartLapor;
+            // 
+            // gradientPanelExt6
+            // 
+            this.gradientPanelExt6.BackColor = System.Drawing.Color.Transparent;
+            this.gradientPanelExt6.BackgroundColor = new Syncfusion.Drawing.BrushInfo(System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74))))));
+            this.gradientPanelExt6.Border = new System.Windows.Forms.Padding(2);
+            this.gradientPanelExt6.BorderColor = System.Drawing.Color.Maroon;
+            this.gradientPanelExt6.BorderGap = 2;
+            this.gradientPanelExt6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gradientPanelExt6.Controls.Add(this.MapPanik);
+            this.gradientPanelExt6.Controls.Add(this.label6);
+            this.gradientPanelExt6.Controls.Add(this.label13);
+            this.gradientPanelExt6.CornerRadius = 12;
+            this.gradientPanelExt6.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74)))));
+            this.gradientPanelExt6.InnerBorderThickness = 0F;
+            this.gradientPanelExt6.Location = new System.Drawing.Point(811, 543);
+            this.gradientPanelExt6.Name = "gradientPanelExt6";
+            this.gradientPanelExt6.Size = new System.Drawing.Size(740, 513);
+            this.gradientPanelExt6.TabIndex = 15;
             // 
             // MapPanik
             // 
@@ -585,9 +504,103 @@ namespace gov.minahasa.sitimou.Views.Common
             this.MapPanik.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.MapPanik.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.MapPanik.ShowTileGridLines = false;
-            this.MapPanik.Size = new System.Drawing.Size(640, 351);
+            this.MapPanik.Size = new System.Drawing.Size(700, 440);
             this.MapPanik.TabIndex = 21;
+            this.MapPanik.Visible = false;
             this.MapPanik.Zoom = 0D;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(16, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(247, 30);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "LOKASI PANIK TERAKHIR";
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.SlateGray;
+            this.label13.Location = new System.Drawing.Point(7, 225);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(727, 63);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "TIDAK ADA LAPORAN MASUK";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // elementHost2
+            // 
+            this.elementHost2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74)))));
+            this.elementHost2.Location = new System.Drawing.Point(21, 53);
+            this.elementHost2.Name = "elementHost2";
+            this.elementHost2.Size = new System.Drawing.Size(638, 350);
+            this.elementHost2.TabIndex = 2;
+            this.elementHost2.Text = "ElementHostTahun";
+            this.elementHost2.Visible = false;
+            this.elementHost2.Child = this.CartesianChartPanik;
+            // 
+            // gradientPanelExt3
+            // 
+            this.gradientPanelExt3.BackColor = System.Drawing.Color.Transparent;
+            this.gradientPanelExt3.BackgroundColor = new Syncfusion.Drawing.BrushInfo(System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74))))));
+            this.gradientPanelExt3.Border = new System.Windows.Forms.Padding(2);
+            this.gradientPanelExt3.BorderColor = System.Drawing.Color.Maroon;
+            this.gradientPanelExt3.BorderGap = 2;
+            this.gradientPanelExt3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gradientPanelExt3.Controls.Add(this.label22);
+            this.gradientPanelExt3.Controls.Add(this.elementHost1);
+            this.gradientPanelExt3.Controls.Add(this.label7);
+            this.gradientPanelExt3.CornerRadius = 12;
+            this.gradientPanelExt3.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74)))));
+            this.gradientPanelExt3.InnerBorderThickness = 0F;
+            this.gradientPanelExt3.Location = new System.Drawing.Point(491, 99);
+            this.gradientPanelExt3.Name = "gradientPanelExt3";
+            this.gradientPanelExt3.Size = new System.Drawing.Size(680, 422);
+            this.gradientPanelExt3.TabIndex = 16;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(16, 20);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(293, 30);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "LAPORAN (7 HARI TERAKHIR)";
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.SlateGray;
+            this.label7.Location = new System.Drawing.Point(7, 180);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(667, 63);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "TIDAK ADA LAPORAN MASUK";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gradientPanelExt7
+            // 
+            this.gradientPanelExt7.BackColor = System.Drawing.Color.Transparent;
+            this.gradientPanelExt7.BackgroundColor = new Syncfusion.Drawing.BrushInfo(System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74))))));
+            this.gradientPanelExt7.Border = new System.Windows.Forms.Padding(2);
+            this.gradientPanelExt7.BorderColor = System.Drawing.Color.Maroon;
+            this.gradientPanelExt7.BorderGap = 2;
+            this.gradientPanelExt7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gradientPanelExt7.Controls.Add(this.elementHost2);
+            this.gradientPanelExt7.Controls.Add(this.label23);
+            this.gradientPanelExt7.Controls.Add(this.label4);
+            this.gradientPanelExt7.CornerRadius = 12;
+            this.gradientPanelExt7.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(74)))));
+            this.gradientPanelExt7.InnerBorderThickness = 0F;
+            this.gradientPanelExt7.Location = new System.Drawing.Point(1194, 99);
+            this.gradientPanelExt7.Name = "gradientPanelExt7";
+            this.gradientPanelExt7.Size = new System.Drawing.Size(680, 422);
+            this.gradientPanelExt7.TabIndex = 17;
             // 
             // label23
             // 
@@ -596,9 +609,9 @@ namespace gov.minahasa.sitimou.Views.Common
             this.label23.ForeColor = System.Drawing.Color.White;
             this.label23.Location = new System.Drawing.Point(16, 20);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(146, 30);
+            this.label23.Size = new System.Drawing.Size(256, 30);
             this.label23.TabIndex = 0;
-            this.label23.Text = "LOKASI PANIK";
+            this.label23.Text = "PANIK (7 HARI TERAKHIR)";
             // 
             // label4
             // 
@@ -743,18 +756,6 @@ namespace gov.minahasa.sitimou.Views.Common
             this.label8.Text = "119";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // LabelWarningPanik
-            // 
-            this.LabelWarningPanik.Font = new System.Drawing.Font("Wingdings", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.LabelWarningPanik.ForeColor = System.Drawing.Color.Lime;
-            this.LabelWarningPanik.Location = new System.Drawing.Point(141, 9);
-            this.LabelWarningPanik.Name = "LabelWarningPanik";
-            this.LabelWarningPanik.Size = new System.Drawing.Size(48, 46);
-            this.LabelWarningPanik.TabIndex = 12;
-            this.LabelWarningPanik.Text = "l";
-            this.LabelWarningPanik.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.LabelWarningPanik.Visible = false;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -777,6 +778,7 @@ namespace gov.minahasa.sitimou.Views.Common
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
@@ -852,9 +854,9 @@ namespace gov.minahasa.sitimou.Views.Common
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Integration.ElementHost elementHost1;
-        private LiveCharts.Wpf.CartesianChart CartesianChartMinggu;
+        private LiveCharts.Wpf.CartesianChart CartesianChartLapor;
         private System.Windows.Forms.Integration.ElementHost elementHost2;
-        private LiveCharts.Wpf.CartesianChart CartesianChartTahun;
+        private LiveCharts.Wpf.CartesianChart CartesianChartPanik;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label13;
         private GMap.NET.WindowsForms.GMapControl MapLaporan;

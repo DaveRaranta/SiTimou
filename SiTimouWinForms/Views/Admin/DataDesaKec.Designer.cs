@@ -283,7 +283,7 @@
             this.Controls.Add(this.ButtonTambah);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DataDesaKec";
-            this.Text = "Data Pegawai";
+            this.Text = "Data Desa / Kecamatan";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DataDesaKecAdmin_FormClosed);
             this.Load += new System.EventHandler(this.DataDesaKecAdmin_Load);
             this.Shown += new System.EventHandler(this.DataDesaKecAdmin_Shown);

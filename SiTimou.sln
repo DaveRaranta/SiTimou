@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32413.511
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiTimou", "SiTimouWinForms\SiTimouWinForms.csproj", "{11DF9C64-2034-4F42-92EF-6E4124925335}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiTimouWinForms", "SiTimouWinForms\SiTimouWinForms.csproj", "{11DF9C64-2034-4F42-92EF-6E4124925335}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SiTimouSetup", "SiTimouSetup\SiTimouSetup.vdproj", "{4AB2125C-3BFE-48B7-B8E4-6E55C94A5786}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,8 @@ Global
 		{11DF9C64-2034-4F42-92EF-6E4124925335}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11DF9C64-2034-4F42-92EF-6E4124925335}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11DF9C64-2034-4F42-92EF-6E4124925335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AB2125C-3BFE-48B7-B8E4-6E55C94A5786}.Debug|Any CPU.ActiveCfg = Debug
+		{4AB2125C-3BFE-48B7-B8E4-6E55C94A5786}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -9,10 +10,19 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.Integration;
+using GMap.NET;
 using gov.minahasa.sitimou.Helper;
 using gov.minahasa.sitimou.Helper.Interfaces;
+using LiveCharts.Wpf;
+using LiveCharts;
+using LiveCharts.Definitions.Charts;
 using MySql.Data.MySqlClient;
 using Syncfusion.Windows.Forms.Tools;
+using LiveCharts.Wpf.Charts.Base;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms.Markers;
+using GMap.NET.WindowsForms;
 
 namespace gov.minahasa.sitimou.Controllers
 {
@@ -30,7 +40,21 @@ namespace gov.minahasa.sitimou.Controllers
 
         private readonly AppHelper _appHelper = new();
         private readonly string _soundFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sounds");
+        private readonly CultureInfo _cultureInfo = new("id-ID");
 
+        // Untuk chart
+        private readonly List<double> _chartLaporY = new();
+        private readonly List<string> _chartLaporX = new();
+        private readonly List<double> _chartPanikY = new();
+        private readonly List<string> _chartPanikX = new();
+
+        // Map Stuff
+        private readonly GMapProvider _mapProvider = GMapProviders.GoogleHybridMap;
+        private GMarkerGoogle _mapMarker;
+        private GMapOverlay _markerOverlay;
+        private readonly double _mapZoom = 17;
+        private double _gpsLat;
+        private double _gpsLng;
 
         #region === Warning ===
 
@@ -67,8 +91,10 @@ namespace gov.minahasa.sitimou.Controllers
         #endregion
 
         #region === Dashboard ===
-
-
+        
+        //
+        // Counter data
+        //
 
         public void GetDataJumlah(Control ctrlLaporanMasuk, Control ctrlPanikMasuk)
         {
@@ -98,7 +124,7 @@ namespace gov.minahasa.sitimou.Controllers
                             TotPanikMasukHari = reader.GetInt16(3);
                             TotMasuk = reader.GetInt32(4);
                             TotLaporan = reader.GetInt32(5);
-                            TotPanik = reader.GetInt32(5);
+                            TotPanik = reader.GetInt32(6);
 
                             PlayWarning(TotLaporanMasuk, TotPanikMasuk, ctrlLaporanMasuk, ctrlPanikMasuk);
 
@@ -114,111 +140,99 @@ namespace gov.minahasa.sitimou.Controllers
             }
         }
 
-        /*
-            
-        // >>> Chart <<<
+        //
+        // Chart data
+        //
 
-        private void GetChartData(string tipeChart)
+        public void GetChartData(string tipeChart, Control chartContainer, CartesianChart chart)
         {
             // tiepCart: 1 = Mingguan, 2 = Tahunan
-            using (new WaitCursor(this))
+            using (var conn = GetDbConnection())
             {
-                using (var conn = new MySqlConnection(_db.ConnectionString()))
+                using (var cmd = new MySqlCommand("sp_dashboard_chart", conn) { CommandType = CommandType.StoredProcedure })
                 {
-                    using (var cmd = new MySqlCommand("DashboardChart", conn) { CommandType = CommandType.StoredProcedure })
+                    try
                     {
-                        try
+                        conn.Open();
+
+                        cmd.Parameters.AddWithValue("@p_jenis_chart", tipeChart);
+
+                        using (var reader = cmd.ExecuteReader())
                         {
-                            conn.Open();
+                            chartContainer.Visible = reader.HasRows;
 
-                            cmd.Parameters.AddWithValue("@TipeChart", tipeChart);
+                            if (!reader.HasRows) return;
 
-                            using (var reader = cmd.ExecuteReader())
+                            switch (tipeChart)
+                            {
+                                case "1":
+                                    _chartLaporX.Clear();
+                                    _chartLaporY.Clear();
+                                    break;
+                                case "2":
+                                    _chartPanikX.Clear();
+                                    _chartPanikY.Clear();
+                                    break;
+                                default:
+                                    return;
+                            }
+
+                            while (reader.Read())
                             {
                                 switch (tipeChart)
                                 {
                                     case "1":
-                                        elementHost1.Visible = reader.HasRows;
+                                        _chartLaporX.Add(reader.GetString(0));
+                                        _chartLaporY.Add(reader.GetDouble(1));
                                         break;
                                     case "2":
-                                        elementHost2.Visible = reader.HasRows;
-                                        break;
-                                }
-
-                                if (!reader.HasRows) return;
-
-                                switch (tipeChart)
-                                {
-                                    case "1":
-                                        _chartMingguX.Clear();
-                                        _chartMingguY.Clear();
-                                        break;
-                                    case "2":
-                                        _chartTahunX.Clear();
-                                        _chartTahunY.Clear();
-                                        break;
-                                    default:
-                                        return;
-                                }
-
-                                while (reader.Read())
-                                {
-                                    switch (tipeChart)
-                                    {
-                                        case "1":
-                                            _chartMingguX.Add(reader.GetString("tgl"));
-                                            _chartMingguY.Add(reader.GetDouble("total"));
-                                            break;
-                                        case "2":
-                                            _chartTahunX.Add(reader.GetString("bulan"));
-                                            _chartTahunY.Add(reader.GetDouble("total"));
-                                            break;
-                                    }
-                                }
-
-                                switch (tipeChart)
-                                {
-                                    case "1":
-                                        GenChartMinggu();
-                                        break;
-                                    case "2":
-                                        GenChartTahun();
+                                        _chartPanikX.Add(reader.GetString(0));
+                                        _chartPanikY.Add(reader.GetDouble(1));
                                         break;
                                 }
                             }
+
+                            switch (tipeChart)
+                            {
+                                case "1":
+                                    GenChartLaporan(chart);
+                                    break;
+                                case "2":
+                                    GenChartPanik(chart);
+                                    break;
+                            }
                         }
-                        catch (Exception ex)
-                        {
-                            AppHelper.ShowError(this.Name, MethodBase.GetCurrentMethod().Name, ex);
-                        }
+                    }
+                    catch (Exception e)
+                    {
+                        DebugHelper.ShowError("OPD", @"OpdController", MethodBase.GetCurrentMethod()?.Name, e);
                     }
                 }
             }
-
         }
 
-        private void GenChartMinggu()
+        private void GenChartLaporan(CartesianChart chart)
         {
             // var values = new List<double> { 4, 6, 5, 2, 7, 5, 9 };
             // var tanggal = new List<string> {"23/01", "24/01", "25/01", "26/01", "27/01", "28/01", "29/01"};
 
-            CartesianChartMinggu.Series = new SeriesCollection
+            chart.Series = new SeriesCollection
             {
-                
+
                 new LineSeries
                 {
-                    Title = "Tagihan Masuk",
-                    Values = new ChartValues<double>(_chartMingguY), // new ChartValues<double>(_chartMingguY),
+                    Title = "LAPORAN",
+                    Values = new ChartValues<double>(_chartLaporY), // new ChartValues<double>(_chartMingguY),
                     StrokeThickness = 2,
                     StrokeDashArray = new System.Windows.Media.DoubleCollection(20),
                     PointGeometrySize = 15,
                 },
             };
 
-            CartesianChartMinggu.AxisX.Add(new Axis
+            chart.AxisX.Add(new Axis
             {
                 Title = "Tanggal",
-                Labels = _chartMingguX, 
+                Labels = _chartLaporX,
                 Separator = new Separator
                 {
                     Step = 1,
@@ -229,7 +243,7 @@ namespace gov.minahasa.sitimou.Controllers
                 }
             });
 
-            CartesianChartMinggu.AxisY.Add(new Axis
+            chart.AxisY.Add(new Axis
             {
                 Title = "Total Masuk",
                 LabelFormatter = value => value.ToString("N0"),
@@ -244,18 +258,18 @@ namespace gov.minahasa.sitimou.Controllers
             });
         }
 
-        private void GenChartTahun()
+        private void GenChartPanik(CartesianChart chart)
         {
             //var values = new List<double> { 7, 3, 9, 12, 17, 15, 19 };
             //var tanggal = new List<string> { "Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul" };
-            
 
-            CartesianChartTahun.Series = new SeriesCollection
+
+            chart.Series = new SeriesCollection
             {
                 new LineSeries
                 {
-                    Title = "Tagihan Masuk",
-                    Values = new ChartValues<double>(_chartTahunY), // new ChartValues<double>(_chartTahunY),
+                    Title = "PANIK",
+                    Values = new ChartValues<double>(_chartPanikY), // new ChartValues<double>(_chartTahunY),
                     StrokeThickness = 2,
                     StrokeDashArray = new System.Windows.Media.DoubleCollection(20),
                     PointGeometrySize = 15,
@@ -265,10 +279,10 @@ namespace gov.minahasa.sitimou.Controllers
                 },
             };
 
-            CartesianChartTahun.AxisX.Add(new Axis
-            {
-                Title = "Bulan",
-                Labels = _chartTahunX, //new[] { "25/01", "26/01", "27/01", "28/01", "29/01" },
+            chart.AxisX.Add(new Axis
+            {   
+                Title = "Tanggal",
+                Labels = _chartPanikX, //new[] { "25/01", "26/01", "27/01", "28/01", "29/01" },
                 Separator = new Separator
                 {
                     Step = 1,
@@ -279,7 +293,7 @@ namespace gov.minahasa.sitimou.Controllers
                 }
             });
 
-            CartesianChartTahun.AxisY.Add(new Axis
+            chart.AxisY.Add(new Axis
             {
                 Title = "Total Masuk",
                 LabelFormatter = value => value.ToString("N0"),
@@ -294,51 +308,74 @@ namespace gov.minahasa.sitimou.Controllers
             });
         }
 
-        // >>> Chart END <<<
+        //
+        // Chart data
+        //
 
-
-        private void HitungTagihan()
+        public void GetMapData(string jenisChart, GMapControl map)
         {
-            using (new WaitCursor(this))
+            var sql = jenisChart == "1"
+                ? "SELECT gps_lat, gps_lng FROM laporan WHERE flg = 'N' ORDER BY laporan_id DESC LIMIT 1"
+                : "SELECT gps_lat, gps_lng FROM panik WHERE flg = 'N' ORDER BY laporan_id DESC LIMIT 1";
+
+            using (var conn = GetDbConnection())
             {
-                using (var conn = new MySqlConnection(_db.ConnectionString()))
+                using (var cmd = new MySqlCommand(sql, conn) { CommandType = CommandType.Text })
                 {
-                    using (var cmd = new MySqlCommand("DashboardCount", conn) { CommandType = CommandType.StoredProcedure })
+                    try
                     {
-                        try
+                        conn.Open();
+
+                        using (var reader = cmd.ExecuteReader())
                         {
-                            conn.Open();
+                            map.Visible = reader.HasRows;
+                            if (!reader.HasRows) return;
 
-                            using (var reader = cmd.ExecuteReader())
-                            {
-                                if (!reader.HasRows) return;
+                            reader.Read();
 
-                                reader.Read();
+                            _gpsLat = reader.GetDouble(0);
+                            _gpsLng = reader.GetDouble(1);
 
-                                // Tagihan
-                                LabelTagihanMasuk.Text = reader.GetInt16("totTagihanMasuk").ToString("N0", _cultureInfo);
-                                LabelTagihanMasukHari.Text = reader.GetInt16("totTagihanMasukHari").ToString("N0", _cultureInfo);
-                                LabelTagihanVerifikasi.Text = reader.GetInt16("totTagihanVerifikasi").ToString("N0", _cultureInfo);
-                                LabelTagihanVerifikasiHari.Text = reader.GetInt16("totTagihanVerifikasiHari").ToString("N0", _cultureInfo);
+                            ShowMapData(map);
 
-                                // Anggaran
-                                LabelAnggaran.Text = reader.GetDouble("totAnggaran").ToString("N0", _cultureInfo);
-                                LabelAnggaranDau.Text = reader.GetDouble("totAnggaranDau").ToMil();
-                                LabelAnggaranDak.Text = reader.GetDouble("totAnggaranDak").ToMil();
-                                LabelAnggaranDal.Text = reader.GetDouble("totAnggaranDal").ToMil();
-
-                            }
                         }
-                        catch (Exception ex)
-                        {
-                            AppHelper.ShowError(this.Name, MethodBase.GetCurrentMethod().Name, ex);
-                        }
+
+                    }
+                    catch (Exception e)
+                    {
+
+                        DebugHelper.ShowError(@"PEGAWAI", @"PegawaiController", MethodBase.GetCurrentMethod()?.Name, e);
                     }
                 }
             }
         }
 
-         */
+        private void ShowMapData(GMapControl map)
+        {
+            GMaps.Instance.Mode = AccessMode.ServerAndCache;
+            map.MapProvider = _mapProvider;
+
+            map.Position = new PointLatLng(_gpsLat, _gpsLng);
+            _mapMarker = new GMarkerGoogle(map.Position, new Bitmap(Properties.Resources.map_marker_36))
+            {
+                Tag = "LOKASI LAPORAN",
+                ToolTipMode = MarkerTooltipMode.Never,
+                ToolTipText = "LOKASI LAPORAN",
+            };
+            _mapMarker.ToolTip.Stroke.Color = Color.FromArgb(0, 255, 255, 0);
+            _mapMarker.ToolTip.Font = new Font("Arial", 12, FontStyle.Bold);
+            _mapMarker.ToolTip.Fill = Brushes.LightGray;
+            _mapMarker.ToolTip.Foreground = Brushes.BlueViolet;
+
+            // Add marker ke peta
+            _markerOverlay = new GMapOverlay("_markerOverlay");
+            _markerOverlay.Markers.Add(_mapMarker);
+
+            // Add ke map
+            map.Overlays.Add(_markerOverlay);
+            map.Zoom = _mapZoom;
+            map.ShowCenter = false;
+        }
 
         #endregion
     }

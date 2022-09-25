@@ -37,6 +37,8 @@ namespace gov.minahasa.sitimou.RestApi
 
         #endregion
 
+        #region === API ===
+        
         public string GetApiToken(string login, string password)
         {
             var url = $"{_mainUrl}/auth/api_token";
@@ -72,5 +74,10 @@ namespace gov.minahasa.sitimou.RestApi
                 return string.Empty;
             }
         }
+
+        #endregion
+
+        
+
     }
 }

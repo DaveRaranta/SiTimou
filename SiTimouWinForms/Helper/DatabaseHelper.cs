@@ -218,6 +218,28 @@ namespace gov.minahasa.sitimou.Helper
             }
         }
 
+        public bool ExecuteSqlStringWithParm(string sqlString, string parm, dynamic value)
+        {
+            using var conn = GetDbConnection();
+            using var cmd = new MySqlCommand(sqlString, conn) { CommandType = CommandType.Text };
+            try
+            {
+                conn.Open();
+
+                cmd.Parameters.AddWithValue($"@{parm}", value);
+
+                cmd.ExecuteNonQuery();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                DebugHelper.ShowError("DATABASE", @"[DatabaseHelper]", MethodBase.GetCurrentMethod()?.Name, e);
+
+                return false;
+            }
+        }
+
         public object ExecuteScalarSql(string sql)
         {
             using var conn = GetDbConnection();

@@ -78,7 +78,7 @@
             // 
             this.TextNip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextNip.BeforeTouchSize = new System.Drawing.Size(351, 27);
+            this.TextNip.BeforeTouchSize = new System.Drawing.Size(395, 27);
             this.TextNip.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextNip.Location = new System.Drawing.Point(19, 88);
             this.TextNip.Name = "TextNip";
@@ -110,7 +110,7 @@
             // 
             this.TextNama.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextNama.BeforeTouchSize = new System.Drawing.Size(351, 27);
+            this.TextNama.BeforeTouchSize = new System.Drawing.Size(395, 27);
             this.TextNama.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TextNama.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextNama.Location = new System.Drawing.Point(19, 143);
@@ -154,6 +154,7 @@
             this.ComboGrup.Name = "ComboGrup";
             this.ComboGrup.Size = new System.Drawing.Size(351, 28);
             this.ComboGrup.TabIndex = 3;
+            this.ComboGrup.SelectionChangeCommitted += new System.EventHandler(this.ComboGrup_SelectionChangeCommitted);
             // 
             // gradientPanel1
             // 
@@ -197,7 +198,7 @@
             // 
             this.TextJabatan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextJabatan.BeforeTouchSize = new System.Drawing.Size(351, 27);
+            this.TextJabatan.BeforeTouchSize = new System.Drawing.Size(395, 27);
             this.TextJabatan.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TextJabatan.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextJabatan.Location = new System.Drawing.Point(19, 310);

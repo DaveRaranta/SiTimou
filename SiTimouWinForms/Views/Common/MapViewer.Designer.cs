@@ -323,8 +323,10 @@
             this.Controls.Add(this.gradientPanel2);
             this.Controls.Add(this.ButtonPrint);
             this.Controls.Add(this.LabelH1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(700, 400);
             this.Name = "MapViewer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tampilan Peta";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MapViewer_FormClosed);
             this.Load += new System.EventHandler(this.MapViewer_Load);

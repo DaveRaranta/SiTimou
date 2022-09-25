@@ -91,6 +91,7 @@
             this.DataGGC.VersionInfo = "17.3460.0.26";
             this.DataGGC.Visible = false;
             this.DataGGC.TableControlCurrentCellActivating += new Syncfusion.Windows.Forms.Grid.Grouping.GridTableControlCurrentCellActivatingEventHandler(this.DataGGC_TableControlCurrentCellActivating);
+            this.DataGGC.TableControlCellDoubleClick += new Syncfusion.Windows.Forms.Grid.Grouping.GridTableControlCellClickEventHandler(this.DataGGC_TableControlCellDoubleClick);
             this.DataGGC.SelectedRecordsChanged += new Syncfusion.Grouping.SelectedRecordsChangedEventHandler(this.DataGGC_SelectedRecordsChanged);
             // 
             // label3

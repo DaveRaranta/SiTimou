@@ -242,6 +242,7 @@ namespace gov.minahasa.sitimou.Controllers
 
         public void GetDataDisposisiOpd(string jenisLaporan, GridGroupingControl dataGrid, Form form)
         {
+            var title = jenisLaporan == "1" ? "Laporan Masyarakat" : "RURAT (PANIK)";
             using (new WaitCursor(form))
             {
                 var dt = new DataTable();
@@ -266,7 +267,7 @@ namespace gov.minahasa.sitimou.Controllers
                                 {
                                     dataGrid.DataSource = BindData;
                                     dataGrid.GridGroupDropArea.DragColumnHeaderText =
-                                        @$"Laporan Masyarakat [ Total: {dt.Rows.Count} ]. Tarik judul kolom ke area ini untuk grup.";
+                                        @$"{title} [ Total: {dt.Rows.Count} ]. Tarik judul kolom ke area ini untuk grup.";
 
                                     dataGrid.TableDescriptor.VisibleColumns.Remove("laporan_id");
                                     dataGrid.TableDescriptor.VisibleColumns.Remove("user_id");
@@ -359,7 +360,7 @@ namespace gov.minahasa.sitimou.Controllers
                                 {
                                     dataGrid.DataSource = BindData;
                                     dataGrid.GridGroupDropArea.DragColumnHeaderText =
-                                        @$"Laporan Masyarakat [ Total: {dt.Rows.Count} ]. Tarik judul kolom ke area ini untuk grup.";
+                                        @$"Laporan Masuk [ Total: {dt.Rows.Count} ]. Tarik judul kolom ke area ini untuk grup.";
 
                                     dataGrid.TableDescriptor.VisibleColumns.Remove("pelapor_id");
                                     dataGrid.TableDescriptor.VisibleColumns.Remove("laporan_id");

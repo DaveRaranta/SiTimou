@@ -95,9 +95,6 @@
     <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="MaterialSkin, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialSkin.2.2.3.1\lib\net461\MaterialSkin.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -106,6 +103,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Vsa, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
@@ -137,7 +135,10 @@
     <Reference Include="Syncfusion.GridCommon.WinForms, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.GridConverter.Windows, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Grouping.Base, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.HTMLUI.Base, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.HTMLUI.Windows, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Pdf.Base, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Scripting.Base, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.SfListView.WinForms, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Shared.Base, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Shared.Windows, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
@@ -222,6 +223,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Controllers\LaporanController.cs" />
     <Compile Include="Controllers\LokasiController.cs" />
     <Compile Include="Controllers\OpdController.cs" />
@@ -356,11 +358,41 @@
     <Compile Include="Views\Admin\InputOpd.Designer.cs">
       <DependentUpon>InputOpd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\InputPengumuman.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\InputPengumuman.Designer.cs">
+      <DependentUpon>InputPengumuman.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Common\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Common\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\DataAturan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\DataAturan.Designer.cs">
+      <DependentUpon>DataAturan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\DataLokasi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\DataLokasi.Designer.cs">
+      <DependentUpon>DataLokasi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\InfoLokasi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\InfoLokasi.Designer.cs">
+      <DependentUpon>InfoLokasi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dinas\DataAturanOpd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Dinas\DataAturanOpd.Designer.cs">
+      <DependentUpon>DataAturanOpd.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Common\DataPegawai.cs">
       <SubType>Form</SubType>
@@ -373,6 +405,24 @@
     </Compile>
     <Compile Include="Views\Common\DatabaseSetup.Designer.cs">
       <DependentUpon>DatabaseSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\GantiPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\GantiPassword.Designer.cs">
+      <DependentUpon>GantiPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\HtmlViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\HtmlViewer.Designer.cs">
+      <DependentUpon>HtmlViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dinas\InputAturan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Dinas\InputAturan.Designer.cs">
+      <DependentUpon>InputAturan.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Common\InputPegawai.cs">
       <SubType>Form</SubType>
@@ -516,14 +566,38 @@
     <EmbeddedResource Include="Views\Admin\InputOpd.resx">
       <DependentUpon>InputOpd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admin\InputPengumuman.resx">
+      <DependentUpon>InputPengumuman.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Common\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\DataAturan.resx">
+      <DependentUpon>DataAturan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\DataLokasi.resx">
+      <DependentUpon>DataLokasi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\InfoLokasi.resx">
+      <DependentUpon>InfoLokasi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Dinas\DataAturanOpd.resx">
+      <DependentUpon>DataAturanOpd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Common\DataPegawai.resx">
       <DependentUpon>DataPegawai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Common\DatabaseSetup.resx">
       <DependentUpon>DatabaseSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\GantiPassword.resx">
+      <DependentUpon>GantiPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\HtmlViewer.resx">
+      <DependentUpon>HtmlViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Dinas\InputAturan.resx">
+      <DependentUpon>InputAturan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Common\InputPegawai.resx">
       <DependentUpon>InputPegawai.cs</DependentUpon>

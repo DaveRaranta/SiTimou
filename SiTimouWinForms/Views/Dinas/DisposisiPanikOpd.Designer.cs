@@ -288,7 +288,7 @@
             this.TextAlamatLapor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextAlamatLapor.BackColor = System.Drawing.Color.White;
-            this.TextAlamatLapor.BeforeTouchSize = new System.Drawing.Size(509, 27);
+            this.TextAlamatLapor.BeforeTouchSize = new System.Drawing.Size(574, 27);
             this.TextAlamatLapor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TextAlamatLapor.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextAlamatLapor.Location = new System.Drawing.Point(15, 32);

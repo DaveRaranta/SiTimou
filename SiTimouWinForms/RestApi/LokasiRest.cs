@@ -124,6 +124,39 @@ namespace gov.minahasa.sitimou.RestApi
                 return false;
             }
         }
+
+        public async Task<byte[]> DownloadFotoLokasi(int idLokasi)
+        {
+            try
+            {
+                var url = $"{_mainUrl}/lokasi/foto_lokasi/{idLokasi}";
+                var client = new RestClient();
+                var request = new RestRequest(url, Method.Get);
+
+                client.Authenticator = new JwtAuthenticator(Globals.ApiToken);
+
+                var result = await client.ExecuteGetAsync(request);
+
+                if (result.StatusCode != HttpStatusCode.OK)
+                {
+                    var statusCode = result.StatusCode;
+                    var numStatuscode = (int)statusCode;
+
+                    // if (result.Content!.Contains("FILE_NOT_EXSIST")) _notifHelper.MsgBoxWarning("File Surat Keluar tidak ada.");
+
+                    throw new Exception($"HttpStatusCode: {numStatuscode}, Content: {result.Content}");
+                }
+
+                var byteFile = await client.DownloadDataAsync(request);
+
+                return byteFile;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
         #endregion
     }
 }

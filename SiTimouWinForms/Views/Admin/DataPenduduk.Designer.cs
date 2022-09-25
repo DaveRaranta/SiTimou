@@ -275,7 +275,7 @@
             this.Controls.Add(this.ButtonResetPassword);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DataPenduduk";
-            this.Text = "Data Pegawai";
+            this.Text = "Data Pengguna";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DataPendudukAdmin_FormClosed);
             this.Load += new System.EventHandler(this.DataPendudukAdmin_Load);
             this.Shown += new System.EventHandler(this.DataPendudukAdmin_Shown);

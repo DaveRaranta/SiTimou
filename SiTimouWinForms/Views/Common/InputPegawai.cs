@@ -86,6 +86,8 @@ namespace gov.minahasa.sitimou.Views.Common
             if(IsEdit) LoadDataForEdit();
 
             ComboOpd.Enabled = Globals.UserGrup == "0";
+
+            if (Globals.UserGrup != "0") ComboOpd.SelectedValue = Globals.UserOpdId.ToString();
         }
 
         #endregion
@@ -102,6 +104,18 @@ namespace gov.minahasa.sitimou.Views.Common
         private void TextNip_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!_appHelper.IsNumber(e.KeyChar, TextNip.Text)) e.Handled = true;
+        }
+
+        private void ComboGrup_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (Globals.UserGrup == "0") return;
+
+            if (ComboGrup.Text is "ADMIN" or "SUPERVISOR" or "SUPERVISOR OPD")
+            {
+                _notifHelper.MsgBoxWarning(@"Anda tidak memiliki izin untuk menambahkan pegawai dengan grup yang dipilih.");
+                ComboGrup.SelectedIndex = -1;
+                return;
+            }
         }
 
         #endregion
@@ -133,6 +147,5 @@ namespace gov.minahasa.sitimou.Views.Common
         #endregion
 
         
-
     }
 }

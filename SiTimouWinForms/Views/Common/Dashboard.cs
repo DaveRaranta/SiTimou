@@ -32,11 +32,7 @@ namespace gov.minahasa.sitimou.Views.Common
 
         private double _interval = 1;
 
-        // Untuk chart
-        private readonly List<double> _chartMingguY = new ();
-        private readonly List<string> _chartMingguX = new ();
-        private readonly List<double> _chartTahunY = new ();
-        private readonly List<string> _chartTahunX = new ();
+        
 
         // Alram
         
@@ -62,8 +58,8 @@ namespace gov.minahasa.sitimou.Views.Common
             LabelTotalLaporan.Text = _controller.TotLaporan.ToString();
             LabelTotalPanik.Text = _controller.TotPanik.ToString();
 
-            new AppHelper().SoftBlink(LabelWarningLaporan, Color.OrangeRed, Color.FromArgb(255, 39, 43, 74), 3000, false);
-            new AppHelper().SoftBlink(LabelWarningPanik, Color.OrangeRed, Color.FromArgb(255, 39, 43, 74), 3000, false);
+            new AppHelper().SoftBlink(LabelWarningLaporan, Color.OrangeRed, Color.FromArgb(255, 39, 43, 74), 2000, false);
+            new AppHelper().SoftBlink(LabelWarningPanik, Color.OrangeRed, Color.FromArgb(255, 39, 43, 74), 2000, false);
         }
 
         private void PrepScreen()
@@ -112,7 +108,7 @@ namespace gov.minahasa.sitimou.Views.Common
             while (true)
             {
                 var client = new WeatherApi("67aa3cabcb3e1100603422484bf64b9e");
-                var query = client.Query("Bitung, ID");
+                var query = client.Query("Tondano, ID");
                 var imgUrl = $@"http://openweathermap.org/img/wn/{query.Weathers.First().Icon}@2x.png";
 
                 PicCuaca.LoadAsync(imgUrl);
@@ -130,7 +126,21 @@ namespace gov.minahasa.sitimou.Views.Common
                 //HitungTagihan();
                 // GetChartData("1");
                 // GetChartData("2");
+                
                 _controller.GetDataJumlah(LabelWarningLaporan, LabelWarningPanik);
+                _controller.GetChartData("1", elementHost1, CartesianChartLapor);
+                _controller.GetChartData("2", elementHost2, CartesianChartPanik);
+                _controller.GetMapData("1", MapLaporan);
+                _controller.GetMapData("2", MapPanik);
+
+                // Update Tampilan
+                LabelLaporanMasuk.Text = _controller.TotLaporanMasuk.ToString();
+                LabelLaporanMasukHari.Text = _controller.TotLaporanMasukHari.ToString();
+                LabelPanikMasuk.Text = _controller.TotPanikMasuk.ToString();
+                LabelPanikMasukHari.Text = _controller.TotPanikMasukHari.ToString();
+                LabelTotalMasuk.Text = _controller.TotMasuk.ToString();
+                LabelTotalLaporan.Text = _controller.TotLaporan.ToString();
+                LabelTotalPanik.Text = _controller.TotPanik.ToString();
 
                 await Task.Delay(TimeSpan.FromMinutes(_interval));
             }
@@ -179,5 +189,6 @@ namespace gov.minahasa.sitimou.Views.Common
 
 
         #endregion
+
     }
 }

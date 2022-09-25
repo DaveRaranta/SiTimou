@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Data;
 using System.Reflection;
+using crypto;
 using gov.minahasa.sitimou.Helper;
 using gov.minahasa.sitimou.RestApi;
+using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
 
 namespace gov.minahasa.sitimou.Controllers
@@ -16,6 +18,16 @@ namespace gov.minahasa.sitimou.Controllers
         private readonly AuthRest _authRest = new();
 
         #endregion
+
+        #region === Login ===
+
+        public string GetApiToken(string login, string password)
+        {
+            var apiToken = _authRest.GetApiToken(login, password);
+
+            return apiToken;
+
+        }
 
         public bool Login(string nik, string password)
         {
@@ -69,13 +81,79 @@ namespace gov.minahasa.sitimou.Controllers
                 return false;
             }
         }
+        
+        #endregion
+        
+        #region === Password ===
 
-        public string GetApiToken(string login, string password)
+
+        public bool CheckPassword(string password)
         {
-            var apiToken = _authRest.GetApiToken(login, password);
+            const string sql = "SELECT pwd_hash, pwd_salt FROM pegawai WHERE user_id = @p_user_id";
 
-            return apiToken;
+            using (var conn = GetDbConnection())
+            {
+                using (var cmd = new MySqlCommand(sql, conn) { CommandType = CommandType.Text })
+                {
+                    try
+                    {
+                        conn.Open();
 
+                        cmd.Parameters.AddWithValue("@p_user_id", Globals.UserId);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (!reader.HasRows) return false;
+
+                            reader.Read();
+
+                            //Verifikasi Password
+                            return _crypto.VerifyPasswordHash(password, (byte[])reader["pwd_hash"], (byte[])reader["pwd_salt"]);
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        DebugHelper.ShowError("LOGIN", "AuthController", MethodBase.GetCurrentMethod()?.Name, ex);
+                        return false;
+                    }
+                }
+            }
         }
+
+        public bool UpdatePassword(string password)
+        {
+
+            _crypto.CreatePasswordHash(password, out byte[] pwdHash, out byte[] pwdSalt);
+
+            var sql = $"UPDATE pegawai SET pwd_hash = @p_pwd_hash, pwd_salt = @p_pwd_salt WHERE user_id = p_user_id";
+
+            using (var conn = GetDbConnection())
+            {
+                using (var sqlCmd = new MySqlCommand(sql, conn) { CommandType = CommandType.Text })
+                {
+                    try
+                    {
+                        conn.Open();
+
+                        sqlCmd.Parameters.AddWithValue("@p_user_id", Globals.UserId);
+                        sqlCmd.Parameters.AddWithValue("@pwdHash", pwdHash);
+                        sqlCmd.Parameters.AddWithValue("@pwdSalt", pwdSalt);
+
+                        sqlCmd.ExecuteNonQuery();
+
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        DebugHelper.ShowError("LOGIN", "AuthController", MethodBase.GetCurrentMethod()?.Name, ex);
+
+                        return false;
+                    }
+                }
+            }
+        }
+
+        #endregion
     }
 }

@@ -190,17 +190,9 @@ namespace gov.minahasa.sitimou.Views
         }
         private void SButtonAdminInfo_Click(object sender, EventArgs e)
         {
-            var c = new NotificationContent
-            {
-                Title = "Sample notification",
-                Message =
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                Type = NotificationType.Error,
-                RowsCount = 3, //Will show 3 rows and trim afte
-            };
+            var win = new InputPengumuman();
+            win.ShowDialog();
 
-            NotificationManager x = new NotificationManager();
-            x.Show(c);
 
         }
 
@@ -219,6 +211,13 @@ namespace gov.minahasa.sitimou.Views
         {
             CloseChildForms();
             var mdi = new DataPanikMasuk { MdiParent = this };
+            mdi.Show();
+        }
+
+        private void SButtonOpLokasi_Click(object sender, EventArgs e)
+        {
+            CloseChildForms();
+            var mdi = new DataLokasi { MdiParent = this };
             mdi.Show();
         }
 
@@ -241,6 +240,8 @@ namespace gov.minahasa.sitimou.Views
             mdi.Show();
         }
 
+        
+
         // ER
         private void SButtonErMasuk_Click(object sender, EventArgs e)
         {
@@ -249,9 +250,50 @@ namespace gov.minahasa.sitimou.Views
             mdi.Show();
         }
 
+        // Lain2
+        private void SButtonOpdPegawai_Click(object sender, EventArgs e)
+        {
+            CloseChildForms();
+            var mdi = new DataPegawai { MdiParent = this };
+            mdi.Show();
+        }
+
+        private void SButtonAturanOpd_Click(object sender, EventArgs e)
+        {
+            CloseChildForms();
+            var mdi = new DataAturanOpd { MdiParent = this };
+            mdi.Show();
+        }
+
+        private void SButtonOpdLokasi_Click(object sender, EventArgs e)
+        {
+            CloseChildForms();
+            var mdi = new DataLokasi { MdiParent = this };
+            mdi.Show();
+        }
+
         // 
         // Lain-lain
         // 
+        private void SButtonDashboard_Click(object sender, EventArgs e)
+        {
+            var win = new Dashboard();
+            win.ShowDialog();
+        }
+
+        private void SButtonInfoAturan_Click(object sender, EventArgs e)
+        {
+            CloseChildForms();
+            var mdi = new DataAturan { MdiParent = this };
+            mdi.Show();
+
+        }
+
+        private void SButtonGantiPwd_Click(object sender, EventArgs e)
+        {
+            var win = new GantiPassword();
+            win.ShowDialog();
+        }
 
         private void SButtonLogout_Click(object sender, EventArgs e)
         {
@@ -262,16 +304,22 @@ namespace gov.minahasa.sitimou.Views
             Close();
         }
 
-
-
-
-
         #endregion
 
-        private void SButtonDashboard_Click(object sender, EventArgs e)
-        {
-            var win = new Dashboard();
-            win.ShowDialog();
-        }
+        /*
+            var c = new NotificationContent
+            {
+                Title = "Sample notification",
+                Message =
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                Type = NotificationType.Error,
+                RowsCount = 3, //Will show 3 rows and trim afte
+            };
+
+            NotificationManager x = new NotificationManager();
+            x.Show(c);
+         */
+
+
     }
 }

@@ -70,21 +70,22 @@
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripEx4 = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
             this.SButtonOpdPegawai = new System.Windows.Forms.ToolStripButton();
-            this.SButtonAturan = new System.Windows.Forms.ToolStripButton();
+            this.SButtonAturanOpd = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.SButtonOpdLokasi = new System.Windows.Forms.ToolStripButton();
             this.toolStripTabItem2 = new Syncfusion.Windows.Forms.Tools.ToolStripTabItem();
             this.toolStripEx2 = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
+            this.SButtonDashboard = new System.Windows.Forms.ToolStripButton();
+            this.SButtonInfoAturan = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.SButtonGantiPwd = new System.Windows.Forms.ToolStripButton();
             this.SButtonLogout = new System.Windows.Forms.ToolStripButton();
             this.PanelMain = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.labelHari = new System.Windows.Forms.Label();
             this.labelTanggal = new System.Windows.Forms.Label();
             this.labelJam = new System.Windows.Forms.Label();
-            this.SButtonDashboard = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.RibbonMain)).BeginInit();
             this.RibbonMain.SuspendLayout();
             this.RtsAdmin.Panel.SuspendLayout();
@@ -129,7 +130,7 @@
             this.RibbonMain.QuickPanelImageLayout = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.RibbonMain.RibbonHeaderImage = Syncfusion.Windows.Forms.Tools.RibbonHeaderImage.None;
             this.RibbonMain.RibbonStyle = Syncfusion.Windows.Forms.Tools.RibbonStyle.Office2010;
-            this.RibbonMain.SelectedTab = this.toolStripTabItem2;
+            this.RibbonMain.SelectedTab = this.RtsAdmin;
             this.RibbonMain.ShowLauncher = false;
             this.RibbonMain.ShowMinimizeButton = false;
             this.RibbonMain.ShowQuickItemsDropDownButton = false;
@@ -181,7 +182,7 @@
             this.TsAdmin.Name = "TsAdmin";
             this.TsAdmin.Office12Mode = false;
             this.TsAdmin.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TsAdmin.Size = new System.Drawing.Size(340, 116);
+            this.TsAdmin.Size = new System.Drawing.Size(371, 116);
             this.TsAdmin.TabIndex = 0;
             this.TsAdmin.Text = "Master Data";
             // 
@@ -271,7 +272,7 @@
             this.toolStripEx1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1,
             this.SButtonAdminInfo});
-            this.toolStripEx1.Location = new System.Drawing.Point(352, 1);
+            this.toolStripEx1.Location = new System.Drawing.Point(383, 1);
             this.toolStripEx1.Name = "toolStripEx1";
             this.toolStripEx1.Office12Mode = false;
             this.toolStripEx1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -423,6 +424,7 @@
             this.SButtonOpLokasi.Size = new System.Drawing.Size(51, 113);
             this.SButtonOpLokasi.Text = "Lokasi\r\nPenting";
             this.SButtonOpLokasi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SButtonOpLokasi.Click += new System.EventHandler(this.SButtonOpLokasi_Click);
             // 
             // RtsDinas
             // 
@@ -594,14 +596,14 @@
             this.toolStripEx4.Image = null;
             this.toolStripEx4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SButtonOpdPegawai,
-            this.SButtonAturan,
+            this.SButtonAturanOpd,
             this.toolStripSeparator7,
             this.SButtonOpdLokasi});
             this.toolStripEx4.Location = new System.Drawing.Point(340, 1);
             this.toolStripEx4.Name = "toolStripEx4";
             this.toolStripEx4.Office12Mode = false;
             this.toolStripEx4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripEx4.Size = new System.Drawing.Size(177, 116);
+            this.toolStripEx4.Size = new System.Drawing.Size(194, 116);
             this.toolStripEx4.TabIndex = 5;
             this.toolStripEx4.Text = "Lain-lain";
             // 
@@ -614,16 +616,18 @@
             this.SButtonOpdPegawai.Size = new System.Drawing.Size(54, 100);
             this.SButtonOpdPegawai.Text = "Daftar\r\nPegawai";
             this.SButtonOpdPegawai.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SButtonOpdPegawai.Click += new System.EventHandler(this.SButtonOpdPegawai_Click);
             // 
-            // SButtonAturan
+            // SButtonAturanOpd
             // 
-            this.SButtonAturan.Image = ((System.Drawing.Image)(resources.GetObject("SButtonAturan.Image")));
-            this.SButtonAturan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.SButtonAturan.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SButtonAturan.Name = "SButtonAturan";
-            this.SButtonAturan.Size = new System.Drawing.Size(59, 100);
-            this.SButtonAturan.Text = "Informasi\r\nAturan";
-            this.SButtonAturan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SButtonAturanOpd.Image = ((System.Drawing.Image)(resources.GetObject("SButtonAturanOpd.Image")));
+            this.SButtonAturanOpd.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.SButtonAturanOpd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SButtonAturanOpd.Name = "SButtonAturanOpd";
+            this.SButtonAturanOpd.Size = new System.Drawing.Size(76, 100);
+            this.SButtonAturanOpd.Text = "Data Aturan \r\nDinas";
+            this.SButtonAturanOpd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SButtonAturanOpd.Click += new System.EventHandler(this.SButtonAturanOpd_Click);
             // 
             // toolStripSeparator7
             // 
@@ -639,6 +643,7 @@
             this.SButtonOpdLokasi.Size = new System.Drawing.Size(51, 100);
             this.SButtonOpdLokasi.Text = "Lokasi\r\nPenting";
             this.SButtonOpdLokasi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SButtonOpdLokasi.Click += new System.EventHandler(this.SButtonOpdLokasi_Click);
             // 
             // toolStripTabItem2
             // 
@@ -667,20 +672,44 @@
             this.toolStripEx2.Image = null;
             this.toolStripEx2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SButtonDashboard,
+            this.SButtonInfoAturan,
             this.toolStripButton4,
             this.toolStripSeparator5,
-            this.toolStripButton6,
+            this.SButtonGantiPwd,
             this.SButtonLogout});
             this.toolStripEx2.Location = new System.Drawing.Point(10, 1);
             this.toolStripEx2.Name = "toolStripEx2";
             this.toolStripEx2.Office12Mode = false;
             this.toolStripEx2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripEx2.Size = new System.Drawing.Size(278, 116);
+            this.toolStripEx2.Size = new System.Drawing.Size(302, 116);
             this.toolStripEx2.TabIndex = 4;
             this.toolStripEx2.Text = "Dispacher Dinas";
             // 
+            // SButtonDashboard
+            // 
+            this.SButtonDashboard.Image = ((System.Drawing.Image)(resources.GetObject("SButtonDashboard.Image")));
+            this.SButtonDashboard.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.SButtonDashboard.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SButtonDashboard.Name = "SButtonDashboard";
+            this.SButtonDashboard.Size = new System.Drawing.Size(68, 100);
+            this.SButtonDashboard.Text = "Dashboard";
+            this.SButtonDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SButtonDashboard.Click += new System.EventHandler(this.SButtonDashboard_Click);
+            // 
+            // SButtonInfoAturan
+            // 
+            this.SButtonInfoAturan.Image = ((System.Drawing.Image)(resources.GetObject("SButtonInfoAturan.Image")));
+            this.SButtonInfoAturan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.SButtonInfoAturan.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SButtonInfoAturan.Name = "SButtonInfoAturan";
+            this.SButtonInfoAturan.Size = new System.Drawing.Size(59, 100);
+            this.SButtonInfoAturan.Text = "Informasi\r\nAturan";
+            this.SButtonInfoAturan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SButtonInfoAturan.Click += new System.EventHandler(this.SButtonInfoAturan_Click);
+            // 
             // toolStripButton4
             // 
+            this.toolStripButton4.Enabled = false;
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
             this.toolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -694,15 +723,16 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 103);
             // 
-            // toolStripButton6
+            // SButtonGantiPwd
             // 
-            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
-            this.toolStripButton6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(60, 100);
-            this.toolStripButton6.Text = "Ganti\r\nPassword";
-            this.toolStripButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SButtonGantiPwd.Image = ((System.Drawing.Image)(resources.GetObject("SButtonGantiPwd.Image")));
+            this.SButtonGantiPwd.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.SButtonGantiPwd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SButtonGantiPwd.Name = "SButtonGantiPwd";
+            this.SButtonGantiPwd.Size = new System.Drawing.Size(60, 100);
+            this.SButtonGantiPwd.Text = "Ganti\r\nPassword";
+            this.SButtonGantiPwd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SButtonGantiPwd.Click += new System.EventHandler(this.SButtonGantiPwd_Click);
             // 
             // SButtonLogout
             // 
@@ -710,7 +740,7 @@
             this.SButtonLogout.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.SButtonLogout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SButtonLogout.Name = "SButtonLogout";
-            this.SButtonLogout.Size = new System.Drawing.Size(64, 100);
+            this.SButtonLogout.Size = new System.Drawing.Size(64, 113);
             this.SButtonLogout.Text = "Ganti\r\nPengguna";
             this.SButtonLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SButtonLogout.Click += new System.EventHandler(this.SButtonLogout_Click);
@@ -773,17 +803,6 @@
             this.labelJam.Text = "00:00";
             this.labelJam.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // SButtonDashboard
-            // 
-            this.SButtonDashboard.Image = ((System.Drawing.Image)(resources.GetObject("SButtonDashboard.Image")));
-            this.SButtonDashboard.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.SButtonDashboard.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SButtonDashboard.Name = "SButtonDashboard";
-            this.SButtonDashboard.Size = new System.Drawing.Size(68, 100);
-            this.SButtonDashboard.Text = "Dashboard";
-            this.SButtonDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.SButtonDashboard.Click += new System.EventHandler(this.SButtonDashboard_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -796,7 +815,7 @@
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(1, 0, 1, 1);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MITRa FastResponse";
+            this.Text = "SI-TIMOU 119";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -876,7 +895,7 @@
         private Syncfusion.Windows.Forms.Tools.ToolStripEx toolStripEx2;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripButton SButtonGantiPwd;
         private System.Windows.Forms.ToolStripButton SButtonLogout;
         private Syncfusion.Windows.Forms.Tools.ToolStripEx TsFrOpd;
         private System.Windows.Forms.ToolStripButton SButtonErMasuk;
@@ -886,8 +905,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private Syncfusion.Windows.Forms.Tools.ToolStripEx toolStripEx4;
         private System.Windows.Forms.ToolStripButton SButtonOpdPegawai;
-        private System.Windows.Forms.ToolStripButton SButtonAturan;
+        private System.Windows.Forms.ToolStripButton SButtonAturanOpd;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripButton SButtonDashboard;
+        private System.Windows.Forms.ToolStripButton SButtonInfoAturan;
     }
 }

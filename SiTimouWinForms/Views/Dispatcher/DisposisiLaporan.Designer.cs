@@ -289,7 +289,7 @@
             this.TextIsiLapor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextIsiLapor.BackColor = System.Drawing.Color.White;
-            this.TextIsiLapor.BeforeTouchSize = new System.Drawing.Size(574, 27);
+            this.TextIsiLapor.BeforeTouchSize = new System.Drawing.Size(509, 27);
             this.TextIsiLapor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TextIsiLapor.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextIsiLapor.Location = new System.Drawing.Point(15, 142);
@@ -314,7 +314,7 @@
             this.TextPerihal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextPerihal.BackColor = System.Drawing.Color.White;
-            this.TextPerihal.BeforeTouchSize = new System.Drawing.Size(574, 27);
+            this.TextPerihal.BeforeTouchSize = new System.Drawing.Size(509, 27);
             this.TextPerihal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TextPerihal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextPerihal.Location = new System.Drawing.Point(15, 87);
@@ -338,7 +338,7 @@
             this.TextAlamatLapor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextAlamatLapor.BackColor = System.Drawing.Color.White;
-            this.TextAlamatLapor.BeforeTouchSize = new System.Drawing.Size(574, 27);
+            this.TextAlamatLapor.BeforeTouchSize = new System.Drawing.Size(509, 27);
             this.TextAlamatLapor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TextAlamatLapor.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextAlamatLapor.Location = new System.Drawing.Point(15, 32);
