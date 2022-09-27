@@ -12,7 +12,7 @@
         public string UserNik { get; set; } = null!;
         public string UserPwd { get; set; } = null!;
     }
-    
+
     public  class LoginResult
     {
         public int IdUser { get; set; }
@@ -35,6 +35,7 @@
         public string Login { get; set; } = null!;
         public byte[] PwdHash { get; set; } = null!;
         public byte[] PwdSalt { get; set; } = null!;
+        public string Grup { get; set; } = null!;
         public string Flg { get; set; } = null!;
     }
 }

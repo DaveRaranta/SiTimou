@@ -457,5 +457,56 @@ namespace gov.minahasa.sitimou.Controllers
 
         #endregion
 
+        #region === Riwayat Laporan ===
+
+        public void GetDataRiwayatLaporan(string jenisData, int idData, string gridTitle, GridGroupingControl dataGrid, Form form)
+        {
+            using (new WaitCursor(form))
+            {
+                var dt = new DataTable();
+
+                using (var conn = GetDbConnection())
+                {
+                    using (var cmd = new MySqlCommand("sp_data_riwayat_laporan", conn) { CommandType = CommandType.StoredProcedure })
+                    {
+                        try
+                        {
+                            conn.Open();
+
+                            cmd.Parameters.AddWithValue("@p_jenis_data", jenisData);
+                            cmd.Parameters.AddWithValue("@p_data_id", idData);
+
+                            using (var reader = cmd.ExecuteReader())
+                            {
+                                dt.Load(reader);
+                                BindData.DataSource = dt;
+
+                                if (dt.Rows.Count > 0)
+                                {
+                                    dataGrid.DataSource = BindData;
+                                    dataGrid.GridGroupDropArea.DragColumnHeaderText =
+                                        @$"{gridTitle} [ Total: {dt.Rows.Count} ]. Tarik judul kolom ke area ini untuk grup.";
+
+                                    dataGrid.TableDescriptor.VisibleColumns.Remove("laporan_id");
+
+                                    DataGridHelper.FormatTable(dataGrid);
+                                }
+
+                                IsDataExist = dt.Rows.Count > 0;
+                                dataGrid.Visible = IsDataExist;
+
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            DebugHelper.ShowError("OPD", @"OpdController", MethodBase.GetCurrentMethod()?.Name, e);
+                        }
+                    }
+                }
+            }
+        }
+
+        #endregion
+
     }
 }

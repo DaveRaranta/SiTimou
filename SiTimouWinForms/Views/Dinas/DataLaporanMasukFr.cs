@@ -145,6 +145,8 @@ namespace gov.minahasa.sitimou.Views.Dinas
                     Console.WriteLine("UC");
                 }
             }
+
+            _idData = null;
         }
 
         

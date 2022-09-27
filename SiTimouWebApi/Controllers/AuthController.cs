@@ -77,7 +77,7 @@ namespace minahasa.sitimou.webapi.Controllers
                     var tokenDescriptor = new SecurityTokenDescriptor
                     {
                         Subject = new ClaimsIdentity(claims),
-                        Expires = DateTime.Now.AddDays(90),
+                        Expires = DateTime.Now.AddDays(150),
                         SigningCredentials = creds
                     };
 
@@ -100,6 +100,79 @@ namespace minahasa.sitimou.webapi.Controllers
             
         }
         
+        [AllowAnonymous]
+        [HttpPost("masuk_pegawai")]
+        public async Task<IActionResult> MasukPegawai()
+        {
+            MasukPegawai? payload;
+            using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
+            {
+                var json = await reader.ReadToEndAsync();
+                payload = JsonConvert.DeserializeObject<MasukPegawai>(json);
+            }
+
+            const string sql = @"SELECT user_id as IdUser, login as Login, pwd_hash as PwdHash, pwd_salt as PwdSalt, flg as Flg, grup as Grup " + 
+                               "FROM pegawai WHERE login = @p_login";
+            
+            try
+            {
+                // Open DB
+                await using var conn = new MySqlConnection(_conDb);
+                
+                var parms = new DynamicParameters();
+                parms.Add("@p_login", payload!.UserLogin);
+                
+                await conn.OpenAsync();
+                var result = conn.QueryAsync<LoginPegawaiResult>(sql, parms, commandType: CommandType.Text).Result.FirstOrDefault();
+
+                if (result == null) return NotFound("USER_NOT_REGISTERD");
+                
+                if (_crypto.VerifyPassword(payload.UserPwd, result.PwdHash, result.PwdSalt))
+                {
+                    // Cek Status User
+                    if (result.Flg != "N") return Unauthorized("USER_ACCESS_DENIED");
+                    if (result.Grup != "4") return Unauthorized("USER_ACCESS_DENIED");
+                    
+                    // Token
+                    // Buat claim
+                    var claims = new[]
+                    {
+                        new Claim(ClaimTypes.NameIdentifier, result.IdUser.ToString())
+                    };
+
+                    // buat key 
+                    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_authToken));
+
+                    // buat sign creds
+                    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+                    // buat security token dengan masa aktif 7 hari
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(claims),
+                        Expires = DateTime.Now.AddDays(90),
+                        SigningCredentials = creds
+                    };
+
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    var token = tokenHandler.CreateToken(tokenDescriptor);
+
+                    return Ok(new { authToken = tokenHandler.WriteToken(token) });
+                        
+                }
+                else
+                {
+                    return Unauthorized("USER_WRONG_LOGIN");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, e.ToString());
+                
+            }
+            
+        }
         #endregion
 
         #region === Daftar ===
@@ -178,8 +251,32 @@ namespace minahasa.sitimou.webapi.Controllers
                 Console.WriteLine(e.ToString());
                 return StatusCode(500, e.ToString());
             }
-            
-            
+        }
+        
+        [HttpGet("status_pegawai/{id:int}")]
+        public async Task<IActionResult> StatusPegawai(int id)
+        {
+            const string sql = @"SELECT flg FROM pegawai WHERE user_id = @p_user_id";
+
+            try
+            {
+                await using var conn = new MySqlConnection(_conDb);
+                var parms = new DynamicParameters();
+                parms.Add("@p_user_id", id);
+                
+                // Open DB
+                await conn.OpenAsync();
+                var result = conn.QueryAsync(sql, parms, commandType: CommandType.Text)
+                    .Result.FirstOrDefault();
+
+                return result == null ? NotFound() : Ok(result);
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return StatusCode(500, e.ToString());
+            }
         }
 
         [AllowAnonymous]

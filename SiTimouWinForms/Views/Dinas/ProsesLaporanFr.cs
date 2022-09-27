@@ -133,11 +133,20 @@ namespace gov.minahasa.sitimou.Views.Dinas
         {
             if (!ValidasiInput()) return;
 
+            ButtonSimpan.Enabled = false;
+            ButtonBatal.Enabled = false;
+
             var result = await _controller.SimpanProsesLaporan("1", IdLaporan,
                 TextJudul.Text.Trim(), TextUraian.Text.Trim(), "S",
                 TextLampiran.Tag.ToString(), IdDisposisi, this);
 
-            if (!result) return;
+            if (!result)
+            {
+                ButtonSimpan.Enabled = true;
+                ButtonBatal.Enabled = true;
+                return;
+            }
+                
 
             IsDataSaved = true;
             Close();

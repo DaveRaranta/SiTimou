@@ -42,8 +42,8 @@
             this.SButtonAdminLokasi = new System.Windows.Forms.ToolStripButton();
             this.toolStripEx1 = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmRiwayatLaporAdm = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmRiwayatPanikAdm = new System.Windows.Forms.ToolStripMenuItem();
             this.SButtonAdminInfo = new System.Windows.Forms.ToolStripButton();
             this.RtsDispatcher = new Syncfusion.Windows.Forms.Tools.ToolStripTabItem();
             this.TsOperator = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
@@ -51,8 +51,8 @@
             this.SButtonDispaPanik = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.SButtonOpDispo = new System.Windows.Forms.ToolStripDropDownButton();
-            this.riwayatLaporanMasyarakatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.riwayatLaporanDaruratPanikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmRiwayatLaporDispatch = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmRiwayatPanikDispatch = new System.Windows.Forms.ToolStripMenuItem();
             this.SButtonOpLokasi = new System.Windows.Forms.ToolStripButton();
             this.RtsDinas = new Syncfusion.Windows.Forms.Tools.ToolStripTabItem();
             this.TsOperatorOpd = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
@@ -60,17 +60,20 @@
             this.SButtonOpdPanik = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmRiwayatLaporDispatchOpd = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmRiwayatPanikDispatchOpd = new System.Windows.Forms.ToolStripMenuItem();
             this.TsFrOpd = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
             this.SButtonErMasuk = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.TsmRiwayatLaporEr = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmRiwayatPanikEr = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripEx4 = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
             this.SButtonOpdPegawai = new System.Windows.Forms.ToolStripButton();
             this.SButtonAturanOpd = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton4 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.TsmRiwayatLaporOpd = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmRiwayatPanikOpd = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.SButtonOpdLokasi = new System.Windows.Forms.ToolStripButton();
             this.toolStripTabItem2 = new Syncfusion.Windows.Forms.Tools.ToolStripTabItem();
@@ -130,7 +133,7 @@
             this.RibbonMain.QuickPanelImageLayout = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.RibbonMain.RibbonHeaderImage = Syncfusion.Windows.Forms.Tools.RibbonHeaderImage.None;
             this.RibbonMain.RibbonStyle = Syncfusion.Windows.Forms.Tools.RibbonStyle.Office2010;
-            this.RibbonMain.SelectedTab = this.RtsAdmin;
+            this.RibbonMain.SelectedTab = this.RtsDinas;
             this.RibbonMain.ShowLauncher = false;
             this.RibbonMain.ShowMinimizeButton = false;
             this.RibbonMain.ShowQuickItemsDropDownButton = false;
@@ -182,7 +185,7 @@
             this.TsAdmin.Name = "TsAdmin";
             this.TsAdmin.Office12Mode = false;
             this.TsAdmin.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TsAdmin.Size = new System.Drawing.Size(371, 116);
+            this.TsAdmin.Size = new System.Drawing.Size(340, 116);
             this.TsAdmin.TabIndex = 0;
             this.TsAdmin.Text = "Master Data";
             // 
@@ -220,7 +223,7 @@
             this.SButtonAdminOpd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SButtonAdminOpd.Name = "SButtonAdminOpd";
             this.SButtonAdminOpd.Size = new System.Drawing.Size(43, 100);
-            this.SButtonAdminOpd.Text = "Daftar\r\nOPD";
+            this.SButtonAdminOpd.Text = "Daftar\r\nUnit";
             this.SButtonAdminOpd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SButtonAdminOpd.Click += new System.EventHandler(this.SButtonAdminOpd_Click);
             // 
@@ -272,7 +275,7 @@
             this.toolStripEx1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1,
             this.SButtonAdminInfo});
-            this.toolStripEx1.Location = new System.Drawing.Point(383, 1);
+            this.toolStripEx1.Location = new System.Drawing.Point(352, 1);
             this.toolStripEx1.Name = "toolStripEx1";
             this.toolStripEx1.Office12Mode = false;
             this.toolStripEx1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -283,8 +286,8 @@
             // toolStripDropDownButton1
             // 
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2});
+            this.TsmRiwayatLaporAdm,
+            this.TsmRiwayatPanikAdm});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -293,21 +296,23 @@
             this.toolStripDropDownButton1.Text = "Disposisi\r\nLaporan";
             this.toolStripDropDownButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // toolStripMenuItem1
+            // TsmRiwayatLaporAdm
             // 
-            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
-            this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(253, 30);
-            this.toolStripMenuItem1.Text = "Riwayat Laporan Masyarakat...";
+            this.TsmRiwayatLaporAdm.Image = ((System.Drawing.Image)(resources.GetObject("TsmRiwayatLaporAdm.Image")));
+            this.TsmRiwayatLaporAdm.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TsmRiwayatLaporAdm.Name = "TsmRiwayatLaporAdm";
+            this.TsmRiwayatLaporAdm.Size = new System.Drawing.Size(253, 30);
+            this.TsmRiwayatLaporAdm.Text = "Riwayat Laporan Masyarakat...";
+            this.TsmRiwayatLaporAdm.Click += new System.EventHandler(this.TsmRiwayatLaporAdm_Click);
             // 
-            // toolStripMenuItem2
+            // TsmRiwayatPanikAdm
             // 
-            this.toolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem2.Image")));
-            this.toolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(253, 30);
-            this.toolStripMenuItem2.Text = "Riwayat Laporan Darurat/Panik....";
+            this.TsmRiwayatPanikAdm.Image = ((System.Drawing.Image)(resources.GetObject("TsmRiwayatPanikAdm.Image")));
+            this.TsmRiwayatPanikAdm.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TsmRiwayatPanikAdm.Name = "TsmRiwayatPanikAdm";
+            this.TsmRiwayatPanikAdm.Size = new System.Drawing.Size(253, 30);
+            this.TsmRiwayatPanikAdm.Text = "Riwayat Laporan Darurat/Panik....";
+            this.TsmRiwayatPanikAdm.Click += new System.EventHandler(this.TsmRiwayatPanikAdm_Click);
             // 
             // SButtonAdminInfo
             // 
@@ -389,8 +394,8 @@
             // SButtonOpDispo
             // 
             this.SButtonOpDispo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.riwayatLaporanMasyarakatToolStripMenuItem,
-            this.riwayatLaporanDaruratPanikToolStripMenuItem});
+            this.TsmRiwayatLaporDispatch,
+            this.TsmRiwayatPanikDispatch});
             this.SButtonOpDispo.Image = ((System.Drawing.Image)(resources.GetObject("SButtonOpDispo.Image")));
             this.SButtonOpDispo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.SButtonOpDispo.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -399,21 +404,23 @@
             this.SButtonOpDispo.Text = "Disposisi\r\nLaporan";
             this.SButtonOpDispo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // riwayatLaporanMasyarakatToolStripMenuItem
+            // TsmRiwayatLaporDispatch
             // 
-            this.riwayatLaporanMasyarakatToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("riwayatLaporanMasyarakatToolStripMenuItem.Image")));
-            this.riwayatLaporanMasyarakatToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.riwayatLaporanMasyarakatToolStripMenuItem.Name = "riwayatLaporanMasyarakatToolStripMenuItem";
-            this.riwayatLaporanMasyarakatToolStripMenuItem.Size = new System.Drawing.Size(253, 30);
-            this.riwayatLaporanMasyarakatToolStripMenuItem.Text = "Riwayat Laporan Masyarakat...";
+            this.TsmRiwayatLaporDispatch.Image = ((System.Drawing.Image)(resources.GetObject("TsmRiwayatLaporDispatch.Image")));
+            this.TsmRiwayatLaporDispatch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TsmRiwayatLaporDispatch.Name = "TsmRiwayatLaporDispatch";
+            this.TsmRiwayatLaporDispatch.Size = new System.Drawing.Size(253, 30);
+            this.TsmRiwayatLaporDispatch.Text = "Riwayat Laporan Masyarakat...";
+            this.TsmRiwayatLaporDispatch.Click += new System.EventHandler(this.TsmRiwayatLaporDispatch_Click);
             // 
-            // riwayatLaporanDaruratPanikToolStripMenuItem
+            // TsmRiwayatPanikDispatch
             // 
-            this.riwayatLaporanDaruratPanikToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("riwayatLaporanDaruratPanikToolStripMenuItem.Image")));
-            this.riwayatLaporanDaruratPanikToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.riwayatLaporanDaruratPanikToolStripMenuItem.Name = "riwayatLaporanDaruratPanikToolStripMenuItem";
-            this.riwayatLaporanDaruratPanikToolStripMenuItem.Size = new System.Drawing.Size(253, 30);
-            this.riwayatLaporanDaruratPanikToolStripMenuItem.Text = "Riwayat Laporan Darurat/Panik....";
+            this.TsmRiwayatPanikDispatch.Image = ((System.Drawing.Image)(resources.GetObject("TsmRiwayatPanikDispatch.Image")));
+            this.TsmRiwayatPanikDispatch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TsmRiwayatPanikDispatch.Name = "TsmRiwayatPanikDispatch";
+            this.TsmRiwayatPanikDispatch.Size = new System.Drawing.Size(253, 30);
+            this.TsmRiwayatPanikDispatch.Text = "Riwayat Laporan Darurat/Panik....";
+            this.TsmRiwayatPanikDispatch.Click += new System.EventHandler(this.TsmRiwayatPanikDispatch_Click);
             // 
             // SButtonOpLokasi
             // 
@@ -441,11 +448,11 @@
             this.RtsDinas.Panel.Padding = new System.Windows.Forms.Padding(10, 1, 0, 0);
             this.RtsDinas.Panel.ScrollPosition = 0;
             this.RtsDinas.Panel.TabIndex = 4;
-            this.RtsDinas.Panel.Text = "Dinas";
+            this.RtsDinas.Panel.Text = "Unit";
             this.RtsDinas.Position = 2;
-            this.RtsDinas.Size = new System.Drawing.Size(56, 25);
+            this.RtsDinas.Size = new System.Drawing.Size(49, 25);
             this.RtsDinas.Tag = "1";
-            this.RtsDinas.Text = "Dinas";
+            this.RtsDinas.Text = "Unit";
             // 
             // TsOperatorOpd
             // 
@@ -463,7 +470,7 @@
             this.TsOperatorOpd.Name = "TsOperatorOpd";
             this.TsOperatorOpd.Office12Mode = false;
             this.TsOperatorOpd.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TsOperatorOpd.Size = new System.Drawing.Size(198, 116);
+            this.TsOperatorOpd.Size = new System.Drawing.Size(207, 116);
             this.TsOperatorOpd.TabIndex = 3;
             this.TsOperatorOpd.Text = "Dispacher Dinas";
             // 
@@ -497,31 +504,33 @@
             // toolStripDropDownButton2
             // 
             this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4});
+            this.TsmRiwayatLaporDispatchOpd,
+            this.TsmRiwayatPanikDispatchOpd});
             this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
             this.toolStripDropDownButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(66, 100);
-            this.toolStripDropDownButton2.Text = "Disposisi\r\nLaporan";
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(75, 100);
+            this.toolStripDropDownButton2.Text = "Disposisi\r\nDispatcher";
             this.toolStripDropDownButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // toolStripMenuItem3
+            // TsmRiwayatLaporDispatchOpd
             // 
-            this.toolStripMenuItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem3.Image")));
-            this.toolStripMenuItem3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(253, 30);
-            this.toolStripMenuItem3.Text = "Riwayat Laporan Masyarakat...";
+            this.TsmRiwayatLaporDispatchOpd.Image = ((System.Drawing.Image)(resources.GetObject("TsmRiwayatLaporDispatchOpd.Image")));
+            this.TsmRiwayatLaporDispatchOpd.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TsmRiwayatLaporDispatchOpd.Name = "TsmRiwayatLaporDispatchOpd";
+            this.TsmRiwayatLaporDispatchOpd.Size = new System.Drawing.Size(253, 30);
+            this.TsmRiwayatLaporDispatchOpd.Text = "Riwayat Laporan Masyarakat...";
+            this.TsmRiwayatLaporDispatchOpd.Click += new System.EventHandler(this.TsmRiwayatLaporDispatchOpd_Click);
             // 
-            // toolStripMenuItem4
+            // TsmRiwayatPanikDispatchOpd
             // 
-            this.toolStripMenuItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem4.Image")));
-            this.toolStripMenuItem4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(253, 30);
-            this.toolStripMenuItem4.Text = "Riwayat Laporan Darurat/Panik....";
+            this.TsmRiwayatPanikDispatchOpd.Image = ((System.Drawing.Image)(resources.GetObject("TsmRiwayatPanikDispatchOpd.Image")));
+            this.TsmRiwayatPanikDispatchOpd.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TsmRiwayatPanikDispatchOpd.Name = "TsmRiwayatPanikDispatchOpd";
+            this.TsmRiwayatPanikDispatchOpd.Size = new System.Drawing.Size(253, 30);
+            this.TsmRiwayatPanikDispatchOpd.Text = "Riwayat Laporan Darurat/Panik....";
+            this.TsmRiwayatPanikDispatchOpd.Click += new System.EventHandler(this.TsmRiwayatPanikDispatchOpd_Click);
             // 
             // TsFrOpd
             // 
@@ -533,12 +542,12 @@
             this.TsFrOpd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SButtonErMasuk,
             this.toolStripSeparator6,
-            this.toolStripDropDownButton3});
-            this.TsFrOpd.Location = new System.Drawing.Point(210, 1);
+            this.toolStripButton1});
+            this.TsFrOpd.Location = new System.Drawing.Point(219, 1);
             this.TsFrOpd.Name = "TsFrOpd";
             this.TsFrOpd.Office12Mode = false;
             this.TsFrOpd.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TsFrOpd.Size = new System.Drawing.Size(128, 116);
+            this.TsFrOpd.Size = new System.Drawing.Size(151, 116);
             this.TsFrOpd.TabIndex = 4;
             this.TsFrOpd.Text = "First Responder";
             // 
@@ -558,34 +567,36 @@
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(6, 103);
             // 
-            // toolStripDropDownButton3
+            // toolStripButton1
             // 
-            this.toolStripDropDownButton3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6});
-            this.toolStripDropDownButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton3.Image")));
-            this.toolStripDropDownButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton3.Name = "toolStripDropDownButton3";
-            this.toolStripDropDownButton3.Size = new System.Drawing.Size(62, 100);
-            this.toolStripDropDownButton3.Text = "Riwayat\r\nLaporan";
-            this.toolStripDropDownButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsmRiwayatLaporEr,
+            this.TsmRiwayatPanikEr});
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(85, 100);
+            this.toolStripButton1.Text = "Riwayat\r\nPenanganan";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // toolStripMenuItem5
+            // TsmRiwayatLaporEr
             // 
-            this.toolStripMenuItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem5.Image")));
-            this.toolStripMenuItem5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(253, 30);
-            this.toolStripMenuItem5.Text = "Riwayat Laporan Masyarakat...";
+            this.TsmRiwayatLaporEr.Image = ((System.Drawing.Image)(resources.GetObject("TsmRiwayatLaporEr.Image")));
+            this.TsmRiwayatLaporEr.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TsmRiwayatLaporEr.Name = "TsmRiwayatLaporEr";
+            this.TsmRiwayatLaporEr.Size = new System.Drawing.Size(253, 30);
+            this.TsmRiwayatLaporEr.Text = "Riwayat Laporan Masyarakat...";
+            this.TsmRiwayatLaporEr.Click += new System.EventHandler(this.TsmRiwayatLaporEr_Click);
             // 
-            // toolStripMenuItem6
+            // TsmRiwayatPanikEr
             // 
-            this.toolStripMenuItem6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem6.Image")));
-            this.toolStripMenuItem6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(253, 30);
-            this.toolStripMenuItem6.Text = "Riwayat Laporan Darurat/Panik....";
+            this.TsmRiwayatPanikEr.Image = ((System.Drawing.Image)(resources.GetObject("TsmRiwayatPanikEr.Image")));
+            this.TsmRiwayatPanikEr.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TsmRiwayatPanikEr.Name = "TsmRiwayatPanikEr";
+            this.TsmRiwayatPanikEr.Size = new System.Drawing.Size(253, 30);
+            this.TsmRiwayatPanikEr.Text = "Riwayat Laporan Darurat/Panik....";
+            this.TsmRiwayatPanikEr.Click += new System.EventHandler(this.TsmRiwayatPanikEr_Click);
             // 
             // toolStripEx4
             // 
@@ -597,13 +608,14 @@
             this.toolStripEx4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SButtonOpdPegawai,
             this.SButtonAturanOpd,
+            this.toolStripDropDownButton4,
             this.toolStripSeparator7,
             this.SButtonOpdLokasi});
-            this.toolStripEx4.Location = new System.Drawing.Point(340, 1);
+            this.toolStripEx4.Location = new System.Drawing.Point(372, 1);
             this.toolStripEx4.Name = "toolStripEx4";
             this.toolStripEx4.Office12Mode = false;
             this.toolStripEx4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripEx4.Size = new System.Drawing.Size(194, 116);
+            this.toolStripEx4.Size = new System.Drawing.Size(312, 116);
             this.toolStripEx4.TabIndex = 5;
             this.toolStripEx4.Text = "Lain-lain";
             // 
@@ -628,6 +640,37 @@
             this.SButtonAturanOpd.Text = "Data Aturan \r\nDinas";
             this.SButtonAturanOpd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SButtonAturanOpd.Click += new System.EventHandler(this.SButtonAturanOpd_Click);
+            // 
+            // toolStripDropDownButton4
+            // 
+            this.toolStripDropDownButton4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsmRiwayatLaporOpd,
+            this.TsmRiwayatPanikOpd});
+            this.toolStripDropDownButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton4.Image")));
+            this.toolStripDropDownButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripDropDownButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton4.Name = "toolStripDropDownButton4";
+            this.toolStripDropDownButton4.Size = new System.Drawing.Size(87, 100);
+            this.toolStripDropDownButton4.Text = "Disposisi\r\nLaporan Unit";
+            this.toolStripDropDownButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // TsmRiwayatLaporOpd
+            // 
+            this.TsmRiwayatLaporOpd.Image = ((System.Drawing.Image)(resources.GetObject("TsmRiwayatLaporOpd.Image")));
+            this.TsmRiwayatLaporOpd.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TsmRiwayatLaporOpd.Name = "TsmRiwayatLaporOpd";
+            this.TsmRiwayatLaporOpd.Size = new System.Drawing.Size(253, 30);
+            this.TsmRiwayatLaporOpd.Text = "Riwayat Laporan Masyarakat...";
+            this.TsmRiwayatLaporOpd.Click += new System.EventHandler(this.TsmRiwayatLaporOpd_Click);
+            // 
+            // TsmRiwayatPanikOpd
+            // 
+            this.TsmRiwayatPanikOpd.Image = ((System.Drawing.Image)(resources.GetObject("TsmRiwayatPanikOpd.Image")));
+            this.TsmRiwayatPanikOpd.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TsmRiwayatPanikOpd.Name = "TsmRiwayatPanikOpd";
+            this.TsmRiwayatPanikOpd.Size = new System.Drawing.Size(253, 30);
+            this.TsmRiwayatPanikOpd.Text = "Riwayat Laporan Darurat/Panik....";
+            this.TsmRiwayatPanikOpd.Click += new System.EventHandler(this.TsmRiwayatPanikOpd_Click);
             // 
             // toolStripSeparator7
             // 
@@ -871,8 +914,8 @@
         private System.Windows.Forms.ToolStripButton SButtonDispaPanik;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripDropDownButton SButtonOpDispo;
-        private System.Windows.Forms.ToolStripMenuItem riwayatLaporanMasyarakatToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem riwayatLaporanDaruratPanikToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TsmRiwayatLaporDispatch;
+        private System.Windows.Forms.ToolStripMenuItem TsmRiwayatPanikDispatch;
         private System.Windows.Forms.ToolStripButton SButtonOpLokasi;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton SButtonAdminPenduduk;
@@ -882,15 +925,15 @@
         private Syncfusion.Windows.Forms.Tools.ToolStripTabItem RtsDinas;
         private Syncfusion.Windows.Forms.Tools.ToolStripTabItem toolStripTabItem2;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem TsmRiwayatLaporAdm;
+        private System.Windows.Forms.ToolStripMenuItem TsmRiwayatPanikAdm;
         private Syncfusion.Windows.Forms.Tools.ToolStripEx TsOperatorOpd;
         private System.Windows.Forms.ToolStripButton SButtonOpdLapor;
         private System.Windows.Forms.ToolStripButton SButtonOpdPanik;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem TsmRiwayatLaporDispatchOpd;
+        private System.Windows.Forms.ToolStripMenuItem TsmRiwayatPanikDispatchOpd;
         private System.Windows.Forms.ToolStripButton SButtonOpdLokasi;
         private Syncfusion.Windows.Forms.Tools.ToolStripEx toolStripEx2;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
@@ -900,14 +943,17 @@
         private Syncfusion.Windows.Forms.Tools.ToolStripEx TsFrOpd;
         private System.Windows.Forms.ToolStripButton SButtonErMasuk;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripButton1;
+        private System.Windows.Forms.ToolStripMenuItem TsmRiwayatLaporEr;
+        private System.Windows.Forms.ToolStripMenuItem TsmRiwayatPanikEr;
         private Syncfusion.Windows.Forms.Tools.ToolStripEx toolStripEx4;
         private System.Windows.Forms.ToolStripButton SButtonOpdPegawai;
         private System.Windows.Forms.ToolStripButton SButtonAturanOpd;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripButton SButtonDashboard;
         private System.Windows.Forms.ToolStripButton SButtonInfoAturan;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton4;
+        private System.Windows.Forms.ToolStripMenuItem TsmRiwayatLaporOpd;
+        private System.Windows.Forms.ToolStripMenuItem TsmRiwayatPanikOpd;
     }
 }

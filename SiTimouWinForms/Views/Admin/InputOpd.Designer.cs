@@ -59,9 +59,9 @@
             this.LabelH1.ForeColor = System.Drawing.Color.DimGray;
             this.LabelH1.Location = new System.Drawing.Point(15, 15);
             this.LabelH1.Name = "LabelH1";
-            this.LabelH1.Size = new System.Drawing.Size(119, 20);
+            this.LabelH1.Size = new System.Drawing.Size(118, 20);
             this.LabelH1.TabIndex = 17;
-            this.LabelH1.Text = "Input Data OPD";
+            this.LabelH1.Text = "Input Data Unit";
             // 
             // LabelCari
             // 
@@ -69,9 +69,9 @@
             this.LabelCari.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelCari.Location = new System.Drawing.Point(16, 70);
             this.LabelCari.Name = "LabelCari";
-            this.LabelCari.Size = new System.Drawing.Size(59, 15);
+            this.LabelCari.Size = new System.Drawing.Size(57, 15);
             this.LabelCari.TabIndex = 19;
-            this.LabelCari.Text = "Jenis OPD";
+            this.LabelCari.Text = "Jenis Unit";
             // 
             // label1
             // 
@@ -121,8 +121,8 @@
             this.ComboJenis.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ComboJenis.FormattingEnabled = true;
             this.ComboJenis.Items.AddRange(new object[] {
-            "DINAS",
-            "DESA/KELURAHAN"});
+            "DINAS / UNIT",
+            "DESA / KELURAHAN"});
             this.ComboJenis.Location = new System.Drawing.Point(19, 88);
             this.ComboJenis.Name = "ComboJenis";
             this.ComboJenis.Size = new System.Drawing.Size(351, 28);
@@ -268,7 +268,7 @@
             this.MinimizeBox = false;
             this.Name = "InputOpd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Input Data OPD";
+            this.Text = "Input Data Unit";
             this.Load += new System.EventHandler(this.InputOpd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TextNamaSingkat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextEmail)).EndInit();

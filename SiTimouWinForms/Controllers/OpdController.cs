@@ -158,7 +158,7 @@ namespace gov.minahasa.sitimou.Controllers
                                 {
                                     dataGrid.DataSource = BindData;
                                     dataGrid.GridGroupDropArea.DragColumnHeaderText =
-                                        @$"Data OPD [ Total: {dt.Rows.Count} ]. Tarik judul kolom ke area ini untuk grup.";
+                                        @$"Data Unit [ Total: {dt.Rows.Count} ]. Tarik judul kolom ke area ini untuk grup.";
                                     
                                     dataGrid.TableDescriptor.VisibleColumns.Remove("gps_lat");
                                     dataGrid.TableDescriptor.VisibleColumns.Remove("gps_lng");

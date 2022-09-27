@@ -69,8 +69,8 @@ namespace gov.minahasa.sitimou.Views.Admin
 
         private void InitData()
         {
-            this.Text = IsEdit ? @"Edit Data OPD" : "Input Data OPD";
-            LabelH1.Text  = IsEdit ? @"Edit Data OPD" : "Input Data OPD";
+            this.Text = IsEdit ? @"Edit Data Unit" : "Input Data Unit";
+            LabelH1.Text  = IsEdit ? @"Edit Data Unit" : "Input Data Unit";
 
             if(IsEdit) LoadDataForEdit();
         }

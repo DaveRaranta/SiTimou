@@ -69,6 +69,7 @@ namespace gov.minahasa.sitimou.Views
 
             // Button
             SButtonOpdPegawai.Enabled = Globals.UserGrup is "5";
+            SButtonAturanOpd.Enabled = Globals.UserGrup is "5";
 
         }
 
@@ -239,9 +240,7 @@ namespace gov.minahasa.sitimou.Views
             var mdi = new DataPanikMasukOpd { MdiParent = this };
             mdi.Show();
         }
-
         
-
         // ER
         private void SButtonErMasuk_Click(object sender, EventArgs e)
         {
@@ -302,6 +301,141 @@ namespace gov.minahasa.sitimou.Views
 
             _isLogout = true;
             Close();
+        }
+        #endregion
+
+
+        #region === Ribbon Menu ===
+
+        private void TsmRiwayatLaporAdm_Click(object sender, EventArgs e)
+        {
+            CloseChildForms();
+            var mdi = new DataRiwayatLaporan
+            {
+                MdiParent = this,
+                GridTitle = "Riwayat Laporan Masyarakat",
+                JenisData = "0",
+                IdData = 0
+            };
+            mdi.Show();
+        }
+
+        private void TsmRiwayatPanikAdm_Click(object sender, EventArgs e)
+        {
+            CloseChildForms();
+            var mdi = new DataRiwayatLaporan
+            {
+                MdiParent = this,
+                GridTitle = "Riwayat Panik",
+                JenisData = "1",
+                IdData = 0
+            };
+            mdi.Show();
+        }
+
+        private void TsmRiwayatLaporDispatch_Click(object sender, EventArgs e)
+        {
+            CloseChildForms();
+            var mdi = new DataRiwayatLaporan
+            {
+                MdiParent = this,
+                GridTitle = "Riwayat Laporan Masyarakat",
+                JenisData = "4",
+                IdData = Globals.UserId!.Value
+            };
+            mdi.Show();
+        }
+
+        private void TsmRiwayatPanikDispatch_Click(object sender, EventArgs e)
+        {
+            CloseChildForms();
+            var mdi = new DataRiwayatLaporan
+            {
+                MdiParent = this,
+                GridTitle = "Riwayat Panik",
+                JenisData = "5",
+                IdData = Globals.UserId!.Value
+            };
+            mdi.Show();
+        }
+
+        private void TsmRiwayatLaporDispatchOpd_Click(object sender, EventArgs e)
+        {
+            CloseChildForms();
+            var mdi = new DataRiwayatLaporan
+            {
+                MdiParent = this,
+                GridTitle = "Riwayat Laporan Masyarakat",
+                JenisData = "6",
+                IdData = Globals.UserId!.Value
+            };
+            mdi.Show();
+        }
+
+        private void TsmRiwayatPanikDispatchOpd_Click(object sender, EventArgs e)
+        {
+            CloseChildForms();
+            var mdi = new DataRiwayatLaporan
+            {
+                MdiParent = this,
+                GridTitle = "Riwayat Panik",
+                JenisData = "7",
+                IdData = Globals.UserId!.Value
+            };
+            mdi.Show();
+        }
+
+        private void TsmRiwayatLaporEr_Click(object sender, EventArgs e)
+        {
+            CloseChildForms();
+            var mdi = new DataRiwayatLaporan
+            {
+                MdiParent = this,
+                GridTitle = "Riwayat Laporan Masyarakat",
+                JenisData = "8",
+                IdData = Globals.UserId!.Value
+            };
+            mdi.Show();
+        }
+
+
+        private void TsmRiwayatPanikEr_Click(object sender, EventArgs e)
+        {
+            CloseChildForms();
+            var mdi = new DataRiwayatLaporan
+            {
+                MdiParent = this,
+                GridTitle = "Riwayat Panik",
+                JenisData = "9",
+                IdData = Globals.UserId!.Value
+            };
+            mdi.Show();
+        }
+
+        private void TsmRiwayatLaporOpd_Click(object sender, EventArgs e)
+        {
+            CloseChildForms();
+            var mdi = new DataRiwayatLaporan
+            {
+                MdiParent = this,
+                GridTitle = "Riwayat Laporan Masyarakat",
+                JenisData = "2",
+                IdData = Globals.UserOpdId!.Value,
+            };
+            mdi.Show();
+        }
+
+        private void TsmRiwayatPanikOpd_Click(object sender, EventArgs e)
+        {
+            CloseChildForms();
+            var mdi = new DataRiwayatLaporan
+            {
+                MdiParent = this,
+                GridTitle = "Riwayat Panik",
+                JenisData = "3",
+                IdData = Globals.UserOpdId!.Value,
+            };
+            mdi.Show();
         }
 
         #endregion

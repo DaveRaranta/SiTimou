@@ -1,6 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 
 import 'package:sitimou/controllers/bindings/bindings.dart';
@@ -8,7 +8,8 @@ import 'package:sitimou/controllers/home_controller.dart';
 import 'package:sitimou/helper/colors.dart';
 import 'package:sitimou/helper/scroll_settings.dart';
 import 'package:sitimou/helper/ui_toast.dart';
-import 'package:sitimou/views/laporan/daftar_laporan.dart';
+import 'package:sitimou/views/aturan/aturan.dart';
+import 'package:sitimou/views/home/components/ubah_foto.dart';
 import 'package:sitimou/views/laporan/my_laporan.dart';
 import 'package:sitimou/views/lokasi/lokasi.dart';
 import 'package:sitimou/widgets/button/main_menu_button.dart';
@@ -222,6 +223,7 @@ Widget info() {
 }
 
 Widget menu() {
+  final HomeController controller = Get.find<HomeController>();
   return SizedBox(
     width: double.infinity,
     child: Column(
@@ -242,7 +244,33 @@ Widget menu() {
           runSpacing: 12.0,
           children: [
             MainMenuButton(
-              hero: "OK",
+              hero: "hr_lapor",
+              text: "Lapor",
+              color: Colors.white,
+              borderColor: Colors.orange,
+              icon: Icons.campaign_outlined,
+              iconSize: 32.0,
+              width: 55.0,
+              height: 55.0,
+              onTap: () {
+                // Cek jika sudah lengkap,
+                if (controller.detailPengguna.value.tanggalLahir == '-' ||
+                    controller.detailPengguna.value.jenisKelamin == '-' ||
+                    controller.detailPengguna.value.noTelp == '-' ||
+                    controller.detailPengguna.value.alamat == '-' ||
+                    controller.detailPengguna.value.desa == '-' ||
+                    controller.detailPengguna.value.kecamatan == '-') {
+                  toastPesan("Profil", "Mohon lengkapi dahulu data pribadi anda sebelum membuat laporan.");
+                  controller.editProfil();
+                  return;
+                }
+
+                Get.to(() => LaporanPage(), binding: LaporanBinding(), arguments: ['LaporanById']);
+              },
+            ),
+            const SizedBox(width: 10.0),
+            MainMenuButton(
+              hero: "hr_lokasi",
               text: "Lokasi Penting",
               color: Colors.white,
               borderColor: Colors.blue,
@@ -255,19 +283,7 @@ Widget menu() {
               },
             ),
             const SizedBox(width: 10.0),
-            MainMenuButton(
-              hero: "OK",
-              text: "Lapor",
-              color: Colors.white,
-              borderColor: Colors.orange,
-              icon: Icons.campaign_outlined,
-              iconSize: 32.0,
-              width: 55.0,
-              height: 55.0,
-              onTap: () {
-                Get.to(() => LaporanPage(), binding: LaporanBinding(), arguments: ['LaporanById']);
-              },
-            ),
+            /*
             const SizedBox(width: 10.0),
             MainMenuButton(
               hero: "OK",
@@ -282,9 +298,9 @@ Widget menu() {
                 Get.to(() => DaftarLaporanPage(), binding: LaporanBinding(), arguments: ['LaporanAll']);
               },
             ),
-            const SizedBox(width: 10.0),
+            */
             MainMenuButton(
-              hero: "OK",
+              hero: "hr_aturan",
               text: "Informasi Aturan",
               color: Colors.white,
               borderColor: Colors.purple,
@@ -293,12 +309,13 @@ Widget menu() {
               width: 55.0,
               height: 55.0,
               onTap: () {
-                toastPesan("SI-TIMOU 119", "Fasilitas belum tersedia.");
+                Get.to(() => AturanPage(), binding: InfoBinding());
+                //toastPesan("SI-TIMOU 119", "Fasilitas belum tersedia.");
               },
             ),
             const SizedBox(width: 10.0),
             MainMenuButton(
-              hero: "OK",
+              hero: "hr_berita",
               text: "Berita",
               color: Colors.white,
               borderColor: Colors.red,

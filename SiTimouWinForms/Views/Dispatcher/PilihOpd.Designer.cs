@@ -44,9 +44,9 @@
             this.LabelH1.ForeColor = System.Drawing.Color.DimGray;
             this.LabelH1.Location = new System.Drawing.Point(15, 15);
             this.LabelH1.Name = "LabelH1";
-            this.LabelH1.Size = new System.Drawing.Size(74, 20);
+            this.LabelH1.Size = new System.Drawing.Size(73, 20);
             this.LabelH1.TabIndex = 17;
-            this.LabelH1.Text = "Pilih OPD";
+            this.LabelH1.Text = "Pilih Unit";
             // 
             // LabelCari
             // 
@@ -54,9 +54,9 @@
             this.LabelCari.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelCari.Location = new System.Drawing.Point(16, 70);
             this.LabelCari.Name = "LabelCari";
-            this.LabelCari.Size = new System.Drawing.Size(66, 15);
+            this.LabelCari.Size = new System.Drawing.Size(64, 15);
             this.LabelCari.TabIndex = 19;
-            this.LabelCari.Text = "Nama OPD";
+            this.LabelCari.Text = "Nama Unit";
             // 
             // ComboOpd
             // 
@@ -130,7 +130,7 @@
             this.MinimizeBox = false;
             this.Name = "PilihOpd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Pilih OPD";
+            this.Text = "Pilih Unit";
             this.Load += new System.EventHandler(this.InputDisposisiLaporan_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

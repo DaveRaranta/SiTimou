@@ -150,7 +150,7 @@ namespace minahasa.sitimou.webapi.Controllers
                 if (result == 0) throw new Exception($"ERR_SAVE_LOKASI [{result}]");
                 
                 // Simpan file dengan nama ambil dari "result"
-                var userId = _dbHelper.GetValueFromTable("laporan", "user_id", "laporan_id", payload.IdUser);
+                var userId = _dbHelper.GetValueFromTable("laporan", "user_id", "laporan_id", result);
                 var userNik = _dbHelper.GetValueFromTable("pengguna", "nik", "user_id", userId);
                 var subFolder = Path.Combine(_baseFolder, userNik);
                 

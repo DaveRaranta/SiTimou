@@ -94,7 +94,11 @@ class HomeController extends GetxController {
     try {
       isLoading(true);
       var result = await HomeServices.getDetailPengguna();
-      detailPengguna.value = result!;
+      if (result == null) return;
+      detailPengguna.value = result;
+    } on Exception catch (e) {
+      debugPrint("[!] DebugInfo: [ERROR] HomeController.getDetailPengguna() => ${e.toString()}");
+      return;
     } finally {
       isLoading(false);
     }

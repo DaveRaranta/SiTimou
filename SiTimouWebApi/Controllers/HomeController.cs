@@ -70,6 +70,30 @@ namespace minahasa.sitimou.webapi.Controllers
                 return StatusCode(500, e.ToString());
             }
         }
+        
+        [HttpGet("info_pegawai/{id:int}")]
+        public async Task<IActionResult> InfoPegawai(int id)
+        {
+            try
+            {
+                await using var conn = new MySqlConnection(_conDb);
+
+                var parms = new DynamicParameters();
+                parms.Add("@p_user_id", id);
+                
+                await conn.OpenAsync();
+                var result = conn.QueryAsync("sp_info_pegawai", parms, commandType: CommandType.StoredProcedure)
+                    .Result.FirstOrDefault();
+
+                return result == null ? NotFound() : Ok(result);
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return StatusCode(500, e.ToString());
+            }
+        }
 
         [HttpGet("daftar_kecamatan")]
         public async Task<IActionResult> Daftarkecamatan()
@@ -197,6 +221,39 @@ namespace minahasa.sitimou.webapi.Controllers
                 return StatusCode(500, e.ToString());
             }
         }
+        
+        //
+        // Pegawai
+        //
+        
+        [HttpGet("foto_profil_pegawai/{id:int}")]
+        public Task<IActionResult> GetFotoPegawai(int id)
+        {
+            try
+            {
+                var srcFn = Path.Combine(_basePegawaiFolder, $"{id}.jpg");
+                var defaultFn = Path.Combine(_basePegawaiFolder, "default.png");
+                
+                // CEk jika file ada
+                var destFn = System.IO.File.Exists(srcFn) ? srcFn : defaultFn;
+                
+                var byteImg = _imageHelper.ImageToByte(_imageHelper.ResizeImage(Image.FromFile(destFn), 75), ImageFormat.Jpeg) ;
+                
+                return Task.FromResult<IActionResult>(File(byteImg, "application/octet-stream"));
+
+                //var stream = System.IO.File.OpenRead(destFn);
+                //if (stream == null) return NotFound();
+                
+                //return File(stream, "application/octet-stream");
+                
+
+            }
+            catch (Exception ex)
+            {
+                return Task.FromResult<IActionResult>(StatusCode(500, ex.ToString()));
+            }
+        }
+        
 
         #endregion
     }    

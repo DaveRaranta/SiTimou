@@ -382,6 +382,12 @@
     <Compile Include="Views\Common\DataLokasi.Designer.cs">
       <DependentUpon>DataLokasi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Common\DataRiwayatLaporan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\DataRiwayatLaporan.Designer.cs">
+      <DependentUpon>DataRiwayatLaporan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Common\InfoLokasi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -577,6 +583,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Common\DataLokasi.resx">
       <DependentUpon>DataLokasi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\DataRiwayatLaporan.resx">
+      <DependentUpon>DataRiwayatLaporan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Common\InfoLokasi.resx">
       <DependentUpon>InfoLokasi.cs</DependentUpon>
