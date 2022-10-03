@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
+
 import 'package:sitimoufr/controllers/bindings/bindings.dart';
 import 'package:sitimoufr/helper/apphelper.dart';
 import 'package:sitimoufr/helper/ui_dialogs.dart';
@@ -10,7 +10,7 @@ import 'package:sitimoufr/views/home/home.dart';
 import 'package:sitimoufr/views/login.dart';
 import 'package:sitimoufr/views/no_internet.dart';
 import 'package:sitimoufr/widgets/dialog/progress_dialog.dart';
-
+import 'package:sitimoufr/helper/globals.dart' as g;
 //import 'package:mobile_number/mobile_number.dart';
 
 // import 'package:sitimou/helper/globals.dart' as g;
@@ -59,7 +59,7 @@ class AuthController extends GetxController {
 
             // TODO: Uncomment ini jika FCM sudah ada
 
-            // await AuthServices.updateFcmToken(g.userFcmToken);
+            await AuthServices.updateFcmToken(g.userFcmToken);
             Get.off(() => HomePage(), binding: HomeBinding());
           }
         } else {
@@ -117,7 +117,7 @@ class AuthController extends GetxController {
 
         // TODO: Uncomment ini jika FCM sudah ada
 
-        // await AuthServices.updateFcmToken(g.userFcmToken);
+        await AuthServices.updateFcmToken(g.userFcmToken);
         Get.off(() => HomePage(), binding: HomeBinding());
       }
     } else {

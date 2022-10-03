@@ -17,6 +17,7 @@ namespace gov.minahasa.sitimou.Views.Dinas
         public int IdDisposisi;
         public int IdLaporan;
         public int IdPelapor;
+        public string JenisLaporan;
         public string NamaPelapor;
         public string NikPelapor;
         public string NoTelp;
@@ -67,7 +68,7 @@ namespace gov.minahasa.sitimou.Views.Dinas
                 LabelDurasi.ForeColor = Status == "N" ? Color.OrangeRed : Color.DodgerBlue;
 
                 // Get data
-                await _controller.GetDetailLaporanFr("1", IdLaporan, this);
+                await _controller.GetDetailLaporanFr(JenisLaporan, IdLaporan, this);
                 
                 // Set User Info
                 LabelNama.Text = NamaPelapor;
@@ -80,6 +81,8 @@ namespace gov.minahasa.sitimou.Views.Dinas
 
                 // Laporan
                 LabelDurasi.Text = _controller.DurasiLaporan;
+                this.Text = JenisLaporan == "1" ? "Proses Laporan" : "Proses Panik";
+                LabelH1.Text = JenisLaporan == "1" ? "Proses Laporan" : "Proses Panik";
             }
         }
 
@@ -118,7 +121,7 @@ namespace gov.minahasa.sitimou.Views.Dinas
         {
             if (!ValidasiInput()) return;
 
-            var result = await _controller.SimpanProsesLaporan("1", IdLaporan,
+            var result = await _controller.SimpanProsesLaporan(JenisLaporan, IdLaporan,
                 TextJudul.Text.Trim(), TextUraian.Text.Trim(), "B",
                 TextLampiran.Tag.ToString(), IdDisposisi, this);
 
@@ -136,7 +139,7 @@ namespace gov.minahasa.sitimou.Views.Dinas
             ButtonSimpan.Enabled = false;
             ButtonBatal.Enabled = false;
 
-            var result = await _controller.SimpanProsesLaporan("1", IdLaporan,
+            var result = await _controller.SimpanProsesLaporan(JenisLaporan, IdLaporan,
                 TextJudul.Text.Trim(), TextUraian.Text.Trim(), "S",
                 TextLampiran.Tag.ToString(), IdDisposisi, this);
 

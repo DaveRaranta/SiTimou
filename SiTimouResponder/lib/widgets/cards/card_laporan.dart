@@ -9,20 +9,22 @@ class CardLaporan extends StatelessWidget {
   final String textContent;
   final String textFooter;
   final IconData iconStatus;
-  final String idData;
+  final Color iconColor;
+  // final String idData;
   final Color backgroundColor;
 
   const CardLaporan({
     Key? key,
     required this.textHeader,
     required this.textContent,
-    required this.idData,
+    //required this.idData,
     required this.textFooter,
     required this.iconStatus,
     required this.leadBoxColor,
     this.leadBoxSize = 60,
     this.borderRadius = 8.0,
     this.backgroundColor = primaryColor,
+    this.iconColor = Colors.white,
   }) : super(key: key);
 
   @override
@@ -61,7 +63,7 @@ class CardLaporan extends StatelessWidget {
                 child: Icon(
                   iconStatus,
                   size: minSize - 25, //40.0,
-                  color: Colors.white,
+                  color: iconColor,
                 ),
               ),
             ],

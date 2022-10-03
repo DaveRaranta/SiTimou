@@ -84,29 +84,55 @@ namespace gov.minahasa.sitimou.Views.Dinas
                          $"{DataGridHelper.GetCellValue<string>(DataGGC, "Desa/Kelurahan")}, " +
                          $"{DataGridHelper.GetCellValue<string>(DataGGC, "Kecamatan")}";
 
-            if (_jenisLaporan == "1") // Laporan
+            switch (_status)
             {
-                if (_status == "N")
-                {
-                    var win = new InfoLaporanFr
+                case "N":
+                    switch (_jenisLaporan)
                     {
-                        IdLaporan = _idData.Value,
-                        IdDisposisi = DataGridHelper.GetCellValue<int>(DataGGC, "disposisi_id"),
-                        IdPelapor = DataGridHelper.GetCellValue<int>(DataGGC, "pelapor_id"),
-                        NamaPelapor = DataGridHelper.GetCellValue<string>(DataGGC, "Nama Pelapor"),
-                        NikPelapor = DataGridHelper.GetCellValue<string>(DataGGC, "nik"),
-                        NoTelp = DataGridHelper.GetCellValue<string>(DataGGC, "Nomor Telp"),
-                        AlamatPelapor = alamat,
-                        Status = _status,
-                    };
-                    win.ShowDialog();
+                        case "1":
+                        {
+                            var win = new InfoLaporanFr
+                            {
+                                IdLaporan = _idData.Value,
+                                IdDisposisi = DataGridHelper.GetCellValue<int>(DataGGC, "disposisi_id"),
+                                IdPelapor = DataGridHelper.GetCellValue<int>(DataGGC, "pelapor_id"),
+                                NamaPelapor = DataGridHelper.GetCellValue<string>(DataGGC, "Nama Pelapor"),
+                                NikPelapor = DataGridHelper.GetCellValue<string>(DataGGC, "nik"),
+                                NoTelp = DataGridHelper.GetCellValue<string>(DataGGC, "Nomor Telp"),
+                                AlamatPelapor = alamat,
+                                Status = _status,
+                            };
+                            win.ShowDialog();
 
-                    if (win.IsDataSaved) _controller.GetDataFirstResponder(DataGGC, this); ;
-                }
-                else if(_status == "P")
+                            if (win.IsDataSaved) _controller.GetDataFirstResponder(DataGGC, this); ;
+                            break;
+                        }
+                        case "2":
+                        {
+                            var win = new InfoPanikFr
+                            {
+                                IdLaporan = _idData.Value,
+                                IdDisposisi = DataGridHelper.GetCellValue<int>(DataGGC, "disposisi_id"),
+                                IdPelapor = DataGridHelper.GetCellValue<int>(DataGGC, "pelapor_id"),
+                                NamaPelapor = DataGridHelper.GetCellValue<string>(DataGGC, "Nama Pelapor"),
+                                NikPelapor = DataGridHelper.GetCellValue<string>(DataGGC, "nik"),
+                                NoTelp = DataGridHelper.GetCellValue<string>(DataGGC, "Nomor Telp"),
+                                AlamatPelapor = alamat,
+                                Status = _status,
+                            };
+                            win.ShowDialog();
+
+                            if (win.IsDataSaved) _controller.GetDataFirstResponder(DataGGC, this); ;
+                            break;
+                        }
+                    }
+
+                    break;
+                case "P":
                 {
                     var win = new ProsesLaporanFr
                     {
+                        JenisLaporan = _jenisLaporan,
                         IdLaporan = _idData.Value,
                         IdDisposisi = DataGridHelper.GetCellValue<int>(DataGGC, "disposisi_id"),
                         IdPelapor = DataGridHelper.GetCellValue<int>(DataGGC, "pelapor_id"),
@@ -119,30 +145,7 @@ namespace gov.minahasa.sitimou.Views.Dinas
                     win.ShowDialog();
 
                     if (win.IsDataSaved) _controller.GetDataFirstResponder(DataGGC, this); ;
-                }
-            } 
-            else if (_jenisLaporan == "2")
-            {
-                if (_status is "N" or "P")
-                {
-                    var win = new InfoPanikFr
-                    {
-                        IdLaporan = _idData.Value,
-                        IdDisposisi = DataGridHelper.GetCellValue<int>(DataGGC, "disposisi_id"),
-                        IdPelapor = DataGridHelper.GetCellValue<int>(DataGGC, "pelapor_id"),
-                        NamaPelapor = DataGridHelper.GetCellValue<string>(DataGGC, "Nama Pelapor"),
-                        NikPelapor = DataGridHelper.GetCellValue<string>(DataGGC, "nik"),
-                        NoTelp = DataGridHelper.GetCellValue<string>(DataGGC, "Nomor Telp"),
-                        AlamatPelapor = alamat,
-                        Status = _status,
-                    };
-                    win.ShowDialog();
-
-                    if (win.IsDataSaved) _controller.GetDataFirstResponder(DataGGC, this); ;
-                }
-                else
-                {
-                    Console.WriteLine("UC");
+                    break;
                 }
             }
 

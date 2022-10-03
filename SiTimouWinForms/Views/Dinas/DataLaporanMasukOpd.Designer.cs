@@ -1,4 +1,4 @@
-﻿namespace gov.minahasa.sitimou.Views.Dispatcher
+﻿namespace gov.minahasa.sitimou.Views.Dinas
 {
     sealed partial class DataLaporanMasukOpd
     {

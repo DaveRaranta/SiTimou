@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using gov.minahasa.sitimou.Controllers;
-using gov.minahasa.sitimou.Controllers;
 using gov.minahasa.sitimou.Helper;
 
 namespace gov.minahasa.sitimou.Views.Dispatcher

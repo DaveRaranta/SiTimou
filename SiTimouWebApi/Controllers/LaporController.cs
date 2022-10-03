@@ -202,6 +202,8 @@ namespace minahasa.sitimou.webapi.Controllers
                 return StatusCode(500, e.Message);
             }
         }
+        
+        
 
         #endregion
         

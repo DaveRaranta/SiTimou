@@ -10,6 +10,7 @@ import 'package:sitimoufr/helper/scroll_settings.dart';
 import 'package:sitimoufr/helper/ui_toast.dart';
 import 'package:sitimoufr/views/aturan/aturan.dart';
 import 'package:sitimoufr/views/lokasi/lokasi.dart';
+import 'package:sitimoufr/views/proses/proses.dart';
 import 'package:sitimoufr/widgets/button/main_menu_button.dart';
 
 import 'package:sitimoufr/helper/globals.dart' as g;
@@ -265,6 +266,7 @@ Widget menu() {
               height: 55.0,
               onTap: () {
                 // Cek jika sudah lengkap,
+                Get.to(() => ProsesPage(), binding: ProsesBinding());
               },
             ),
             const SizedBox(width: 10.0),

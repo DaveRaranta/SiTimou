@@ -360,7 +360,7 @@
             this.TsOperator.Name = "TsOperator";
             this.TsOperator.Office12Mode = false;
             this.TsOperator.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TsOperator.Size = new System.Drawing.Size(245, 116);
+            this.TsOperator.Size = new System.Drawing.Size(249, 116);
             this.TsOperator.TabIndex = 2;
             this.TsOperator.Text = "Dispacher";
             // 
@@ -428,7 +428,7 @@
             this.SButtonOpLokasi.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.SButtonOpLokasi.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SButtonOpLokasi.Name = "SButtonOpLokasi";
-            this.SButtonOpLokasi.Size = new System.Drawing.Size(51, 113);
+            this.SButtonOpLokasi.Size = new System.Drawing.Size(51, 100);
             this.SButtonOpLokasi.Text = "Lokasi\r\nPenting";
             this.SButtonOpLokasi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SButtonOpLokasi.Click += new System.EventHandler(this.SButtonOpLokasi_Click);
@@ -470,7 +470,7 @@
             this.TsOperatorOpd.Name = "TsOperatorOpd";
             this.TsOperatorOpd.Office12Mode = false;
             this.TsOperatorOpd.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TsOperatorOpd.Size = new System.Drawing.Size(207, 116);
+            this.TsOperatorOpd.Size = new System.Drawing.Size(238, 116);
             this.TsOperatorOpd.TabIndex = 3;
             this.TsOperatorOpd.Text = "Dispacher Dinas";
             // 
@@ -510,7 +510,7 @@
             this.toolStripDropDownButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(75, 100);
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(75, 113);
             this.toolStripDropDownButton2.Text = "Disposisi\r\nDispatcher";
             this.toolStripDropDownButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -543,7 +543,7 @@
             this.SButtonErMasuk,
             this.toolStripSeparator6,
             this.toolStripButton1});
-            this.TsFrOpd.Location = new System.Drawing.Point(219, 1);
+            this.TsFrOpd.Location = new System.Drawing.Point(250, 1);
             this.TsFrOpd.Name = "TsFrOpd";
             this.TsFrOpd.Office12Mode = false;
             this.TsFrOpd.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -576,7 +576,7 @@
             this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(85, 100);
+            this.toolStripButton1.Size = new System.Drawing.Size(85, 113);
             this.toolStripButton1.Text = "Riwayat\r\nPenanganan";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -611,11 +611,11 @@
             this.toolStripDropDownButton4,
             this.toolStripSeparator7,
             this.SButtonOpdLokasi});
-            this.toolStripEx4.Location = new System.Drawing.Point(372, 1);
+            this.toolStripEx4.Location = new System.Drawing.Point(403, 1);
             this.toolStripEx4.Name = "toolStripEx4";
             this.toolStripEx4.Office12Mode = false;
             this.toolStripEx4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripEx4.Size = new System.Drawing.Size(312, 116);
+            this.toolStripEx4.Size = new System.Drawing.Size(281, 116);
             this.toolStripEx4.TabIndex = 5;
             this.toolStripEx4.Text = "Lain-lain";
             // 
@@ -683,7 +683,7 @@
             this.SButtonOpdLokasi.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.SButtonOpdLokasi.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SButtonOpdLokasi.Name = "SButtonOpdLokasi";
-            this.SButtonOpdLokasi.Size = new System.Drawing.Size(51, 100);
+            this.SButtonOpdLokasi.Size = new System.Drawing.Size(51, 113);
             this.SButtonOpdLokasi.Text = "Lokasi\r\nPenting";
             this.SButtonOpdLokasi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SButtonOpdLokasi.Click += new System.EventHandler(this.SButtonOpdLokasi_Click);
@@ -845,6 +845,7 @@
             this.labelJam.TabIndex = 1;
             this.labelJam.Text = "00:00";
             this.labelJam.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelJam.Click += new System.EventHandler(this.labelJam_Click);
             // 
             // MainForm
             // 

@@ -38,5 +38,21 @@
         public string Grup { get; set; } = null!;
         public string Flg { get; set; } = null!;
     }
+    
+    public class UpdateFcmToken
+    {
+        public int IdUser { get; set; }
+        public string FcmToken { get; set; }
+    }
+    
+    public class NotificationData
+    {
+        public int IdUser { get; set; }
+        public int IdLaporan { get; set; }
+        //public string JenisUser { get; set; }
+        public string JenisLaporan { get; set; }
+        
+        
+    }
 }
 

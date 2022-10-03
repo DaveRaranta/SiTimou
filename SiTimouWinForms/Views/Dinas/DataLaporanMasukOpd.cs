@@ -2,11 +2,9 @@
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using gov.minahasa.sitimou.Controllers;
-using gov.minahasa.sitimou.Controllers;
 using gov.minahasa.sitimou.Helper;
-using gov.minahasa.sitimou.Views.Dinas;
 
-namespace gov.minahasa.sitimou.Views.Dispatcher
+namespace gov.minahasa.sitimou.Views.Dinas
 {
     public sealed partial class DataLaporanMasukOpd : Form
     {

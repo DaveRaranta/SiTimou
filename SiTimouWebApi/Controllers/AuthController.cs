@@ -279,6 +279,35 @@ namespace minahasa.sitimou.webapi.Controllers
             }
         }
 
+        [HttpPost("update_fcm_token_pegawai")]
+        public async Task<IActionResult> UpdateFcmToken(UpdateFcmToken payload)
+        {
+            try
+            {
+                const string sql = "UPDATE pegawai SET fcm_token = @p_value WHERE user_id = @p_user_id";
+
+                await using (var conn = new MySqlConnection(_conDb))
+                {
+                    var parms = new DynamicParameters();
+                    parms.Add("@p_user_id", payload.IdUser);
+                    parms.Add("@p_value", payload.FcmToken);
+                
+                    await conn.OpenAsync();
+                    var result = conn.ExecuteAsync(sql, parms, commandType: CommandType.Text)
+                        .Result;
+
+                    if (result == 0) throw new Exception($"ERR_UPDATE_FCM [{result}]");
+
+                    return Ok();    
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, e.ToString());
+            }
+        }
+        
         [AllowAnonymous]
         [HttpPost("api_token")]
         public async Task<IActionResult> GetApiToken()

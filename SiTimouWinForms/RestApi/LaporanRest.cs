@@ -8,6 +8,8 @@ using System.Diagnostics;
 using gov.minahasa.sitimou.Helper;
 using RestSharp.Authenticators;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Web.UI.WebControls;
 
 namespace gov.minahasa.sitimou.RestApi
 {
@@ -93,6 +95,46 @@ namespace gov.minahasa.sitimou.RestApi
                 return false;
             }
         }
+        #endregion
+
+        #region === Notifikasi ===
+
+        public async void SendNotifikasi(int idUser, int idLaporan, string jenisLaporan)
+        {
+            var url = $"{_mainUrl}/info/send_notifikasi";
+            var client = new RestClient();
+            var request = new RestRequest(url, Method.Post);
+
+            client.Authenticator = new JwtAuthenticator(Globals.ApiToken);
+
+            var json = new
+            {
+                IdUser = idUser,
+                IdLaporan = idLaporan,
+                JenisLaporan = jenisLaporan,
+
+            };
+
+            try
+            {
+                request.AddJsonBody(json);
+
+
+                var result = client.ExecutePostAsync(request).Result;
+
+                if (result.StatusCode != HttpStatusCode.OK)
+                {
+                    var statusCode = result.StatusCode;
+                    var numStatusCode = (int)statusCode;
+                    throw new Exception($"StatusCode: {statusCode} / {numStatusCode}");
+                }
+            }
+            catch (Exception e)
+            {
+                DebugHelper.ShowError("API TOKEN", @"AuthRest", MethodBase.GetCurrentMethod()?.Name, e);
+            }
+        }
+
         #endregion
     }
 

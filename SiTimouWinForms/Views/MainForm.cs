@@ -9,6 +9,7 @@ using gov.minahasa.sitimou.Views.Common;
 using gov.minahasa.sitimou.Views.Dinas;
 using gov.minahasa.sitimou.Views.Dispatcher;
 using Notification.Wpf;
+using gov.minahasa.sitimou.RestApi;
 
 namespace gov.minahasa.sitimou.Views
 {
@@ -436,6 +437,11 @@ namespace gov.minahasa.sitimou.Views
                 IdData = Globals.UserOpdId!.Value,
             };
             mdi.Show();
+        }
+
+        private void labelJam_Click(object sender, EventArgs e)
+        {
+            //
         }
 
         #endregion

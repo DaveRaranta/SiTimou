@@ -319,6 +319,9 @@ namespace gov.minahasa.sitimou.Controllers
 
                             var result = cmd.ExecuteNonQuery();
 
+                            // Send Notifikasi
+                            _rest.SendNotifikasi(idPenerima, idLaporan, jenisLaporan);
+
                             return true;
                         }
                         catch (Exception e)
@@ -488,6 +491,7 @@ namespace gov.minahasa.sitimou.Controllers
                                         @$"{gridTitle} [ Total: {dt.Rows.Count} ]. Tarik judul kolom ke area ini untuk grup.";
 
                                     dataGrid.TableDescriptor.VisibleColumns.Remove("laporan_id");
+                                    dataGrid.TableDescriptor.VisibleColumns.Remove("disposisi_id");
 
                                     DataGridHelper.FormatTable(dataGrid);
                                 }

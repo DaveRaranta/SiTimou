@@ -1,9 +1,8 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:sitimoufr/helper/globals.dart' as g;
-import 'package:sitimoufr/helper/ui_toast.dart';
+import 'package:sitimoufr/models/alamat_osm.dart';
 import 'package:sitimoufr/models/daftar_lokasi.dart';
 import 'package:sitimoufr/models/detail_lokasi.dart';
 
@@ -62,6 +61,29 @@ class LokasiServices {
       }
     } on Exception catch (e) {
       debugPrint("[!] DebugInfo: [ERROR] LokasiServices.getDetailLokasi() => ${e.toString()}");
+      return null;
+    }
+  }
+
+  //
+  // OpenStreetMap
+  //
+  static Future<AlamatOpenSreetMap?> getAlamatOsm(double gpsLat, double gpsLon) async {
+    final url = Uri.parse('https://nominatim.openstreetmap.org/reverse?format=json&lat=$gpsLat&lon=$gpsLon');
+
+    try {
+      var result = await client.get(url, headers: httpHeaders);
+
+      debugPrint("[!] DebugInfo: [RESULT] LokasiServices.getAlamatOsm() => ${result.body}");
+
+      if (result.statusCode == 200) {
+        var body = result.body;
+        return alamatOpenSreetMapFromJson(body);
+      } else {
+        return null;
+      }
+    } on Exception catch (e) {
+      debugPrint("[!] DebugInfo: [ERROR] LokasiServices.getAlamatOsm() => ${e.toString()}");
       return null;
     }
   }

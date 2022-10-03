@@ -5,6 +5,7 @@ using gov.minahasa.sitimou.Controllers;
 //using gov.minahasa.sitimou.Controllers;
 using gov.minahasa.sitimou.Helper;
 using gov.minahasa.sitimou.Helper.Interfaces;
+using gov.minahasa.sitimou.RestApi;
 using gov.minahasa.sitimou.Views;
 
 namespace gov.minahasa.sitimou
@@ -102,8 +103,12 @@ namespace gov.minahasa.sitimou
 
 
 
+
         #endregion
 
-        
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+           //
+        }
     }
 }
