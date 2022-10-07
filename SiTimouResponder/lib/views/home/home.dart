@@ -33,39 +33,40 @@ class HomePage extends StatelessWidget {
             content: Text("Tap tombol Kembali sekali lagi untuk keluar"),
           ),
           child: SafeArea(
-              child: SizedBox(
-            height: double.infinity,
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 18.0, right: 18.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 10.0),
-                  header(context),
-                  const SizedBox(height: 10.0),
-                  Expanded(
-                    child: ScrollConfiguration(
-                      behavior: ScrollSettings(),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            const SizedBox(height: 20.0),
-                            info(),
-                            const SizedBox(height: 20.0),
-                            menu(),
-                            const SizedBox(height: 20.0),
-                            berita(),
-                            const SizedBox(height: 90.0),
-                          ],
+            child: SizedBox(
+              height: double.infinity,
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 18.0, right: 18.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 10.0),
+                    header(context),
+                    const SizedBox(height: 10.0),
+                    Expanded(
+                      child: ScrollConfiguration(
+                        behavior: ScrollSettings(),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              const SizedBox(height: 20.0),
+                              info(),
+                              const SizedBox(height: 20.0),
+                              menu(),
+                              const SizedBox(height: 20.0),
+                              berita(),
+                              const SizedBox(height: 90.0),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          )),
+          ),
         ),
       ),
     );

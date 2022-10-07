@@ -91,7 +91,7 @@ class AuthController extends GetxController {
 
     var result = await AuthServices.masuk(textLogin.text, textPwd.text);
 
-    if (pd.isShowing()) pd.hide();
+    // if (pd.isShowing()) pd.hide();
 
     if (!result) {
       if (pd.isShowing()) pd.hide();

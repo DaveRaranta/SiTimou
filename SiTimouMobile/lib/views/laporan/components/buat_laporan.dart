@@ -52,101 +52,97 @@ class BuatLaporanPage extends StatelessWidget {
               width: double.infinity,
               child: Padding(
                 padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
-                child: SizedBox(
-                  height: double.infinity,
-                  width: double.infinity,
-                  child: ScrollConfiguration(
-                    behavior: ScrollSettings(),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          TextField(
-                            enableInteractiveSelection: true,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(
-                                // width: 0.0 produces a thin "hairline" border
-                                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                                borderSide: BorderSide.none,
-                              ),
-                              filled: true,
-                              fillColor: Colors.white,
-                              //hintText: 'Reply',
-                              labelText: 'Perihal',
-                              labelStyle: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w500,
-                              ),
+                child: ScrollConfiguration(
+                  behavior: ScrollSettings(),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextField(
+                          enableInteractiveSelection: true,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(
+                              // width: 0.0 produces a thin "hairline" border
+                              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                              borderSide: BorderSide.none,
                             ),
-                            cursorColor: Colors.grey,
-                            autofocus: false,
-                            maxLines: null,
-                            controller: controller.textTentang,
-                            keyboardType: TextInputType.text,
-                            inputFormatters: [UpperCaseTextFormatter()],
-                          ),
-                          const SizedBox(height: 20),
-                          TextField(
-                            enableInteractiveSelection: true,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(
-                                // width: 0.0 produces a thin "hairline" border
-                                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                                borderSide: BorderSide.none,
-                              ),
-                              filled: true,
-                              fillColor: Colors.white,
-                              //hintText: 'Reply',
-                              labelText: 'Isi Laporan',
-                              labelStyle: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            cursorColor: Colors.grey,
-                            autofocus: false,
-                            maxLines: null,
-                            controller: controller.textIsiLaporan,
-                            keyboardType: TextInputType.multiline,
-                            inputFormatters: [UpperCaseTextFormatter()],
-                          ),
-                          //
-                          // Icon Pilih foto
-                          //
-                          const SizedBox(height: 10),
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: GestureDetector(
-                              onTap: () {
-                                controller.pickImage(context);
-                              },
-                              child: const Icon(
-                                Icons.image_outlined,
-                                color: Colors.blue,
-                              ),
+                            filled: true,
+                            fillColor: Colors.white,
+                            //hintText: 'Reply',
+                            labelText: 'Perihal',
+                            labelStyle: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
-                          const SizedBox(height: 10),
-                          Obx(() {
-                            if (controller.imageFile.isEmpty) {
-                              return Container();
-                            }
+                          cursorColor: Colors.grey,
+                          autofocus: false,
+                          maxLines: null,
+                          controller: controller.textTentang,
+                          keyboardType: TextInputType.text,
+                          inputFormatters: [UpperCaseTextFormatter()],
+                        ),
+                        const SizedBox(height: 20),
+                        TextField(
+                          enableInteractiveSelection: true,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(
+                              // width: 0.0 produces a thin "hairline" border
+                              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                              borderSide: BorderSide.none,
+                            ),
+                            filled: true,
+                            fillColor: Colors.white,
+                            //hintText: 'Reply',
+                            labelText: 'Isi Laporan',
+                            labelStyle: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          cursorColor: Colors.grey,
+                          autofocus: false,
+                          maxLines: null,
+                          controller: controller.textIsiLaporan,
+                          keyboardType: TextInputType.multiline,
+                          inputFormatters: [UpperCaseTextFormatter()],
+                        ),
+                        //
+                        // Icon Pilih foto
+                        //
+                        const SizedBox(height: 10),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: GestureDetector(
+                            onTap: () {
+                              controller.pickImage(context);
+                            },
+                            child: const Icon(
+                              Icons.image_outlined,
+                              color: Colors.blue,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Obx(() {
+                          if (controller.imageFile.isEmpty) {
+                            return Container();
+                          }
 
-                            var file = File.fromUri(Uri.parse(controller.imageFile.value));
+                          var file = File.fromUri(Uri.parse(controller.imageFile.value));
 
-                            return ClipRRect(
-                              borderRadius: BorderRadius.circular(10.0),
-                              child: Image.file(
-                                file,
-                                fit: BoxFit.scaleDown,
-                              ),
-                            );
-                          }),
-                          const SizedBox(height: 30.0),
-                        ],
-                      ),
+                          return ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Image.file(
+                              file,
+                              fit: BoxFit.scaleDown,
+                            ),
+                          );
+                        }),
+                        const SizedBox(height: 30.0),
+                      ],
                     ),
                   ),
                 ),

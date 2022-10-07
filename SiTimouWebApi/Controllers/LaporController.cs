@@ -218,9 +218,13 @@ namespace minahasa.sitimou.webapi.Controllers
                 var userId = _dbHelper.GetValueFromTable("laporan", "user_id", "laporan_id", id);
                 var userNik = _dbHelper.GetValueFromTable("pengguna", "nik", "user_id", userId);
 
-                // File Foto
-                var srcFn = Path.Combine(_baseFolder, userNik, $"{id}.jpg");
+                // File 
+                var srcFn = "";
                 var defaultFn = Path.Combine(_baseFolder, "default.png");
+                
+                srcFn = userNik == null 
+                    ? defaultFn
+                    : (string)Path.Combine(_baseFolder, "laporan", userNik, $"{id}.jpg");
 
                 // CEk jika file ada
                 var byteImg = System.IO.File.Exists(srcFn) 
