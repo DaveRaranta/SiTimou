@@ -6,14 +6,19 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:sitimou/controllers/bindings/bindings.dart';
 import 'package:sitimou/controllers/home_controller.dart';
 import 'package:sitimou/helper/colors.dart';
+import 'package:sitimou/helper/extensions.dart';
 import 'package:sitimou/helper/scroll_settings.dart';
 import 'package:sitimou/helper/ui_toast.dart';
 import 'package:sitimou/views/aturan/aturan.dart';
+import 'package:sitimou/views/berita/berita.dart';
+import 'package:sitimou/views/berita/components/detail_berita.dart';
+import 'package:sitimou/views/home/components/berita_recent.dart';
 import 'package:sitimou/views/home/components/ubah_foto.dart';
 import 'package:sitimou/views/laporan/my_laporan.dart';
 import 'package:sitimou/views/lokasi/lokasi.dart';
 import 'package:sitimou/widgets/button/main_menu_button.dart';
 import 'package:sitimou/helper/globals.dart' as g;
+import 'package:sitimou/widgets/cards/card_berita_recent.dart';
 
 String fotoUrl = "${g.apiUrl}/home/foto_profil_pengguna";
 
@@ -45,7 +50,7 @@ class HomeFrontTab extends StatelessWidget {
                       const SizedBox(height: 20.0),
                       menu(),
                       const SizedBox(height: 20.0),
-                      berita(),
+                      HomeBeritaRecent(),
                       const SizedBox(height: 90.0),
                     ],
                   ),
@@ -324,47 +329,11 @@ Widget menu() {
               width: 55.0,
               height: 55.0,
               onTap: () {
-                toastPesan("SI-TIMOU 119", "Fasilitas belum tersedia.");
+                Get.to(() => BeritaPage(), binding: BeritaBinding());
               },
             ),
           ],
         ),
-      ],
-    ),
-  );
-}
-
-Widget berita() {
-  return SizedBox(
-    width: double.infinity,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              "Berita",
-              style: TextStyle(
-                fontSize: 16.0,
-                color: Colors.black,
-                fontWeight: FontWeight.w500,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            InkWell(
-              onTap: () {},
-              child: const Icon(
-                Icons.refresh,
-                size: 24.0,
-                color: Colors.grey,
-              ),
-            )
-          ],
-        ),
-        const SizedBox(height: 15.0),
       ],
     ),
   );

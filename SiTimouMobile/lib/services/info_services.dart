@@ -6,7 +6,9 @@ import 'package:http/http.dart' as http;
 
 import 'package:sitimou/helper/globals.dart' as g;
 import 'package:sitimou/models/daftar_aturan.dart';
+import 'package:sitimou/models/daftar_berita.dart';
 import 'package:sitimou/models/detail_aturan.dart';
+import 'package:sitimou/models/detail_berita.dart';
 
 const String mainUrl = g.apiUrl;
 
@@ -63,6 +65,49 @@ class InfoServices {
       }
     } on Exception catch (e) {
       debugPrint("[!] DebugInfo: [ERROR] InfoServices.getDetailLokasi() => ${e.toString()}");
+      return null;
+    }
+  }
+
+  //
+  // Berita
+  //
+  static Future<List<DaftarBerita?>> getListBerita() async {
+    final url = Uri.parse('$mainUrl/info/data_berita');
+
+    try {
+      var result = await client.get(url, headers: httpHeaders);
+
+      debugPrint("[!] DebugInfo: [RESULT] InfoKotaServices.getListBerita() => ${result.body}");
+
+      if (result.statusCode == 200) {
+        var body = result.body;
+        return daftarBeritaFromJson(body);
+      } else {
+        return [];
+      }
+    } on Exception catch (e) {
+      debugPrint("[!] DebugInfo: [ERROR] InfoKotaServices.getListBerita() => ${e.toString()}");
+      return [];
+    }
+  }
+
+  static Future<DetailBerita?> getDetailBeritaKota(int idBerita) async {
+    final url = Uri.parse('$mainUrl/recent/detail_berita/$idBerita');
+
+    try {
+      var result = await client.get(url, headers: httpHeaders);
+
+      debugPrint("[!] DebugInfo: [RESULT] InfoKotaServices.getDetailDisposisiSk() => " + result.body);
+
+      if (result.statusCode == 200) {
+        var body = result.body;
+        return detailBeritaFromJson(body);
+      } else {
+        return null;
+      }
+    } on Exception catch (e) {
+      debugPrint("[!] DebugInfo: [ERROR] InfoKotaServices.getDetailDisposisiSk() => ${e.toString()}");
       return null;
     }
   }

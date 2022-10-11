@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:sitimou/controllers/auth_controller.dart';
+import 'package:sitimou/controllers/berita_controller.dart';
 import 'package:sitimou/controllers/home_controller.dart';
 import 'package:sitimou/controllers/info_controller.dart';
 import 'package:sitimou/controllers/laporan_controller.dart';
@@ -42,5 +43,13 @@ class InfoBinding implements Bindings {
   void dependencies() {
     //Get.put<AuthController>(AuthController());
     Get.lazyPut<InfoController>(() => InfoController());
+  }
+}
+
+class BeritaBinding implements Bindings {
+  @override
+  void dependencies() {
+    //Get.put<AuthController>(AuthController());
+    Get.lazyPut<BeritaController>(() => BeritaController());
   }
 }

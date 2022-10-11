@@ -13,11 +13,13 @@ import 'package:sitimou/helper/apphelper.dart';
 import 'package:sitimou/helper/colors.dart';
 import 'package:sitimou/helper/ui_dialogs.dart';
 import 'package:sitimou/helper/ui_toast.dart';
+import 'package:sitimou/models/daftar_berita.dart';
 import 'package:sitimou/models/daftar_desa.dart';
 import 'package:sitimou/models/daftar_kecamatan.dart';
 import 'package:sitimou/models/detail_pengguna.dart';
 import 'package:sitimou/services/auth_services.dart';
 import 'package:sitimou/services/home_services.dart';
+import 'package:sitimou/services/info_services.dart';
 import 'package:sitimou/views/auth/login.dart';
 
 import 'package:sitimou/helper/globals.dart' as g;
@@ -32,6 +34,7 @@ class HomeController extends GetxController {
   var infoPengumuman = "".obs;
   var listKecamatan = <DaftarKecamatan?>[].obs;
   var listDesa = <DaftarDesa?>[].obs;
+  var listBerita = <DaftarBerita?>[].obs;
 
   // Page Controller
   PageController? pageController = PageController();
@@ -65,6 +68,7 @@ class HomeController extends GetxController {
 
     getDetailPengguna();
     getInfoPengumuman();
+    getRecentBerita();
   }
 
   //
@@ -111,6 +115,17 @@ class HomeController extends GetxController {
       infoPengumuman.value = result;
     } finally {
       isLoading(false);
+    }
+  }
+
+  void getRecentBerita() async {
+    try {
+      isListLoading(true);
+      var result = await InfoServices.getListBerita();
+      if (listBerita.isNotEmpty) listBerita.clear();
+      listBerita.assignAll(result);
+    } finally {
+      isListLoading(false);
     }
   }
 
