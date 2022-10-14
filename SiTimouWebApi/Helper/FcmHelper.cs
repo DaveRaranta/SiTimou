@@ -11,7 +11,7 @@ using RestSharp;
 
 public class FcmHelper : DbConnection
 {
-    private const string FcmServerId = "AAAARZCj6QE:APA91bGjsbsRfIDHAYS_4w-ONIYO8BfKMwzI4ig7pdjho_ojlilQRj6IBTOIGqwdYgowv2h-ZJs6crZ5IuFF7N4sL0FUEUocvCVVRV6PKC-gtX1vgV3Id5x8fbiaI6q-zvHUPzBXekxr";
+    private const string FcmServerId = "AAAAZO6mjQk:APA91bEraA8pKOWNZt-5YmsFs__QnuYd_ll2rlR92wVT8izv7hqEbK05ax1Kwe2DIn9j-IzfLQzx1RdniguxJBXyabDXonWmn4J35MgObaVnu9RtiliL-8gD9HOD6VJrChhJsUZ3QU1J";
 
     public static void SendFcmNotification(string toToken, string notifTitle, string notifBody, int notifUserId = 0)
     {

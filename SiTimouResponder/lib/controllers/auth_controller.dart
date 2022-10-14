@@ -98,9 +98,9 @@ class AuthController extends GetxController {
       return;
     }
 
-    await validasiLogin();
-
     if (pd.isShowing()) pd.hide();
+
+    await validasiLogin();
   }
 
   Future validasiLogin() async {

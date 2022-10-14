@@ -287,7 +287,7 @@ class ProsesController extends GetxController {
 
         if (!result) {
           if (pd.isShowing()) pd.hide();
-          toastPesan("HAPUS", "Gagal batal laporan.");
+          toastPesan("PROSES", "Gagal batal laporan.");
           return;
         }
 

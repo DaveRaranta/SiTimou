@@ -9,6 +9,8 @@ import 'package:sitimoufr/helper/colors.dart';
 import 'package:sitimoufr/helper/scroll_settings.dart';
 import 'package:sitimoufr/helper/ui_toast.dart';
 import 'package:sitimoufr/views/aturan/aturan.dart';
+import 'package:sitimoufr/views/berita/berita.dart';
+import 'package:sitimoufr/views/home/components/berita_recent.dart';
 import 'package:sitimoufr/views/lokasi/lokasi.dart';
 import 'package:sitimoufr/views/proses/proses.dart';
 import 'package:sitimoufr/widgets/button/main_menu_button.dart';
@@ -55,7 +57,7 @@ class HomePage extends StatelessWidget {
                               const SizedBox(height: 20.0),
                               menu(),
                               const SizedBox(height: 20.0),
-                              berita(),
+                              HomeBeritaRecent(),
                               const SizedBox(height: 90.0),
                             ],
                           ),
@@ -313,7 +315,7 @@ Widget menu() {
               width: 55.0,
               height: 55.0,
               onTap: () {
-                toastPesan("SI-TIMOU 119", "Fasilitas belum tersedia.");
+                Get.to(() => BeritaPage(), binding: BeritaBinding());
               },
             ),
           ],

@@ -3,9 +3,11 @@ import 'package:get/get.dart';
 import 'package:sitimoufr/helper/apphelper.dart';
 import 'package:sitimoufr/helper/ui_dialogs.dart';
 import 'package:sitimoufr/helper/ui_toast.dart';
+import 'package:sitimoufr/models/daftar_berita.dart';
 import 'package:sitimoufr/models/detail_pegawai.dart';
 import 'package:sitimoufr/services/auth_services.dart';
 import 'package:sitimoufr/services/home_services.dart';
+import 'package:sitimoufr/services/info_services.dart';
 import 'package:sitimoufr/views/login.dart';
 import 'package:sitimoufr/helper/globals.dart' as g;
 
@@ -14,6 +16,7 @@ class HomeController extends GetxController {
   var isListLoading = false.obs;
   var infoPengumuman = "".obs;
   var detailPegawai = DetailPegawai().obs;
+  var listBerita = <DaftarBerita?>[].obs;
 
   @override
   void onInit() async {
@@ -23,6 +26,7 @@ class HomeController extends GetxController {
     await AppHelper.deleteImageFromCache("${g.apiUrl}/home/foto_profil_pegawai");
     getDetailPegawai();
     getInfoPengumuman();
+    getRecentBerita();
   }
 
   @override
@@ -56,6 +60,17 @@ class HomeController extends GetxController {
       infoPengumuman.value = result;
     } finally {
       isLoading(false);
+    }
+  }
+
+  void getRecentBerita() async {
+    try {
+      isListLoading(true);
+      var result = await InfoServices.getListBerita();
+      if (listBerita.isNotEmpty) listBerita.clear();
+      listBerita.assignAll(result);
+    } finally {
+      isListLoading(false);
     }
   }
 
