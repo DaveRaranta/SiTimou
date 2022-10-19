@@ -388,11 +388,23 @@
     <Compile Include="Views\Common\DataRiwayatLaporan.Designer.cs">
       <DependentUpon>DataRiwayatLaporan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Common\InfoLaporan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\InfoLaporan.Designer.cs">
+      <DependentUpon>InfoLaporan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Common\InfoLokasi.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Common\InfoLokasi.Designer.cs">
       <DependentUpon>InfoLokasi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\InfoPanik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Common\InfoPanik.Designer.cs">
+      <DependentUpon>InfoPanik.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Dinas\DataAturanOpd.cs">
       <SubType>Form</SubType>
@@ -587,8 +599,14 @@
     <EmbeddedResource Include="Views\Common\DataRiwayatLaporan.resx">
       <DependentUpon>DataRiwayatLaporan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\InfoLaporan.resx">
+      <DependentUpon>InfoLaporan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Common\InfoLokasi.resx">
       <DependentUpon>InfoLokasi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Common\InfoPanik.resx">
+      <DependentUpon>InfoPanik.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Dinas\DataAturanOpd.resx">
       <DependentUpon>DataAturanOpd.cs</DependentUpon>

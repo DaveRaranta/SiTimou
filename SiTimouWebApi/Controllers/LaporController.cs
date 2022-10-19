@@ -224,7 +224,7 @@ namespace minahasa.sitimou.webapi.Controllers
                 
                 srcFn = userNik == null 
                     ? defaultFn
-                    : (string)Path.Combine(_baseFolder, "laporan", userNik, $"{id}.jpg");
+                    : (string)Path.Combine(_baseFolder, userNik, $"{id}.jpg");
 
                 // CEk jika file ada
                 var byteImg = System.IO.File.Exists(srcFn) 
@@ -331,5 +331,6 @@ namespace minahasa.sitimou.webapi.Controllers
         #endregion
         
     }    
+    
 }
 

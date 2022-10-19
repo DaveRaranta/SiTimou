@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 using gov.minahasa.sitimou.Controllers;
@@ -30,6 +31,8 @@ namespace gov.minahasa.sitimou.Views.Dinas
         private readonly ImageHelper _imageHelper = new();
         private readonly NotifHelper _notifHelper = new();
         private readonly DatabaseHelper _dbHelper = new();
+
+        private readonly string _tempFolder = $"{Path.GetTempPath()}{Path.GetRandomFileName()}";
 
         public InfoLaporanFr()
         {
@@ -82,8 +85,13 @@ namespace gov.minahasa.sitimou.Views.Dinas
             InitData();
         }
 
+        private void InfoLaporanFr_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Directory.Exists(_tempFolder)) Directory.Delete(_tempFolder, true);
+        }
+
         #endregion
-        
+
         #region === Button ===
 
         private void LabelRefresh_Click(object sender, EventArgs e)
@@ -102,6 +110,11 @@ namespace gov.minahasa.sitimou.Views.Dinas
                 ToolTipText = NamaPelapor,
             };
             win.Show();
+        }
+
+        private void PictureFoto_Click(object sender, EventArgs e)
+        {
+            _controller.DownloadFotoLaporan(_tempFolder, IdLaporan, this);
         }
 
         private void ButtonBatal_Click(object sender, EventArgs e)
@@ -138,6 +151,8 @@ namespace gov.minahasa.sitimou.Views.Dinas
             IsDataSaved = true;
             Close();
         }
+
+
 
 
 

@@ -1,6 +1,6 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
-using gov.minahasa.sitimou.Controllers;
 using gov.minahasa.sitimou.Controllers;
 using gov.minahasa.sitimou.Helper;
 using gov.minahasa.sitimou.RestApi;
@@ -33,6 +33,8 @@ namespace gov.minahasa.sitimou.Views.Dinas
         private readonly LaporanController _controller = new();
         private readonly ImageHelper _imageHelper = new();
         private readonly NotifHelper _notifHelper = new();
+
+        private readonly string _tempFolder = $"{Path.GetTempPath()}{Path.GetRandomFileName()}";
 
         public DisposisiLaporanOpd()
         {
@@ -73,8 +75,13 @@ namespace gov.minahasa.sitimou.Views.Dinas
             InitData();
         }
 
+        private void DisposisiLaporanOpd_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Directory.Exists(_tempFolder)) Directory.Delete(_tempFolder, true);
+        }
+
         #endregion
-        
+
         #region === Button ===
 
         private void LabelRefresh_Click(object sender, EventArgs e)
@@ -93,6 +100,11 @@ namespace gov.minahasa.sitimou.Views.Dinas
                 ToolTipText = NamaPelapor,
             };
             win.Show();
+        }
+
+        private void PictureFoto_Click(object sender, EventArgs e)
+        {
+            _controller.DownloadFotoLaporan(_tempFolder, IdLaporan, this);
         }
 
         private void ButtonBatal_Click(object sender, EventArgs e)
@@ -136,7 +148,10 @@ namespace gov.minahasa.sitimou.Views.Dinas
 
 
 
+
         #endregion
+
+        
 
         
     }

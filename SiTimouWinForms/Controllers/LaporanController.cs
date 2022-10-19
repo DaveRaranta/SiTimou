@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,12 +25,22 @@ namespace gov.minahasa.sitimou.Controllers
         private readonly NotifHelper _notifHelper = new();
 
         // Properties
+        public int IdLaporan { get; private set; }
+        public int IdPelapor { get; private set; }
         public string TanggalLaporan { get; private set; }
+        public string NamaPelapor { get; private set; }
+        public string NikPelapor { get; private set; }
+        public string NoTelp { get; private set; }
+        public string AlamatPelapor { get; private set; }
         public string  DurasiLaporan { get; private set; }
         public string PerihalLaporan { get; private set; }
         public string IsiLaporan { get; private set; }
         public double GpsLat { get; private set; }
         public double GpsLng { get; private set; }
+        public string StatusLaporan { get; private set; }
+
+        // View?
+
 
 
         #endregion
@@ -95,6 +107,168 @@ namespace gov.minahasa.sitimou.Controllers
                     }
                 }
             }
+        }
+
+        public async void DownloadFotoLaporan(string tempFolder, int idLaporan, Form form, bool openFile = true)
+        {
+
+            using (new WaitCursor(form))
+            {
+                try
+                {
+                    var timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString();
+
+                    // Cek folder
+                    if (!Directory.Exists(tempFolder)) Directory.CreateDirectory(tempFolder);
+                    var destFn = Path.Combine(tempFolder, $"{timestamp}.jpg");
+
+                    // Download File
+                    var result = await _rest.DownloadFotoLaporan(idLaporan);
+
+                    if (result == null)
+                    {
+                        _notifHelper.MsgBoxWarning(@"Gagal download foto laporan.");
+                        return;
+                    }
+
+                    // Proses file
+                    var saveFn = new FileHelper().BytesToFile(result, destFn);
+
+                    if (!saveFn)
+                    {
+                        _notifHelper.MsgBoxWarning(@"Gagal buka foto laporan.");
+                        return;
+                    }
+
+                    if (openFile)
+                    {
+                        Process.Start(destFn);
+                    }
+                    else
+                    {
+                        var fileExt = Path.GetExtension(destFn).Replace(".", "");
+                        var saveDialog = new SaveFileDialog
+                        {
+                            Title = @"Simpan file lampiran",
+                            Filter = @$"{fileExt.ToUpper()} file|*.{fileExt}",
+                            DefaultExt = fileExt,
+                            AddExtension = true
+                        };
+
+                        if (saveDialog.ShowDialog() == DialogResult.OK && saveDialog.CheckPathExists)
+                        {
+                            File.Copy(destFn, saveDialog.FileName, true);
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    DebugHelper.ShowError("LAPORAN", @"LaporanController", MethodBase.GetCurrentMethod()?.Name, e);
+                }
+            }
+
+        }
+
+        public async  Task<bool> GetDetailLaporan(int idLaporan, Form form)
+        {
+            using (new WaitCursor(form))
+            {
+                var dt = new DataTable();
+
+                using (var conn = GetDbConnection())
+                {
+                    using (var cmd = new MySqlCommand("sp_detail_laporan_by_id", conn) { CommandType = CommandType.StoredProcedure })
+                    {
+                        try
+                        {
+                            conn.Open();
+
+                            cmd.Parameters.AddWithValue("@p_jenis_data", "1");
+                            cmd.Parameters.AddWithValue("@p_laporan_id", idLaporan);
+
+                            using (var reader = await cmd.ExecuteReaderAsync())
+                            {
+                                if (!reader.HasRows) return false;
+
+                                await reader.ReadAsync();
+
+                                IdLaporan = reader.GetInt32(0);
+                                TanggalLaporan = reader.GetString(1);
+                                NamaPelapor = reader.GetString(2);
+                                NikPelapor = reader.GetString(3);
+                                NoTelp = reader.GetString(4);
+                                PerihalLaporan = reader.GetString(5);
+                                IsiLaporan = reader.GetString(6);
+                                GpsLat = reader.GetDouble(10);
+                                GpsLng = reader.GetDouble(11);
+                                StatusLaporan = reader.GetString(12);
+                                IdPelapor = reader.GetInt32(13);
+
+                                AlamatPelapor = $"{reader.GetString(7)}, {reader.GetString(8)}, {reader.GetString(9)}";
+
+                                return true;
+
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            DebugHelper.ShowError("OPD", @"OpdController", MethodBase.GetCurrentMethod()?.Name, e);
+                            return false;
+                        }
+                    }
+                }
+            }
+        
+        }
+
+        public async Task<bool> GetDetailPanik(int idLaporan, Form form)
+        {
+            using (new WaitCursor(form))
+            {
+                var dt = new DataTable();
+
+                using (var conn = GetDbConnection())
+                {
+                    using (var cmd = new MySqlCommand("sp_detail_laporan_by_id", conn) { CommandType = CommandType.StoredProcedure })
+                    {
+                        try
+                        {
+                            conn.Open();
+
+                            cmd.Parameters.AddWithValue("@p_jenis_data", "2");
+                            cmd.Parameters.AddWithValue("@p_laporan_id", idLaporan);
+
+                            using (var reader = await cmd.ExecuteReaderAsync())
+                            {
+                                if (!reader.HasRows) return false;
+
+                                await reader.ReadAsync();
+
+                                IdLaporan = reader.GetInt32(0);
+                                TanggalLaporan = reader.GetString(1);
+                                NamaPelapor = reader.GetString(2);
+                                NikPelapor = reader.GetString(3);
+                                NoTelp = reader.GetString(4);
+                                GpsLat = reader.GetDouble(8);
+                                GpsLng = reader.GetDouble(9);
+                                StatusLaporan = reader.GetString(10);
+                                IdPelapor = reader.GetInt32(11);
+
+                                AlamatPelapor = $"{reader.GetString(5)}, {reader.GetString(6)}, {reader.GetString(7)}";
+
+                                return true;
+
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            DebugHelper.ShowError("OPD", @"OpdController", MethodBase.GetCurrentMethod()?.Name, e);
+                            return false;
+                        }
+                    }
+                }
+            }
+
         }
 
         #endregion

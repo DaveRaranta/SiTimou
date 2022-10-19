@@ -56,6 +56,7 @@
             this.ButtonBatal = new gov.minahasa.sitimou.Helper.UI.RJControls.RjButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.PictureFoto = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -67,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TextIsiLapor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextPerihal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextAlamatLapor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureFoto)).BeginInit();
             this.SuspendLayout();
             // 
             // LabelH1
@@ -245,6 +247,7 @@
             this.gradientPanel2.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
             this.gradientPanel2.BorderColor = System.Drawing.Color.LightGray;
             this.gradientPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gradientPanel2.Controls.Add(this.PictureFoto);
             this.gradientPanel2.Controls.Add(this.LabelRefresh);
             this.gradientPanel2.Controls.Add(this.LabelPeta);
             this.gradientPanel2.Controls.Add(this.TextIsiLapor);
@@ -289,7 +292,7 @@
             this.TextIsiLapor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextIsiLapor.BackColor = System.Drawing.Color.White;
-            this.TextIsiLapor.BeforeTouchSize = new System.Drawing.Size(509, 27);
+            this.TextIsiLapor.BeforeTouchSize = new System.Drawing.Size(541, 27);
             this.TextIsiLapor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TextIsiLapor.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextIsiLapor.Location = new System.Drawing.Point(15, 142);
@@ -314,13 +317,13 @@
             this.TextPerihal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextPerihal.BackColor = System.Drawing.Color.White;
-            this.TextPerihal.BeforeTouchSize = new System.Drawing.Size(509, 27);
+            this.TextPerihal.BeforeTouchSize = new System.Drawing.Size(541, 27);
             this.TextPerihal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TextPerihal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextPerihal.Location = new System.Drawing.Point(15, 87);
             this.TextPerihal.Name = "TextPerihal";
             this.TextPerihal.ReadOnly = true;
-            this.TextPerihal.Size = new System.Drawing.Size(574, 27);
+            this.TextPerihal.Size = new System.Drawing.Size(541, 27);
             this.TextPerihal.TabIndex = 3;
             // 
             // label5
@@ -338,7 +341,7 @@
             this.TextAlamatLapor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextAlamatLapor.BackColor = System.Drawing.Color.White;
-            this.TextAlamatLapor.BeforeTouchSize = new System.Drawing.Size(509, 27);
+            this.TextAlamatLapor.BeforeTouchSize = new System.Drawing.Size(541, 27);
             this.TextAlamatLapor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TextAlamatLapor.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextAlamatLapor.Location = new System.Drawing.Point(15, 32);
@@ -409,6 +412,20 @@
             this.label3.Text = "Nama Alamat Laporan diambil menggunakan \"Reverse geocoding\" sehingga nama bisa sa" +
     "ja kurang tepat.";
             // 
+            // PictureFoto
+            // 
+            this.PictureFoto.BackColor = System.Drawing.Color.White;
+            this.PictureFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PictureFoto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PictureFoto.Image = ((System.Drawing.Image)(resources.GetObject("PictureFoto.Image")));
+            this.PictureFoto.Location = new System.Drawing.Point(562, 87);
+            this.PictureFoto.Name = "PictureFoto";
+            this.PictureFoto.Size = new System.Drawing.Size(27, 27);
+            this.PictureFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PictureFoto.TabIndex = 41;
+            this.PictureFoto.TabStop = false;
+            this.PictureFoto.Click += new System.EventHandler(this.PictureFoto_Click);
+            // 
             // DisposisiLaporanOpd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -432,6 +449,7 @@
             this.Name = "DisposisiLaporanOpd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Disposisi Laporan";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DisposisiLaporanOpd_FormClosed);
             this.Load += new System.EventHandler(this.DisposisiLaporan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).EndInit();
             this.gradientPanel1.ResumeLayout(false);
@@ -445,6 +463,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TextIsiLapor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextPerihal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextAlamatLapor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureFoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -479,5 +498,6 @@
         private Helper.UI.RJControls.RjButton ButtonBatal;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox PictureFoto;
     }
 }

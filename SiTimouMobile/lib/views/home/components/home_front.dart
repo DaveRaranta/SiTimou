@@ -6,19 +6,15 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:sitimou/controllers/bindings/bindings.dart';
 import 'package:sitimou/controllers/home_controller.dart';
 import 'package:sitimou/helper/colors.dart';
-import 'package:sitimou/helper/extensions.dart';
 import 'package:sitimou/helper/scroll_settings.dart';
 import 'package:sitimou/helper/ui_toast.dart';
 import 'package:sitimou/views/aturan/aturan.dart';
 import 'package:sitimou/views/berita/berita.dart';
-import 'package:sitimou/views/berita/components/detail_berita.dart';
 import 'package:sitimou/views/home/components/berita_recent.dart';
-import 'package:sitimou/views/home/components/ubah_foto.dart';
 import 'package:sitimou/views/laporan/my_laporan.dart';
 import 'package:sitimou/views/lokasi/lokasi.dart';
 import 'package:sitimou/widgets/button/main_menu_button.dart';
 import 'package:sitimou/helper/globals.dart' as g;
-import 'package:sitimou/widgets/cards/card_berita_recent.dart';
 
 String fotoUrl = "${g.apiUrl}/home/foto_profil_pengguna";
 

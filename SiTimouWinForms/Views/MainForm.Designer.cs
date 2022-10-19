@@ -470,7 +470,7 @@
             this.TsOperatorOpd.Name = "TsOperatorOpd";
             this.TsOperatorOpd.Office12Mode = false;
             this.TsOperatorOpd.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TsOperatorOpd.Size = new System.Drawing.Size(238, 116);
+            this.TsOperatorOpd.Size = new System.Drawing.Size(207, 116);
             this.TsOperatorOpd.TabIndex = 3;
             this.TsOperatorOpd.Text = "Dispacher Dinas";
             // 
@@ -543,7 +543,7 @@
             this.SButtonErMasuk,
             this.toolStripSeparator6,
             this.toolStripButton1});
-            this.TsFrOpd.Location = new System.Drawing.Point(250, 1);
+            this.TsFrOpd.Location = new System.Drawing.Point(219, 1);
             this.TsFrOpd.Name = "TsFrOpd";
             this.TsFrOpd.Office12Mode = false;
             this.TsFrOpd.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -611,11 +611,11 @@
             this.toolStripDropDownButton4,
             this.toolStripSeparator7,
             this.SButtonOpdLokasi});
-            this.toolStripEx4.Location = new System.Drawing.Point(403, 1);
+            this.toolStripEx4.Location = new System.Drawing.Point(372, 1);
             this.toolStripEx4.Name = "toolStripEx4";
             this.toolStripEx4.Office12Mode = false;
             this.toolStripEx4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripEx4.Size = new System.Drawing.Size(281, 116);
+            this.toolStripEx4.Size = new System.Drawing.Size(312, 116);
             this.toolStripEx4.TabIndex = 5;
             this.toolStripEx4.Text = "Lain-lain";
             // 
@@ -653,6 +653,7 @@
             this.toolStripDropDownButton4.Size = new System.Drawing.Size(87, 100);
             this.toolStripDropDownButton4.Text = "Disposisi\r\nLaporan Unit";
             this.toolStripDropDownButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripDropDownButton4.Click += new System.EventHandler(this.toolStripDropDownButton4_Click);
             // 
             // TsmRiwayatLaporOpd
             // 

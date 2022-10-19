@@ -4,11 +4,11 @@ using System.Windows.Forms;
 using gov.minahasa.sitimou.Controllers;
 using gov.minahasa.sitimou.Helper;
 using gov.minahasa.sitimou.RestApi;
-using gov.minahasa.sitimou.Views.Common;
+using gov.minahasa.sitimou.Views.Dispatcher;
 
-namespace gov.minahasa.sitimou.Views.Dispatcher
+namespace gov.minahasa.sitimou.Views.Common
 {
-    public sealed partial class DisposisiLaporan : Form
+    public sealed partial class InfoLaporan : Form
     {
         #region === Constructor ===
 
@@ -35,7 +35,7 @@ namespace gov.minahasa.sitimou.Views.Dispatcher
 
         private readonly string _tempFolder = $"{Path.GetTempPath()}{Path.GetRandomFileName()}";
 
-        public DisposisiLaporan()
+        public InfoLaporan()
         {
             InitializeComponent();
             BackColor = Globals.PrimaryBgColor;
@@ -63,6 +63,7 @@ namespace gov.minahasa.sitimou.Views.Dispatcher
             TextAlamatLapor.Text = resultAlamat.display_name;
             TextPerihal.Text = PerihalLaporan;
             TextIsiLapor.Text = IsiLaporan;
+
         }
 
         #endregion
@@ -104,48 +105,6 @@ namespace gov.minahasa.sitimou.Views.Dispatcher
         {
             _controller.DownloadFotoLaporan(_tempFolder, IdLaporan, this);
         }
-
-        private void ButtonBatal_Click(object sender, EventArgs e)
-        {
-            if(_notifHelper.MsgBoxQuestion("Batal laporan ini?") != DialogResult.Yes) return;
-
-            var result = _controller.BatalLaporan("1", IdLaporan, this);
-
-            if (!result)
-            {
-                _notifHelper.MsgBoxWarning("Gagal batal laporan masuk. Hubungi admin untuk info selanjutnya.");
-                return;
-            }
-
-            IsDataSaved = true;
-            Close();
-
-        }
-
-        private void ButtonSimpan_Click(object sender, EventArgs e)
-        {
-            var win = new PilihOpd();
-            win.ShowDialog(this);
-
-            if (win.IdOpd <= 0) return;
-
-            // Simpan / disposis
-
-            var result = _controller.SimpanLaporanMasuk("1", IdLaporan, win.IdOpd, this);
-
-            if (!result)
-            {
-                _notifHelper.MsgBoxWarning("Gagal disposisi laporan masuk. Hubungi admin untuk info selanjutnya.");
-                return;
-            }
-
-            IsDataSaved = true;
-            Close();
-        }
-
-
-
-
 
         #endregion
 
