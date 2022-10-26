@@ -327,22 +327,27 @@ class LaporanController extends GetxController {
     try {
       // Ambil Posisi GPS
 
+      ProgressDialog pd = progressDialog(context, "Harap Menunggu...");
+      await pd.show();
+
       position = await getGeoLocationPosition();
 
       // Cek posisi
       if (position!.isMocked) {
+        if (pd.isShowing()) pd.hide();
         toastPesan("LAPORAN", "Tidak bisa mengirim laporan karena 'Mock Location' sedang aktif");
         return;
       }
 
-      if (position == null) throw Exception("p3");
+      if (position == null) {
+        if (pd.isShowing()) pd.hide();
+        throw Exception("p3");
+      }
 
       debugPrint("Lat: ${position!.latitude}, Lng: ${position!.longitude}");
 
       // Simpan data
-      if (!mounted) return;
-      ProgressDialog pd = progressDialog(context, "Harap Menunggu...");
-      await pd.show();
+      // if (!mounted) return;
 
       var result = await LaporanServices.kirimLaporan(
           textTentang.text.trim(), textIsiLaporan.text.trim(), position!.latitude, position!.longitude, File.fromUri(Uri.parse(imageFile.value)));

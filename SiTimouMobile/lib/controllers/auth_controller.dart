@@ -155,7 +155,7 @@ class AuthController extends GetxController {
 
       if (pd.isShowing()) pd.hide();
 
-      if (!result) throw ("Gagal dafter pengguna. Coba kembali atau hubungi dinas terkait.");
+      if (!result) return;
 
       // CelanUp
       textRegNik.text = "";
@@ -165,7 +165,7 @@ class AuthController extends GetxController {
 
       Get.off(() => LoginPage(), binding: AuthBinding());
     } catch (e) {
-      toastPesan("DAFTAR PENGGUNA", e.toString());
+      //toastPesan("DAFTAR PENGGUNA", e.toString());
     }
   }
 

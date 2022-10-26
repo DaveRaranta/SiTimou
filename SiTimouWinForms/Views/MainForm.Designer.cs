@@ -71,7 +71,7 @@
             this.toolStripEx4 = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
             this.SButtonOpdPegawai = new System.Windows.Forms.ToolStripButton();
             this.SButtonAturanOpd = new System.Windows.Forms.ToolStripButton();
-            this.toolStripDropDownButton4 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.SButtonHistoryOpd = new System.Windows.Forms.ToolStripDropDownButton();
             this.TsmRiwayatLaporOpd = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmRiwayatPanikOpd = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
@@ -360,7 +360,7 @@
             this.TsOperator.Name = "TsOperator";
             this.TsOperator.Office12Mode = false;
             this.TsOperator.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TsOperator.Size = new System.Drawing.Size(249, 116);
+            this.TsOperator.Size = new System.Drawing.Size(245, 116);
             this.TsOperator.TabIndex = 2;
             this.TsOperator.Text = "Dispacher";
             // 
@@ -428,7 +428,7 @@
             this.SButtonOpLokasi.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.SButtonOpLokasi.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SButtonOpLokasi.Name = "SButtonOpLokasi";
-            this.SButtonOpLokasi.Size = new System.Drawing.Size(51, 100);
+            this.SButtonOpLokasi.Size = new System.Drawing.Size(51, 113);
             this.SButtonOpLokasi.Text = "Lokasi\r\nPenting";
             this.SButtonOpLokasi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SButtonOpLokasi.Click += new System.EventHandler(this.SButtonOpLokasi_Click);
@@ -510,7 +510,7 @@
             this.toolStripDropDownButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(75, 113);
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(75, 100);
             this.toolStripDropDownButton2.Text = "Disposisi\r\nDispatcher";
             this.toolStripDropDownButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -576,7 +576,7 @@
             this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(85, 113);
+            this.toolStripButton1.Size = new System.Drawing.Size(85, 100);
             this.toolStripButton1.Text = "Riwayat\r\nPenanganan";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -608,14 +608,14 @@
             this.toolStripEx4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SButtonOpdPegawai,
             this.SButtonAturanOpd,
-            this.toolStripDropDownButton4,
+            this.SButtonHistoryOpd,
             this.toolStripSeparator7,
             this.SButtonOpdLokasi});
             this.toolStripEx4.Location = new System.Drawing.Point(372, 1);
             this.toolStripEx4.Name = "toolStripEx4";
             this.toolStripEx4.Office12Mode = false;
             this.toolStripEx4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripEx4.Size = new System.Drawing.Size(312, 116);
+            this.toolStripEx4.Size = new System.Drawing.Size(281, 116);
             this.toolStripEx4.TabIndex = 5;
             this.toolStripEx4.Text = "Lain-lain";
             // 
@@ -641,19 +641,19 @@
             this.SButtonAturanOpd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SButtonAturanOpd.Click += new System.EventHandler(this.SButtonAturanOpd_Click);
             // 
-            // toolStripDropDownButton4
+            // SButtonHistoryOpd
             // 
-            this.toolStripDropDownButton4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SButtonHistoryOpd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TsmRiwayatLaporOpd,
             this.TsmRiwayatPanikOpd});
-            this.toolStripDropDownButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton4.Image")));
-            this.toolStripDropDownButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripDropDownButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton4.Name = "toolStripDropDownButton4";
-            this.toolStripDropDownButton4.Size = new System.Drawing.Size(87, 100);
-            this.toolStripDropDownButton4.Text = "Disposisi\r\nLaporan Unit";
-            this.toolStripDropDownButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripDropDownButton4.Click += new System.EventHandler(this.toolStripDropDownButton4_Click);
+            this.SButtonHistoryOpd.Image = ((System.Drawing.Image)(resources.GetObject("SButtonHistoryOpd.Image")));
+            this.SButtonHistoryOpd.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.SButtonHistoryOpd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SButtonHistoryOpd.Name = "SButtonHistoryOpd";
+            this.SButtonHistoryOpd.Size = new System.Drawing.Size(87, 100);
+            this.SButtonHistoryOpd.Text = "Disposisi\r\nLaporan Unit";
+            this.SButtonHistoryOpd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SButtonHistoryOpd.Click += new System.EventHandler(this.toolStripDropDownButton4_Click);
             // 
             // TsmRiwayatLaporOpd
             // 
@@ -684,7 +684,7 @@
             this.SButtonOpdLokasi.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.SButtonOpdLokasi.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SButtonOpdLokasi.Name = "SButtonOpdLokasi";
-            this.SButtonOpdLokasi.Size = new System.Drawing.Size(51, 113);
+            this.SButtonOpdLokasi.Size = new System.Drawing.Size(51, 100);
             this.SButtonOpdLokasi.Text = "Lokasi\r\nPenting";
             this.SButtonOpdLokasi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SButtonOpdLokasi.Click += new System.EventHandler(this.SButtonOpdLokasi_Click);
@@ -954,7 +954,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripButton SButtonDashboard;
         private System.Windows.Forms.ToolStripButton SButtonInfoAturan;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton4;
+        private System.Windows.Forms.ToolStripDropDownButton SButtonHistoryOpd;
         private System.Windows.Forms.ToolStripMenuItem TsmRiwayatLaporOpd;
         private System.Windows.Forms.ToolStripMenuItem TsmRiwayatPanikOpd;
     }

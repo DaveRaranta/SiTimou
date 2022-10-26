@@ -6,6 +6,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:mobile_number/mobile_number.dart';
 import 'package:intl/intl.dart';
 
 import 'package:sitimou/controllers/bindings/bindings.dart';
@@ -25,7 +26,6 @@ import 'package:sitimou/views/auth/login.dart';
 import 'package:sitimou/helper/globals.dart' as g;
 import 'package:sitimou/views/home/components/ubah_profil.dart';
 import 'package:sitimou/widgets/dialog/progress_dialog.dart';
-import 'package:mobile_number/mobile_number.dart';
 
 class HomeController extends GetxController {
   var isLoading = true.obs;
@@ -250,7 +250,7 @@ class HomeController extends GetxController {
     }
 
     try {
-      noTelp.value = (await MobileNumber.mobileNumber)!;
+      noTelp.value = (await MobileNumber.mobileNumber)!.replaceAll("62+62", "0");
       debugPrint("Nomor Telp: '${noTelp.value}'");
     } on PlatformException catch (e) {
       debugPrint("Gagal ambil nomor telp: '${e.message}'");

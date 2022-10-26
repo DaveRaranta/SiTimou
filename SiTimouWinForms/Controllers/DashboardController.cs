@@ -216,6 +216,10 @@ namespace gov.minahasa.sitimou.Controllers
             // var values = new List<double> { 4, 6, 5, 2, 7, 5, 9 };
             // var tanggal = new List<string> {"23/01", "24/01", "25/01", "26/01", "27/01", "28/01", "29/01"};
 
+            chart.Series.Clear();
+            chart.AxisX.Clear();
+            chart.AxisY.Clear();
+
             chart.Series = new SeriesCollection
             {
 
@@ -263,6 +267,9 @@ namespace gov.minahasa.sitimou.Controllers
             //var values = new List<double> { 7, 3, 9, 12, 17, 15, 19 };
             //var tanggal = new List<string> { "Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul" };
 
+            chart.Series.Clear();
+            chart.AxisX.Clear();
+            chart.AxisY.Clear();
 
             chart.Series = new SeriesCollection
             {

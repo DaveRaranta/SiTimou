@@ -116,15 +116,15 @@ class AuthServices {
         case 401:
           var x = result.body.toString();
           if (x == "SAVE_ERROR") {
-            // toastPesan(context, "Gagal simpan registrasi pegawai.");
+            toastPesan("DAFTAR PENGGUNA", "Gagal simpan registrasi pengguna.");
           } else if (x == "NIK_EXIST") {
-            // toastPesan(context, "NIK, NIP atau Nama anda sudah pernah didaftarkan.");
+            toastPesan("DAFTAR PENGGUNA", "NIK anda sudah pernah didaftarkan.");
           } else {
-            // toastPesan(context, "Gagal simpan registrasi pegawai. Hubungi admin untuk info selanjutnya.");
+            toastPesan("DAFTAR PENGGUNA", "Gagal simpan registrasi pengguna. Hubungi admin untuk info selanjutnya.");
           }
           return false;
         default:
-          // toastPesan(context, "Gagal simpan registrasi pegawai. Hubungi admin untuk info selanjutnya.");
+          toastPesan("DAFTAR PENGGUNA", "Gagal simpan registrasi pengguna. Hubungi admin untuk info selanjutnya.");
           return false;
       }
     } on Exception catch (e) {

@@ -71,6 +71,7 @@ namespace gov.minahasa.sitimou.Views
             // Button
             SButtonOpdPegawai.Enabled = Globals.UserGrup is "5";
             SButtonAturanOpd.Enabled = Globals.UserGrup is "5";
+            SButtonHistoryOpd.Enabled = Globals.UserGrup is "5";
 
         }
 
